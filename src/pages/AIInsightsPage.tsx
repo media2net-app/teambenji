@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import DataCard from '../components/DataCard';
 import AIRecommendations from '../components/AIRecommendations';
 import GoalSuggestions from '../components/GoalSuggestions';
-import { aiInsightsService, type AIInsight } from '../services/aiInsightsService';
+import { aiInsightsService } from '../services/aiInsightsService';
 
 export default function AIInsightsPage() {
   const [activeTab, setActiveTab] = useState('insights');

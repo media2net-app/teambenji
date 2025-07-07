@@ -183,7 +183,6 @@ class ChatService {
   getChatStats(): ChatStats {
     const chats = this.getChats();
     const allMessages = this.getAllMessages();
-    const notifications = this.getNotifications();
 
     return {
       totalChats: chats.length,

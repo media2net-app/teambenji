@@ -405,7 +405,6 @@ class AIInsightsService {
 
     // Generate mock profile based on available data
     const latestMeasurement = bodyCompositionService.getLatestMeasurement();
-    const goals = bodyCompositionService.getGoals();
     const progress = bodyCompositionService.calculateProgress();
 
     return {
@@ -425,7 +424,7 @@ class AIInsightsService {
       stressLevel: 65,
       restDays: 2,
       
-      latestMeasurements: latestMeasurement,
+      latestMeasurements: latestMeasurement || undefined,
       progressTrend: 'improving',
       goalProgress: progress,
       

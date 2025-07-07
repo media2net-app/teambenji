@@ -4,7 +4,8 @@ import MetricsLogger, { type BodyMetrics } from '../components/MetricsLogger';
 import PhotoUpload from '../components/PhotoUpload';
 import GoalsManager from '../components/GoalsManager';
 import GoalSuggestions from '../components/GoalSuggestions';
-import { bodyCompositionService, type BodyCompositionData } from '../services/bodyCompositionService';
+import { bodyCompositionService } from '../services/bodyCompositionService';
+import type { BodyCompositionData } from '../services/bodyCompositionService';
 
 export default function BodyCompositionPage() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -316,7 +317,7 @@ export default function BodyCompositionPage() {
           <div>
             <h4 className="text-white font-medium mb-3">Gewicht Trend (6 weken)</h4>
             <div className="h-64 bg-[#2A2D3A] rounded-lg p-4 flex items-end justify-between">
-              {measurementHistory.slice().reverse().map((measurement, index) => (
+              {measurementHistory.slice().reverse().map((measurement) => (
                 <div key={measurement.id} className="flex flex-col items-center">
                   <div 
                     className="bg-[#E33412] rounded-t w-8 mb-2"

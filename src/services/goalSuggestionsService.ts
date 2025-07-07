@@ -69,7 +69,7 @@ class GoalSuggestionsService {
     return sortedSuggestions;
   }
 
-  private generateTrainingGoals(preferences: UserGoalPreferences, insights: any[]): GoalSuggestion[] {
+  private generateTrainingGoals(preferences: UserGoalPreferences, _insights: any[]): GoalSuggestion[] {
     const goals: GoalSuggestion[] = [];
     
     // Weekly training frequency goal
@@ -160,7 +160,7 @@ class GoalSuggestionsService {
     return goals;
   }
 
-  private generateNutritionGoals(preferences: UserGoalPreferences, insights: any[]): GoalSuggestion[] {
+  private generateNutritionGoals(preferences: UserGoalPreferences, _insights: any[]): GoalSuggestion[] {
     const goals: GoalSuggestion[] = [];
 
     // Protein intake goal
@@ -246,7 +246,7 @@ class GoalSuggestionsService {
     return goals;
   }
 
-  private generateRecoveryGoals(preferences: UserGoalPreferences, insights: any[]): GoalSuggestion[] {
+  private generateRecoveryGoals(_preferences: UserGoalPreferences, _insights: any[]): GoalSuggestion[] {
     const goals: GoalSuggestion[] = [];
 
     // Sleep duration goal
@@ -304,7 +304,7 @@ class GoalSuggestionsService {
     return goals;
   }
 
-  private generateBodyCompositionGoals(preferences: UserGoalPreferences, insights: any[], bodyData: any): GoalSuggestion[] {
+  private generateBodyCompositionGoals(preferences: UserGoalPreferences, _insights: any[], bodyData: any): GoalSuggestion[] {
     const goals: GoalSuggestion[] = [];
 
     if (!bodyData) return goals;

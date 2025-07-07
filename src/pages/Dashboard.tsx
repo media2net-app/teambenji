@@ -10,7 +10,6 @@ import {
   TrendIcon, 
   ChartIcon, 
   TargetIcon, 
-  TimeIcon, 
   NotesIcon, 
   BrainIcon,
   PlusIcon,
