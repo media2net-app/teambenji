@@ -4,6 +4,7 @@ import DataCard from '../components/DataCard';
 import UserManagement from '../components/UserManagement';
 import CoachManagement from '../components/CoachManagement';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
+import DemoLock from '../components/DemoLock';
 
 export default function AdminDashboard() {
   const [activeItem, setActiveItem] = useState('overview');
@@ -396,6 +397,7 @@ export default function AdminDashboard() {
           {renderContent()}
         </main>
       </div>
+      <DemoLock />
     </div>
   );
 } 

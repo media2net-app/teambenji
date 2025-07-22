@@ -1,6 +1,7 @@
 import logo from './logo.png'
 import { useState } from 'react'
 import FloatingChatWidget from './components/FloatingChatWidget';
+import DemoLock from './components/DemoLock';
 
 function App() {
   const [email, setEmail] = useState('demo@teambenji.nl')
@@ -9,11 +10,8 @@ function App() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (role === 'admin') {
-      window.location.href = '/admin'
-    } else {
-      window.location.href = '/dashboard'
-    }
+    // Demo is locked - no navigation allowed
+    // The DemoLock overlay will prevent access to any pages
   }
 
   return (
@@ -96,6 +94,7 @@ function App() {
           </div>
         </div>
       </div>
+      <DemoLock />
       <FloatingChatWidget />
       <style>{`
         .animate-fadein {

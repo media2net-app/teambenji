@@ -28,6 +28,7 @@ import ChatPage from './ChatPage';
 import LeermodulePage from './LeermodulePage';
 import AIRecommendations from '../components/AIRecommendations';
 import FloatingChatWidget from '../components/FloatingChatWidget';
+import DemoLock from '../components/DemoLock';
 
 export default function Dashboard() {
   const [activeItem, setActiveItem] = useState('dashboard');
@@ -353,6 +354,7 @@ export default function Dashboard() {
           {renderContent()}
         </main>
       </div>
+      <DemoLock />
       <FloatingChatWidget />
     </div>
   );
