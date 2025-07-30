@@ -829,6 +829,93 @@ export default function OffertePage() {
             </div>
           </div>
         </DataCard>
+
+        {/* Availability */}
+        <DataCard title="📅 Beschikbaarheid & Planning" value="Korte Termijn" className="mb-8">
+          <div className="space-y-6">
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">🚀 Huidige Situatie</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="text-2xl">✅</div>
+                    <div>
+                      <div className="font-semibold text-white">Direct Beschikbaar</div>
+                      <div className="text-sm text-gray-400">Plek voor korte termijn start</div>
+                    </div>
+                  </div>
+                  <ul className="text-sm text-gray-300 space-y-2">
+                    <li>• <strong>Team beschikbaar</strong> voor directe start</li>
+                    <li>• <strong>Technische expertise</strong> volledig aanwezig</li>
+                    <li>• <strong>Proces geoptimaliseerd</strong> voor snelle ontwikkeling</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="text-2xl">⚠️</div>
+                    <div>
+                      <div className="font-semibold text-white">Pipeline Vol</div>
+                      <div className="text-sm text-gray-400">Actieve acquisitie campagne</div>
+                    </div>
+                  </div>
+                  <ul className="text-sm text-gray-300 space-y-2">
+                    <li>• <strong>Meerdere projecten</strong> in onderhandeling</li>
+                    <li>• <strong>Actieve marketing</strong> campagne lopend</li>
+                    <li>• <strong>Capaciteit beperkt</strong> voor komende periode</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">⏰ Planning Impact</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#10B981] mb-2">Nu</div>
+                  <div className="text-white font-medium mb-1">Direct Start</div>
+                  <div className="text-sm text-gray-400">12 weken ontwikkeling</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#F59E0B] mb-2">3-6 Maanden</div>
+                  <div className="text-white font-medium mb-1">Wachtlijst</div>
+                  <div className="text-sm text-gray-400">Afhankelijk van pipeline</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#EF4444] mb-2">6-12 Maanden</div>
+                  <div className="text-white font-medium mb-1">Vol Boekingen</div>
+                  <div className="text-sm text-gray-400">Geen garantie op plek</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">💡 Aanbeveling</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="text-2xl">🎯</div>
+                  <div>
+                    <div className="font-semibold text-white">Snelle Beslissing Aanbevolen</div>
+                    <div className="text-gray-300 text-sm">
+                      Gezien de huidige beschikbaarheid en de groeiende pipeline, 
+                      raden we aan om binnen 2-4 weken een beslissing te nemen. 
+                      Dit garandeert een directe start en optimale planning.
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="text-2xl">📞</div>
+                  <div>
+                    <div className="font-semibold text-white">Contact voor Planning</div>
+                    <div className="text-gray-300 text-sm">
+                      Neem contact op voor een gedetailleerde planning en startdatum. 
+                      We kunnen dan de exacte timeline en milestones vastleggen.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DataCard>
       </div>
     </div>
   );
