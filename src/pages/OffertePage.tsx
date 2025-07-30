@@ -174,7 +174,7 @@ export default function OffertePage() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">✅ Wat We Bouwen</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">✅ Wat we bouwen</h3>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="text-green-400 text-lg">✓</div>
@@ -250,7 +250,7 @@ export default function OffertePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">❌ Wat We Niet Bouwen</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">❌ Wat we niet bouwen</h3>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="text-red-400 text-lg">✗</div>
@@ -306,7 +306,7 @@ export default function OffertePage() {
             </div>
 
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">🎯 Project Scope Samenvatting</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">🎯 Project scope samenvatting</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-[#E33412] mb-2">12 Weken</div>
@@ -329,7 +329,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Functie Overzicht */}
-        <DataCard title="🔧 Volledig Functie Overzicht" value="200+ Features" className="mb-8">
+        <DataCard title="🔧 Volledig functie overzicht" value="200+ Features" className="mb-8">
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
@@ -514,7 +514,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Operational Costs */}
-        <DataCard title="🚀 Operationele Kosten per Fase" value="" className="mb-8">
+        <DataCard title="🚀 Operationele kosten per fase" value="" className="mb-8">
           <div className="space-y-6">
             {/* Phase Selector */}
             <div className="flex space-x-2">
@@ -582,7 +582,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Test Week & Revisions */}
-        <DataCard title="🧪 Test Week & Revisies" value="Inbegrepen" className="mb-8">
+        <DataCard title="🧪 Test week & revisies" value="Inbegrepen" className="mb-8">
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
@@ -611,7 +611,7 @@ export default function OffertePage() {
               </div>
             </div>
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">📋 Test Week Planning</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">📋 Test week planning</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
                   <div className="text-2xl font-bold text-[#E33412]">Week 11</div>
@@ -634,7 +634,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Wearable API Integrations */}
-        <DataCard title="⌚ Wearable API Integraties" value="5 Devices" className="mb-8">
+        <DataCard title="⌚ Wearable API integraties" value="5 Devices" className="mb-8">
           <div className="space-y-6">
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
               <h3 className="text-lg font-semibold text-white mb-4">🔗 Officiële API Integraties</h3>
@@ -752,7 +752,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Service Details */}
-        <DataCard title="🔧 Service Details" value="7 Services" className="mb-8">
+        <DataCard title="🔧 Service details" value="7 Services" className="mb-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {serviceCosts.map((service, index) => (
               <div key={index} className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
@@ -896,7 +896,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Free Services */}
-        <DataCard title="🆓 Gratis Services" value="€0/maand" className="mb-8">
+        <DataCard title="🆓 Gratis services" value="€0/maand" className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { name: 'GitHub', description: 'Code repository, CI/CD pipelines, issue tracking' },
@@ -916,7 +916,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Summary */}
-        <DataCard title="📊 Kosten Samenvatting" value="€25.000 + €190/maand" className="mb-8">
+        <DataCard title="📊 Kosten samenvatting" value="€25.000 + €190/maand" className="mb-8">
           <div className="bg-[#1A1D29] rounded-lg p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
@@ -939,10 +939,10 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Availability */}
-        <DataCard title="📅 Beschikbaarheid & Planning" value="Korte Termijn" className="mb-8">
+        <DataCard title="📅 Beschikbaarheid & planning" value="Korte termijn" className="mb-8">
           <div className="space-y-6">
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">🚀 Huidige Situatie</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">🚀 Huidige situatie</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <div className="flex items-center space-x-3 mb-3">
@@ -976,7 +976,7 @@ export default function OffertePage() {
             </div>
 
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">⏰ Planning Impact</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">⏰ Planning impact</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
                   <div className="text-2xl font-bold text-[#10B981] mb-2">Nu</div>
