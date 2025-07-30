@@ -406,19 +406,34 @@ export default function EducationManagement() {
         ...courseData
       };
       setCourses(prev => [newCourse, ...prev]);
+      // Recalculate stats after adding new course
+      setTimeout(() => {
+        const updatedCourses = [newCourse, ...courses];
+        calculateStats(updatedCourses);
+      }, 100);
     } else if (selectedCourse) {
-      setCourses(prev => prev.map(c => 
+      const updatedCourses = courses.map(c => 
         c.id === selectedCourse.id 
           ? { ...c, ...courseData, updatedAt: new Date().toISOString() }
           : c
-      ));
+      );
+      setCourses(updatedCourses);
+      // Recalculate stats after updating course
+      setTimeout(() => {
+        calculateStats(updatedCourses);
+      }, 100);
     }
     handleCloseModal();
   };
 
   const handleDeleteCourse = (courseId: string) => {
     if (confirm('Weet je zeker dat je deze cursus wilt verwijderen?')) {
-      setCourses(prev => prev.filter(c => c.id !== courseId));
+      const updatedCourses = courses.filter(c => c.id !== courseId);
+      setCourses(updatedCourses);
+      // Recalculate stats after deleting course
+      setTimeout(() => {
+        calculateStats(updatedCourses);
+      }, 100);
       handleCloseModal();
     }
   };
