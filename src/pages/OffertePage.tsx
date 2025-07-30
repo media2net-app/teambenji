@@ -147,10 +147,10 @@ export default function OffertePage() {
         </div>
 
         {/* Project Visie */}
-        <DataCard title="👋 Project Visie" value="All-in-One Platform" className="mb-8">
+        <DataCard title="👋 Project visie" value="All-in-One Platform" className="mb-8">
           <div className="space-y-6">
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-xl font-semibold text-white mb-4">🎯 Platform Doel</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">🎯 Platform doel</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Een <strong>all-in-one fitness & coaching platform</strong> dat gebruikers helpt met hun gezondheidsdoelen. 
                 Het systeem combineert voedingsplannen, trainingen, educatie en AI-ondersteuning in één gebruiksvriendelijke 
@@ -170,7 +170,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Project Intro */}
-        <DataCard title="🎯 Project Overzicht" value="Complete Platform" className="mb-8">
+        <DataCard title="🎯 Project overzicht" value="Complete Platform" className="mb-8">
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
@@ -570,7 +570,7 @@ export default function OffertePage() {
               <div className="flex items-center space-x-3">
                 <div className="text-2xl">💳</div>
                 <div>
-                  <div className="font-semibold text-white">Betalingsprovider Kosten</div>
+                  <div className="font-semibold text-white">Betalingsprovider kosten</div>
                   <div className="text-sm text-gray-300">
                     Stripe of Mollie transactiekosten zijn <strong>niet inbegrepen</strong> in de maandelijkse kosten. 
                     Zie de sectie "Betalingsproviders" hieronder voor gedetailleerde kostenvergelijking.
@@ -586,7 +586,7 @@ export default function OffertePage() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">🧪 Test Week (Week 11)</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">🧪 Test week (week 11)</h3>
                 <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
                   <ul className="space-y-3 text-gray-300">
                     <li>• <strong>Test gebruikers</strong> - Door Benjamin aan te leveren</li>
@@ -598,7 +598,7 @@ export default function OffertePage() {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">🔄 Revisie Rondes</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">🔄 Revisie rondes</h3>
                 <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
                   <ul className="space-y-3 text-gray-300">
                     <li>• <strong>2 revisie rondes</strong> - Kosteloos inbegrepen</li>
@@ -615,7 +615,7 @@ export default function OffertePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
                   <div className="text-2xl font-bold text-[#E33412]">Week 11</div>
-                  <div className="text-sm text-gray-400">Test Week</div>
+                  <div className="text-sm text-gray-400">Test week</div>
                   <div className="text-xs text-gray-500 mt-1">Gebruikers testen platform</div>
                 </div>
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
@@ -781,7 +781,7 @@ export default function OffertePage() {
           <div className="space-y-6">
             {/* Provider Selection */}
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">🔄 Provider Keuze</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">🔄 Provider keuze</h3>
               <p className="text-gray-300 mb-4">
                 Het platform ondersteunt beide Nederlandse betalingsproviders. Je kunt kiezen tussen Stripe (internationaal) 
                 of Mollie (Nederlands, vaak goedkoper). Beide zijn volledig geïntegreerd en kunnen eenvoudig gewisseld worden.
@@ -848,7 +848,7 @@ export default function OffertePage() {
 
             {/* Comparison */}
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-lg font-semibold text-white mb-4">📊 Kosten Vergelijking</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">📊 Kosten vergelijking</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-white mb-3">Stripe vs Mollie (€50 transactie)</h4>
@@ -948,7 +948,7 @@ export default function OffertePage() {
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="text-2xl">✅</div>
                     <div>
-                      <div className="font-semibold text-white">Direct Beschikbaar</div>
+                      <div className="font-semibold text-white">Direct beschikbaar</div>
                       <div className="text-sm text-gray-400">Plek voor korte termijn start</div>
                     </div>
                   </div>
@@ -962,7 +962,7 @@ export default function OffertePage() {
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="text-2xl">⚠️</div>
                     <div>
-                      <div className="font-semibold text-white">Pipeline Vol</div>
+                      <div className="font-semibold text-white">Pipeline vol</div>
                       <div className="text-sm text-gray-400">Actieve acquisitie campagne</div>
                     </div>
                   </div>
@@ -980,7 +980,7 @@ export default function OffertePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
                   <div className="text-2xl font-bold text-[#10B981] mb-2">Nu</div>
-                  <div className="text-white font-medium mb-1">Direct Start</div>
+                  <div className="text-white font-medium mb-1">Direct start</div>
                   <div className="text-sm text-gray-400">12 weken ontwikkeling</div>
                 </div>
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
@@ -990,7 +990,7 @@ export default function OffertePage() {
                 </div>
                 <div className="bg-[#2A2D3A] rounded-lg p-4">
                   <div className="text-2xl font-bold text-[#EF4444] mb-2">6-12 Maanden</div>
-                  <div className="text-white font-medium mb-1">Vol Boekingen</div>
+                  <div className="text-white font-medium mb-1">Vol boekingen</div>
                   <div className="text-sm text-gray-400">Geen garantie op plek</div>
                 </div>
               </div>
@@ -1002,7 +1002,7 @@ export default function OffertePage() {
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">🎯</div>
                   <div>
-                                         <div className="font-semibold text-white">Snelle Beslissing Aanbevolen</div>
+                                         <div className="font-semibold text-white">Snelle beslissing aanbevolen</div>
                      <div className="text-gray-300 text-sm">
                        Gezien de huidige beschikbaarheid en de groeiende pipeline, 
                        raden we aan om binnen 1 week een beslissing te nemen. 
@@ -1013,7 +1013,7 @@ export default function OffertePage() {
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">📞</div>
                   <div>
-                    <div className="font-semibold text-white">Contact voor Planning</div>
+                    <div className="font-semibold text-white">Contact voor planning</div>
                     <div className="text-gray-300 text-sm">
                       Neem contact op voor een gedetailleerde planning en startdatum. 
                       We kunnen dan de exacte timeline en milestones vastleggen.
