@@ -621,6 +621,124 @@ export default function OffertePage() {
           </div>
         </DataCard>
 
+        {/* Wearable API Integrations */}
+        <DataCard title="⌚ Wearable API Integraties" value="5 Devices" className="mb-8">
+          <div className="space-y-6">
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">🔗 Officiële API Integraties</h3>
+              <p className="text-gray-300 mb-6">
+                Alle wearables in het platform hebben officiële API integraties voor volledig geautomatiseerde data synchronisatie.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">📱 Smartwatches</h3>
+                <div className="space-y-4">
+                  <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="text-2xl">⌚</div>
+                      <div>
+                        <div className="font-semibold text-white">Apple Watch</div>
+                        <div className="text-sm text-gray-400">Apple HealthKit API</div>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Activity tracking & heart rate</li>
+                      <li>• Sleep monitoring & health data</li>
+                      <li>• Privacy-first OAuth 2.0</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="text-2xl">🏃</div>
+                      <div>
+                        <div className="font-semibold text-white">Garmin Connect</div>
+                        <div className="text-sm text-gray-400">Garmin Connect API</div>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Workouts & performance metrics</li>
+                      <li>• Training load & VO2 max</li>
+                      <li>• Real-time device sync</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="text-2xl">📱</div>
+                      <div>
+                        <div className="font-semibold text-white">Fitbit</div>
+                        <div className="text-sm text-gray-400">Fitbit Web API</div>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Steps, calories & distance</li>
+                      <li>• Heart rate & sleep tracking</li>
+                      <li>• OAuth 2.0 authentication</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">💍 Recovery Devices</h3>
+                <div className="space-y-4">
+                  <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="text-2xl">💍</div>
+                      <div>
+                        <div className="font-semibold text-white">Oura Ring</div>
+                        <div className="text-sm text-gray-400">Oura API v2</div>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Sleep stages & quality</li>
+                      <li>• Recovery & readiness scores</li>
+                      <li>• Temperature & HRV tracking</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="text-2xl">🏆</div>
+                      <div>
+                        <div className="font-semibold text-white">WHOOP 4.0</div>
+                        <div className="text-sm text-gray-400">WHOOP API</div>
+                      </div>
+                    </div>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Recovery & strain tracking</li>
+                      <li>• Sleep analysis & HRV</li>
+                      <li>• Webhook real-time updates</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">🔧 Technische Features</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">5</div>
+                  <div className="text-sm text-gray-400">Wearable APIs</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">Real-time</div>
+                  <div className="text-sm text-gray-400">Data Sync</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">OAuth 2.0</div>
+                  <div className="text-sm text-gray-400">Security</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">GDPR</div>
+                  <div className="text-sm text-gray-400">Compliant</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DataCard>
+
         {/* Service Details */}
         <DataCard title="🔧 Service Details" value="7 Services" className="mb-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
