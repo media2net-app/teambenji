@@ -137,12 +137,35 @@ export default function OffertePage() {
         {/* Header */}
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
-            TeamBenji Platform - Kosten Overzicht
+            TeamBenji Platform - Jouw Visie Realiseren
           </h1>
           <p className="text-gray-400 text-lg">
-            Volledige kosten breakdown voor ontwikkeling en operationele services
+            Een complete offerte op maat voor jouw coaching platform
           </p>
         </div>
+
+        {/* Benjamin's Wensen */}
+        <DataCard title="👋 Benjamin's Wensen" value="Personalized Solution" className="mb-8">
+          <div className="space-y-6">
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-xl font-semibold text-white mb-4">🎯 Jouw Visie</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Je wilt een <strong>all-in-one platform</strong> bouwen dat coaches helpt om hun klanten beter te begeleiden. 
+                Een systeem waar coaches hun voedingsplannen, trainingen en educatie kunnen beheren, terwijl klanten 
+                een persoonlijke ervaring krijgen met AI-ondersteuning.
+              </p>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Het platform moet <strong>professioneel en gebruiksvriendelijk</strong> zijn, met real-time data, 
+                persoonlijke aanbevelingen en een complete coaching ervaring. Je wilt dat coaches meer tijd hebben 
+                voor hun klanten door geautomatiseerde processen.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                Met <strong>€25.000 budget en 12 weken tijd</strong> gaan we dit realiseren met moderne technologie 
+                en een focus op kwaliteit en gebruiksvriendelijkheid.
+              </p>
+            </div>
+          </div>
+        </DataCard>
 
         {/* Project Intro */}
         <DataCard title="🎯 Project Overzicht" value="Complete Platform" className="mb-8">
