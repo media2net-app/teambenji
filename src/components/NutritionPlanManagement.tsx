@@ -396,7 +396,65 @@ export default function NutritionPlanManagement() {
           fats: 160,
           fiber: 20
         },
-        meals: [],
+        meals: [
+          {
+            id: '7',
+            name: 'Avocado & Bacon Omelet',
+            type: 'breakfast',
+            calories: 480,
+            macros: {
+              protein: 25,
+              carbs: 8,
+              fats: 38,
+              fiber: 6
+            },
+            ingredients: [
+              { name: 'Eieren', amount: 3, unit: 'stuks', calories: 210 },
+              { name: 'Avocado', amount: 1, unit: 'stuk', calories: 160 },
+              { name: 'Bacon', amount: 50, unit: 'gram', calories: 110 }
+            ],
+            instructions: [
+              'Bak bacon knapperig',
+              'Klop eieren los',
+              'Verhit boter in pan',
+              'Giet eieren erover',
+              'Voeg avocado en bacon toe'
+            ],
+            prepTime: 8,
+            cookTime: 10,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop&crop=center',
+            tags: ['keto', 'hoog vet', 'ontbijt']
+          },
+          {
+            id: '8',
+            name: 'Zalm met Avocado Salsa',
+            type: 'dinner',
+            calories: 520,
+            macros: {
+              protein: 35,
+              carbs: 12,
+              fats: 42,
+              fiber: 8
+            },
+            ingredients: [
+              { name: 'Zalm', amount: 150, unit: 'gram', calories: 300 },
+              { name: 'Avocado', amount: 1, unit: 'stuk', calories: 160 },
+              { name: 'Limoen', amount: 1, unit: 'stuk', calories: 20 },
+              { name: 'Olijfolie', amount: 15, unit: 'ml', calories: 135 }
+            ],
+            instructions: [
+              'Grill zalm 4-5 minuten per kant',
+              'Meng avocado met limoen en kruiden',
+              'Serveer zalm met avocado salsa'
+            ],
+            prepTime: 10,
+            cookTime: 10,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop&crop=center',
+            tags: ['keto', 'hoog eiwit', 'omega-3']
+          }
+        ],
         author: 'Emma Jansen',
         createdAt: '2024-01-08',
         updatedAt: '2024-01-15',
@@ -429,7 +487,69 @@ export default function NutritionPlanManagement() {
           fats: 90,
           fiber: 35
         },
-        meals: [],
+        meals: [
+          {
+            id: '9',
+            name: 'Mediterrane Salade',
+            type: 'lunch',
+            calories: 380,
+            macros: {
+              protein: 15,
+              carbs: 25,
+              fats: 28,
+              fiber: 12
+            },
+            ingredients: [
+              { name: 'Feta Kaas', amount: 50, unit: 'gram', calories: 150 },
+              { name: 'Olijven', amount: 30, unit: 'gram', calories: 45 },
+              { name: 'Tomaat', amount: 100, unit: 'gram', calories: 18 },
+              { name: 'Komkommer', amount: 100, unit: 'gram', calories: 16 },
+              { name: 'Olijfolie', amount: 15, unit: 'ml', calories: 135 },
+              { name: 'Oregano', amount: 5, unit: 'gram', calories: 16 }
+            ],
+            instructions: [
+              'Snijd groenten in stukjes',
+              'Meng feta en olijven',
+              'Dress met olijfolie en oregano'
+            ],
+            prepTime: 10,
+            cookTime: 0,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=400&fit=crop&crop=center',
+            tags: ['mediterraans', 'salade', 'gezond']
+          },
+          {
+            id: '10',
+            name: 'Gegrilde Vis met Groenten',
+            type: 'dinner',
+            calories: 420,
+            macros: {
+              protein: 35,
+              carbs: 30,
+              fats: 22,
+              fiber: 8
+            },
+            ingredients: [
+              { name: 'Witte Vis', amount: 150, unit: 'gram', calories: 180 },
+              { name: 'Courgette', amount: 100, unit: 'gram', calories: 17 },
+              { name: 'Aubergine', amount: 100, unit: 'gram', calories: 25 },
+              { name: 'Olijfolie', amount: 15, unit: 'ml', calories: 135 },
+              { name: 'Citroen', amount: 1, unit: 'stuk', calories: 20 },
+              { name: 'Kruiden', amount: 10, unit: 'gram', calories: 43 }
+            ],
+            instructions: [
+              'Marineer vis met citroen en kruiden',
+              'Grill vis 4-5 minuten per kant',
+              'Grill groenten 8-10 minuten',
+              'Serveer met citroen'
+            ],
+            prepTime: 15,
+            cookTime: 15,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop&crop=center',
+            tags: ['mediterraans', 'vis', 'gegrild']
+          }
+        ],
         author: 'Mark Johnson',
         createdAt: '2024-01-15',
         updatedAt: '2024-01-20',
