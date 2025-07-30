@@ -237,6 +237,13 @@ export default function OffertePage() {
                       <div className="text-sm text-gray-400">Voorbeeld voedingsplannen, trainingschema's, cursussen en AI responses</div>
                     </div>
                   </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Wearable Integratie</div>
+                      <div className="text-sm text-gray-400">WHOOP, Apple Watch, Oura Ring, Garmin & Fitbit API integratie</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -376,7 +383,7 @@ export default function OffertePage() {
                 <ul className="space-y-2 text-gray-300 text-sm">
                   <li>• <strong>Hoofd Dashboard</strong> - Centrale hub & quick stats</li>
                   <li>• <strong>Planning</strong> - Week/dag planning & reminders</li>
-                  <li>• <strong>Herstel Tracking</strong> - Recovery monitoring & slaap</li>
+                  <li>• <strong>Herstel Tracking</strong> - Recovery monitoring & wearable integratie</li>
                   <li>• <strong>Instellingen</strong> - App configuratie & privacy</li>
                   <li>• <strong>Help & Support</strong> - FAQ & support systeem</li>
                 </ul>
@@ -405,6 +412,29 @@ export default function OffertePage() {
               </div>
             </div>
 
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">⌚ Wearable Integratie (1 Module)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>WHOOP API</strong> - Recovery data, strain, sleep analysis</li>
+                  <li>• <strong>Apple Health</strong> - Apple Watch data integratie</li>
+                  <li>• <strong>Oura Ring</strong> - Sleep tracking & recovery metrics</li>
+                  <li>• <strong>Garmin Connect</strong> - Activity & performance data</li>
+                  <li>• <strong>Fitbit API</strong> - Activity tracking & health metrics</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">📊 Data Integratie</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Automatische Sync</strong> - Real-time data synchronisatie</li>
+                  <li>• <strong>Data Normalisatie</strong> - Gestandaardiseerde metrics</li>
+                  <li>• <strong>Recovery Insights</strong> - AI-powered recovery adviezen</li>
+                  <li>• <strong>Trend Analyse</strong> - Patronen herkenning</li>
+                  <li>• <strong>Privacy Compliance</strong> - GDPR & data beveiliging</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
               <h3 className="text-lg font-semibold text-white mb-4">📊 Platform Statistieken</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -413,7 +443,7 @@ export default function OffertePage() {
                   <div className="text-xs text-gray-400">Regels Code</div>
                 </div>
                 <div className="bg-[#2A2D3A] rounded-lg p-3">
-                  <div className="text-xl font-bold text-[#E33412]">31</div>
+                  <div className="text-xl font-bold text-[#E33412]">32</div>
                   <div className="text-xs text-gray-400">Modules</div>
                 </div>
                 <div className="bg-[#2A2D3A] rounded-lg p-3">
