@@ -292,8 +292,8 @@ export default function OffertePage() {
                   <div className="flex items-start space-x-3">
                     <div className="text-red-400 text-lg">✗</div>
                     <div>
-                      <div className="font-medium text-white">API voor Externe Integraties</div>
-                      <div className="text-sm text-gray-400">Geen publieke API voor derden</div>
+                      <div className="font-medium text-white">Externe Systeem Koppelingen</div>
+                      <div className="text-sm text-gray-400">Geen koppeling met andere software/CRM systemen</div>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
