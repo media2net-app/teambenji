@@ -144,7 +144,7 @@ export default function OffertePage() {
             TeamBenji Platform - Ontwikkeling Offerte
           </h1>
           <p className="text-gray-400 text-lg">
-            Complete kosten breakdown voor het fitness & coaching platform
+            Complete offerte met alle functionaliteiten, kosten, doorlooptijd en planning
           </p>
         </div>
 
