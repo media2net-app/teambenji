@@ -78,20 +78,21 @@ export default function OffertePage() {
     {
       phase: 'Launch Phase',
       users: '0-100 gebruikers',
-      totalCost: '€141/maand',
+      totalCost: '€190/maand',
       services: [
         { name: 'Vercel', cost: '€20' },
         { name: 'Supabase', cost: '€25' },
         { name: 'AWS S3', cost: '€5' },
         { name: 'OpenAI', cost: '€50' },
         { name: 'SendGrid', cost: '€15' },
-        { name: 'Sentry', cost: '€26' }
+        { name: 'Sentry', cost: '€26' },
+        { name: 'Media2Net Support', cost: '€49' }
       ]
     },
     {
       phase: 'Growth Phase',
       users: '100-1000 gebruikers',
-      totalCost: '€446-746/maand',
+      totalCost: '€495-795/maand',
       services: [
         { name: 'Vercel', cost: '€20' },
         { name: 'Supabase', cost: '€25' },
@@ -99,13 +100,14 @@ export default function OffertePage() {
         { name: 'OpenAI', cost: '€150' },
         { name: 'SendGrid', cost: '€15' },
         { name: 'Sentry', cost: '€26' },
-        { name: 'Stripe', cost: '€200-500' }
+        { name: 'Stripe', cost: '€200-500' },
+        { name: 'Media2Net Support', cost: '€49' }
       ]
     },
     {
       phase: 'Scale Phase',
       users: '1000+ gebruikers',
-      totalCost: '€1401-5401+/maand',
+      totalCost: '€1450-5450+/maand',
       services: [
         { name: 'Vercel', cost: '€20' },
         { name: 'Supabase', cost: '€25' },
@@ -113,7 +115,8 @@ export default function OffertePage() {
         { name: 'OpenAI', cost: '€300' },
         { name: 'SendGrid', cost: '€15' },
         { name: 'Sentry', cost: '€26' },
-        { name: 'Stripe', cost: '€1000-5000+' }
+        { name: 'Stripe', cost: '€1000-5000+' },
+        { name: 'Media2Net Support', cost: '€49' }
       ]
     }
   ];
@@ -122,7 +125,8 @@ export default function OffertePage() {
     { phase: 'Backend Foundation', weeks: 'Week 1-3', cost: '€8.000' },
     { phase: 'Core Features', weeks: 'Week 4-6', cost: '€7.000' },
     { phase: 'Advanced Features', weeks: 'Week 7-9', cost: '€5.000' },
-    { phase: 'Polish & Launch', weeks: 'Week 10-12', cost: '€5.000' }
+    { phase: 'Polish & Launch', weeks: 'Week 10-12', cost: '€5.000' },
+    { phase: 'Test Week & Revisies', weeks: 'Week 11-12', cost: 'Inbegrepen' }
   ];
 
   const stripeExamples = [
@@ -512,7 +516,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Operational Costs */}
-        <DataCard title="🚀 Operationele Kosten per Fase" value="€141-5401+" className="mb-8">
+        <DataCard title="🚀 Operationele Kosten per Fase" value="€190-5450+" className="mb-8">
           <div className="space-y-6">
             {/* Phase Selector */}
             <div className="flex space-x-2">
@@ -561,6 +565,58 @@ export default function OffertePage() {
                   </div>
                 );
               })()}
+            </div>
+          </div>
+        </DataCard>
+
+        {/* Test Week & Revisions */}
+        <DataCard title="🧪 Test Week & Revisies" value="Inbegrepen" className="mb-8">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🧪 Test Week (Week 11)</h3>
+                <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+                  <ul className="space-y-3 text-gray-300">
+                    <li>• <strong>Test gebruikers</strong> - Door Benjamin aan te leveren</li>
+                    <li>• <strong>1 week toegang</strong> - Volledige platform test</li>
+                    <li>• <strong>Feedback verzameling</strong> - Gebruikerservaring & bugs</li>
+                    <li>• <strong>Performance testen</strong> - Load testing & optimalisatie</li>
+                    <li>• <strong>Bug fixes</strong> - Kritieke problemen oplossen</li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🔄 Revisie Rondes</h3>
+                <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+                  <ul className="space-y-3 text-gray-300">
+                    <li>• <strong>2 revisie rondes</strong> - Kosteloos inbegrepen</li>
+                    <li>• <strong>Functionele aanpassingen</strong> - Features & workflow</li>
+                    <li>• <strong>UI/UX verbeteringen</strong> - Design & gebruiksvriendelijkheid</li>
+                    <li>• <strong>Bug fixes</strong> - Alle gevonden problemen</li>
+                    <li>• <strong>Performance optimalisatie</strong> - Snelheid & stabiliteit</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">📋 Test Week Planning</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#E33412]">Week 11</div>
+                  <div className="text-sm text-gray-400">Test Week</div>
+                  <div className="text-xs text-gray-500 mt-1">Gebruikers testen platform</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#E33412]">Week 12</div>
+                  <div className="text-sm text-gray-400">Revisies</div>
+                  <div className="text-xs text-gray-500 mt-1">2 rondes aanpassingen</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-4">
+                  <div className="text-2xl font-bold text-[#E33412]">Live</div>
+                  <div className="text-sm text-gray-400">Oplevering</div>
+                  <div className="text-xs text-gray-500 mt-1">Productie-ready platform</div>
+                </div>
+              </div>
             </div>
           </div>
         </DataCard>
