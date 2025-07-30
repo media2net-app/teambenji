@@ -764,25 +764,121 @@ export default function OffertePage() {
           </div>
         </DataCard>
 
-        {/* Stripe Examples */}
-        <DataCard title="💳 Stripe Transactie Kosten" value="1.4% + €0.25" className="mb-8">
-          <div className="bg-[#1A1D29] rounded-lg p-6">
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold text-white mb-2">Hoe Stripe Kosten Werken</h3>
-              <p className="text-gray-300">
-                Stripe rekent <strong>1.4% van het bedrag + €0.25 vaste kosten</strong> per transactie. 
-                Geen maandelijkse kosten - alleen per transactie.
+        {/* Payment Providers */}
+        <DataCard title="💳 Betalingsproviders" value="Stripe of Mollie" className="mb-8">
+          <div className="space-y-6">
+            {/* Provider Selection */}
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">🔄 Provider Keuze</h3>
+              <p className="text-gray-300 mb-4">
+                Het platform ondersteunt beide Nederlandse betalingsproviders. Je kunt kiezen tussen Stripe (internationaal) 
+                of Mollie (Nederlands, vaak goedkoper). Beide zijn volledig geïntegreerd en kunnen eenvoudig gewisseld worden.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {stripeExamples.map((example, index) => (
-                <div key={index} className="bg-[#2A2D3A] rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white mb-2">{example.amount}</div>
-                  <div className="text-[#E33412] font-bold mb-1">{example.cost}</div>
-                  <div className="text-sm text-gray-400">{example.breakdown}</div>
+
+            {/* Stripe Section */}
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="text-2xl">💳</div>
+                <div>
+                  <h3 className="text-xl font-semibold text-white">Stripe (Internationaal)</h3>
+                  <p className="text-gray-400">1.4% + €0.25 per transactie</p>
                 </div>
-              ))}
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-300">
+                  Stripe rekent <strong>1.4% van het bedrag + €0.25 vaste kosten</strong> per transactie. 
+                  Geen maandelijkse kosten - alleen per transactie. Ideaal voor internationale uitbreiding.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {stripeExamples.map((example, index) => (
+                  <div key={index} className="bg-[#2A2D3A] rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-white mb-2">{example.amount}</div>
+                    <div className="text-[#E33412] font-bold mb-1">{example.cost}</div>
+                    <div className="text-sm text-gray-400">{example.breakdown}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mollie Section */}
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="text-2xl">🇳🇱</div>
+                <div>
+                  <h3 className="text-xl font-semibold text-white">Mollie (Nederlands)</h3>
+                  <p className="text-gray-400">€0.25 + €0.10 per transactie</p>
+                </div>
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-300">
+                  Mollie rekent <strong>€0.25 + €0.10 per transactie</strong> (geen percentage!). 
+                  Dit is vaak goedkoper voor Nederlandse bedrijven. Geen maandelijkse kosten.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { amount: '€25', cost: '€0.35', breakdown: '€0.25 + €0.10' },
+                  { amount: '€50', cost: '€0.35', breakdown: '€0.25 + €0.10' },
+                  { amount: '€100', cost: '€0.35', breakdown: '€0.25 + €0.10' }
+                ].map((example, index) => (
+                  <div key={index} className="bg-[#2A2D3A] rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-white mb-2">{example.amount}</div>
+                    <div className="text-[#10B981] font-bold mb-1">{example.cost}</div>
+                    <div className="text-sm text-gray-400">{example.breakdown}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Comparison */}
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">📊 Kosten Vergelijking</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-white mb-3">Stripe vs Mollie (€50 transactie)</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-300">Stripe:</span>
+                      <span className="text-[#E33412] font-semibold">€0.95</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-300">Mollie:</span>
+                      <span className="text-[#10B981] font-semibold">€0.35</span>
+                    </div>
+                    <div className="border-t border-[#2A2D3A] pt-2 mt-2">
+                      <div className="flex justify-between">
+                        <span className="text-white font-semibold">Besparing:</span>
+                        <span className="text-[#10B981] font-bold">€0.60 (63%)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-3">Voordelen per Provider</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <div className="font-medium text-white mb-1">🇳🇱 Mollie</div>
+                      <ul className="text-sm text-gray-300 space-y-1">
+                        <li>• <strong>Goedkoper</strong> voor Nederlandse bedrijven</li>
+                        <li>• <strong>Vaste kosten</strong> - geen percentage</li>
+                        <li>• <strong>Nederlandse support</strong></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="font-medium text-white mb-1">💳 Stripe</div>
+                      <ul className="text-sm text-gray-300 space-y-1">
+                        <li>• <strong>Internationaal</strong> - wereldwijde uitbreiding</li>
+                        <li>• <strong>Meer betaalmethoden</strong></li>
+                        <li>• <strong>Geavanceerde features</strong></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </DataCard>
