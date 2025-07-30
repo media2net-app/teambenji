@@ -312,6 +312,116 @@ export default function OffertePage() {
           </div>
         </DataCard>
 
+        {/* Functie Overzicht */}
+        <DataCard title="🔧 Volledig Functie Overzicht" value="200+ Features" className="mb-8">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">📊 Admin & Beheer (4 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Admin Dashboard</strong> - Centraal beheer & real-time statistieken</li>
+                  <li>• <strong>Gebruikersbeheer</strong> - User management & rollen beheer</li>
+                  <li>• <strong>Coach Beheer</strong> - Coach administratie & commission systeem</li>
+                  <li>• <strong>Analytics Dashboard</strong> - Business intelligence & rapportages</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🥗 Voeding & Gezondheid (3 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Voedingsplan Beheer</strong> - Complete voedingsplannen met afbeeldingen</li>
+                  <li>• <strong>Gebruikers Voeding</strong> - Dagelijkse voeding tracking & calorieën</li>
+                  <li>• <strong>Body Composition</strong> - Lichaamssamenstelling & progressie</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🏋️ Training & Coaching (3 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Programma Beheer</strong> - Trainingsprogramma's & oefeningen database</li>
+                  <li>• <strong>Gebruikers Training</strong> - Workout tracking & oefening logging</li>
+                  <li>• <strong>Prestaties Tracking</strong> - Performance monitoring & PR's</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">📚 Educatie & Leren (3 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Educatie Beheer</strong> - Cursusbeheer & video content</li>
+                  <li>• <strong>Gebruikers Educatie</strong> - Leermodules & certificaten</li>
+                  <li>• <strong>Leerpaden</strong> - Gestructureerde leerwegen</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🤖 AI & Intelligente Features (4 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>AI Insights</strong> - Persoonlijke inzichten & aanbevelingen</li>
+                  <li>• <strong>AI Aanbevelingen</strong> - Op maat gemaakte suggesties</li>
+                  <li>• <strong>AI Chat</strong> - Intelligente conversatie & support</li>
+                  <li>• <strong>Doel Suggesties</strong> - AI-powered doel setting</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">📱 Gebruikerservaring (5 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Hoofd Dashboard</strong> - Centrale hub & quick stats</li>
+                  <li>• <strong>Planning</strong> - Week/dag planning & reminders</li>
+                  <li>• <strong>Herstel Tracking</strong> - Recovery monitoring & slaap</li>
+                  <li>• <strong>Instellingen</strong> - App configuratie & privacy</li>
+                  <li>• <strong>Help & Support</strong> - FAQ & support systeem</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🎨 UI/UX Componenten (5 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Modern Charts</strong> - Data visualisatie & grafieken</li>
+                  <li>• <strong>Floating Chat Widget</strong> - AI chat interface</li>
+                  <li>• <strong>Photo Upload</strong> - Media upload & gallery</li>
+                  <li>• <strong>Metrics Logger</strong> - Data logging & analytics</li>
+                  <li>• <strong>Icons Library</strong> - Custom iconen & styling</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">🔧 Technische Features (4 Modules)</h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• <strong>Authenticatie & Beveiliging</strong> - JWT, RBAC, 2FA</li>
+                  <li>• <strong>API & Integraties</strong> - RESTful API, WebSockets</li>
+                  <li>• <strong>Database & Storage</strong> - PostgreSQL, backups</li>
+                  <li>• <strong>Performance & Scalability</strong> - Caching, CDN, monitoring</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">📊 Platform Statistieken</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="bg-[#2A2D3A] rounded-lg p-3">
+                  <div className="text-xl font-bold text-[#E33412]">15.000+</div>
+                  <div className="text-xs text-gray-400">Regels Code</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-3">
+                  <div className="text-xl font-bold text-[#E33412]">31</div>
+                  <div className="text-xs text-gray-400">Modules</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-3">
+                  <div className="text-xl font-bold text-[#E33412]">200+</div>
+                  <div className="text-xs text-gray-400">Features</div>
+                </div>
+                <div className="bg-[#2A2D3A] rounded-lg p-3">
+                  <div className="text-xl font-bold text-[#E33412]">100%</div>
+                  <div className="text-xs text-gray-400">Responsive</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DataCard>
+
         {/* Development Costs */}
         <DataCard title="💼 Ontwikkeling Kosten" value="€25.000" className="mb-8">
           <div className="space-y-6">
