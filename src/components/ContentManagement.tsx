@@ -38,6 +38,7 @@ export default function ContentManagement() {
   const [filteredContent, setFilteredContent] = useState<Content[]>([]);
   const [selectedContent, setSelectedContent] = useState<Content | null>(null);
   const [showContentModal, setShowContentModal] = useState(false);
+  const [modalMode, setModalMode] = useState<'view' | 'edit' | 'create'>('view');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterType, setFilterType] = useState('all');
@@ -71,9 +72,10 @@ export default function ContentManagement() {
         views: 1247,
         engagement: 89,
         tags: ['krachttraining', 'deadlift', 'techniek', 'beginners'],
-        thumbnail: '/thumbnails/deadlift.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         description: 'Leer de juiste deadlift techniek voor maximale resultaten en veiligheid.',
-        videoUrl: 'https://example.com/deadlift-video.mp4'
+        videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        content: 'In deze video leer je stap voor stap de juiste deadlift techniek. We beginnen met de basis setup en werken toe naar de volledige beweging.'
       },
       {
         id: '2',
@@ -88,9 +90,9 @@ export default function ContentManagement() {
         views: 892,
         engagement: 76,
         tags: ['voeding', 'spieropbouw', 'macro\'s', 'eiwitten'],
-        thumbnail: '/thumbnails/nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop',
         description: 'Complete gids voor voeding tijdens spieropbouw training.',
-        content: 'Lorem ipsum dolor sit amet...'
+        content: 'Spieropbouw vereist niet alleen de juiste training, maar ook de juiste voeding. In dit artikel bespreken we de belangrijkste voedingsprincipes voor optimale spiergroei.'
       },
       {
         id: '3',
@@ -104,8 +106,10 @@ export default function ContentManagement() {
         views: 0,
         engagement: 0,
         tags: ['recovery', 'herstel', 'stretching', 'foam rolling'],
+        thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop',
         description: 'Stap-voor-stap recovery protocol voor optimaal herstel.',
-        documentUrl: '/documents/recovery-protocol.pdf'
+        documentUrl: '/documents/recovery-protocol.pdf',
+        content: 'Herstel is net zo belangrijk als training zelf. Dit protocol helpt je om optimaal te herstellen na intensieve trainingen.'
       },
       {
         id: '4',
@@ -120,9 +124,9 @@ export default function ContentManagement() {
         views: 1567,
         engagement: 92,
         tags: ['motivatie', 'doelen', 'psychologie', 'succes'],
-        thumbnail: '/thumbnails/motivation.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
         description: 'Hoe je realistische doelen stelt en gemotiveerd blijft.',
-        content: 'Lorem ipsum dolor sit amet...'
+        content: 'Motivatie is de drijvende kracht achter succes. Leer hoe je effectieve doelen stelt en je motivatie behoudt op de lange termijn.'
       },
       {
         id: '5',
@@ -137,8 +141,10 @@ export default function ContentManagement() {
         views: 634,
         engagement: 68,
         tags: ['HIIT', 'cardio', 'workout', 'intensief'],
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         description: 'Complete HIIT workout schema voor vetverbranding.',
-        documentUrl: '/documents/hiit-workout.pdf'
+        documentUrl: '/documents/hiit-workout.pdf',
+        content: 'HIIT trainingen zijn een van de meest effectieve manieren om vet te verbranden en je conditie te verbeteren.'
       },
       {
         id: '6',
@@ -153,9 +159,44 @@ export default function ContentManagement() {
         views: 445,
         engagement: 71,
         tags: ['progress', 'foto\'s', 'tracking', 'motivatie'],
-        thumbnail: '/thumbnails/progress-tips.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         description: 'Hoe je effectieve progress foto\'s maakt voor tracking.',
-        imageUrl: '/images/progress-tips.jpg'
+        imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+        content: 'Progress foto\'s zijn een geweldige manier om je vooruitgang te tracken. Leer hoe je consistente en effectieve foto\'s maakt.'
+      },
+      {
+        id: '7',
+        title: 'Yoga voor Flexibiliteit',
+        type: 'video',
+        category: 'recovery',
+        status: 'published',
+        author: 'Lisa de Vries',
+        createdAt: '2024-01-16',
+        updatedAt: '2024-01-19',
+        publishedAt: '2024-01-19',
+        views: 789,
+        engagement: 84,
+        tags: ['yoga', 'flexibiliteit', 'stretching', 'ontspanning'],
+        thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop',
+        description: 'Complete yoga routine voor verbeterde flexibiliteit.',
+        videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        content: 'Deze yoga routine is perfect voor het verbeteren van je flexibiliteit en het verminderen van spierspanning.'
+      },
+      {
+        id: '8',
+        title: 'Voeding voor Endurance Sporters',
+        type: 'article',
+        category: 'nutrition',
+        status: 'draft',
+        author: 'Sarah Wilson',
+        createdAt: '2024-01-20',
+        updatedAt: '2024-01-20',
+        views: 0,
+        engagement: 0,
+        tags: ['endurance', 'voeding', 'duursport', 'energie'],
+        thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop',
+        description: 'Voedingsstrategieën voor duursporters en marathonlopers.',
+        content: 'Endurance sporten vereisen specifieke voedingsstrategieën. Leer hoe je je lichaam optimaal voedt voor lange afstanden.'
       }
     ];
 
@@ -277,8 +318,59 @@ export default function ContentManagement() {
   };
 
   const handleContentAction = (action: string, contentId: string) => {
-    console.log(`${action} content ${contentId}`);
-    // Implement action logic
+    const contentItem = content.find(c => c.id === contentId);
+    if (contentItem) {
+      setSelectedContent(contentItem);
+      setModalMode(action === 'edit' ? 'edit' : 'view');
+      setShowContentModal(true);
+    }
+  };
+
+  const handleCreateContent = () => {
+    setSelectedContent(null);
+    setModalMode('create');
+    setShowContentModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowContentModal(false);
+    setSelectedContent(null);
+  };
+
+  const handleSaveContent = (contentData: Partial<Content>) => {
+    if (modalMode === 'create') {
+      const newContent: Content = {
+        id: Date.now().toString(),
+        title: contentData.title || 'Nieuw Content',
+        type: contentData.type || 'article',
+        category: contentData.category || 'training',
+        status: 'draft',
+        author: 'Admin',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        views: 0,
+        engagement: 0,
+        tags: contentData.tags || [],
+        description: contentData.description || '',
+        content: contentData.content || '',
+        ...contentData
+      };
+      setContent(prev => [newContent, ...prev]);
+    } else if (selectedContent) {
+      setContent(prev => prev.map(c => 
+        c.id === selectedContent.id 
+          ? { ...c, ...contentData, updatedAt: new Date().toISOString() }
+          : c
+      ));
+    }
+    handleCloseModal();
+  };
+
+  const handleDeleteContent = (contentId: string) => {
+    if (confirm('Weet je zeker dat je dit content wilt verwijderen?')) {
+      setContent(prev => prev.filter(c => c.id !== contentId));
+      handleCloseModal();
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -392,7 +484,10 @@ export default function ContentManagement() {
             <div className="text-gray-400 text-sm">
               {filteredContent.length} van {content.length} content items
             </div>
-            <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2">
+            <button 
+              onClick={handleCreateContent}
+              className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2"
+            >
               <span>➕</span>
               Nieuwe Content
             </button>
@@ -410,9 +505,9 @@ export default function ContentManagement() {
           >
             {/* Thumbnail */}
             <div className="relative mb-4">
-              <div className="aspect-video bg-[#2A2D3A] rounded-lg flex items-center justify-center">
+              <div className="aspect-video bg-[#2A2D3A] rounded-lg flex items-center justify-center overflow-hidden">
                 {item.thumbnail ? (
-                  <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover rounded-lg" />
+                  <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-gray-400 text-4xl">
                     {item.type === 'video' && '🎥'}
@@ -501,6 +596,218 @@ export default function ContentManagement() {
             </button>
           </div>
         </DataCard>
+      )}
+
+      {/* Content Modal */}
+      {showContentModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1A1D29] border border-[#2A2D3A] rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-white text-2xl font-bold">
+                {modalMode === 'create' ? 'Nieuwe Content' : 
+                 modalMode === 'edit' ? 'Content Bewerken' : 'Content Bekijken'}
+              </h2>
+              <button
+                onClick={handleCloseModal}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                ×
+              </button>
+            </div>
+
+            {modalMode === 'view' && selectedContent ? (
+              <div className="space-y-6">
+                {/* Content Header */}
+                <div className="flex items-start gap-4">
+                  <div className="w-32 h-24 bg-[#2A2D3A] rounded-lg overflow-hidden flex-shrink-0">
+                    {selectedContent.thumbnail ? (
+                      <img src={selectedContent.thumbnail} alt={selectedContent.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-2xl">
+                        {selectedContent.type === 'video' && '🎥'}
+                        {selectedContent.type === 'article' && '📄'}
+                        {selectedContent.type === 'document' && '📋'}
+                        {selectedContent.type === 'image' && '🖼️'}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white text-xl font-bold mb-2">{selectedContent.title}</h3>
+                    <p className="text-gray-400 mb-3">{selectedContent.description}</p>
+                    <div className="flex gap-2">
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedContent.status)}`}>
+                        {getStatusLabel(selectedContent.status)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(selectedContent.type)}`}>
+                        {getTypeLabel(selectedContent.type)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(selectedContent.category)}`}>
+                        {getCategoryLabel(selectedContent.category)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Details */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Content Details</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Auteur:</span>
+                        <span className="text-white">{selectedContent.author}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Gemaakt:</span>
+                        <span className="text-white">{formatDate(selectedContent.createdAt)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Bijgewerkt:</span>
+                        <span className="text-white">{formatDate(selectedContent.updatedAt)}</span>
+                      </div>
+                      {selectedContent.publishedAt && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-400">Gepubliceerd:</span>
+                          <span className="text-white">{formatDate(selectedContent.publishedAt)}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Statistieken</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Views:</span>
+                        <span className="text-white">{formatNumber(selectedContent.views)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Engagement:</span>
+                        <span className="text-white">{selectedContent.engagement}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Tags</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedContent.tags.map((tag, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-[#2A2D3A] text-gray-300 text-xs rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Content Preview */}
+                {selectedContent.content && (
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Content Preview</h4>
+                    <div className="bg-[#2A2D3A] p-4 rounded-lg">
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        {selectedContent.content}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="flex gap-3 pt-4 border-t border-[#2A2D3A]">
+                  <button
+                    onClick={() => {
+                      setModalMode('edit');
+                    }}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Bewerken
+                  </button>
+                  <button
+                    onClick={() => handleDeleteContent(selectedContent.id)}
+                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+                  >
+                    Verwijderen
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Sluiten
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Titel</label>
+                    <input
+                      type="text"
+                      defaultValue={selectedContent?.title || ''}
+                      className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                      placeholder="Content titel..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Type</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="article">Artikel</option>
+                      <option value="video">Video</option>
+                      <option value="document">Document</option>
+                      <option value="image">Afbeelding</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-400 text-sm mb-2">Beschrijving</label>
+                  <textarea
+                    defaultValue={selectedContent?.description || ''}
+                    rows={3}
+                    className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                    placeholder="Content beschrijving..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Categorie</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="training">Training</option>
+                      <option value="nutrition">Voeding</option>
+                      <option value="recovery">Herstel</option>
+                      <option value="education">Educatie</option>
+                      <option value="motivation">Motivatie</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Status</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="draft">Concept</option>
+                      <option value="published">Gepubliceerd</option>
+                      <option value="archived">Gearchiveerd</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={() => handleSaveContent({})}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Opslaan
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Annuleren
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
