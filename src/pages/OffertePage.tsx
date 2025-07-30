@@ -144,6 +144,151 @@ export default function OffertePage() {
           </p>
         </div>
 
+        {/* Project Intro */}
+        <DataCard title="🎯 Project Overzicht" value="Complete Platform" className="mb-8">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">✅ Wat We Bouwen</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">All-in-One Web Platform</div>
+                      <div className="text-sm text-gray-400">Responsive web applicatie voor desktop, tablet en mobiel</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Admin Dashboard</div>
+                      <div className="text-sm text-gray-400">Volledig beheer voor coaches en content management</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Gebruikers Dashboard</div>
+                      <div className="text-sm text-gray-400">Persoonlijke interface voor klanten</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Voeding & Training Modules</div>
+                      <div className="text-sm text-gray-400">Complete voedingsplannen en trainingsprogramma's</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">AI Chat & Insights</div>
+                      <div className="text-sm text-gray-400">OpenAI GPT-4 integratie voor persoonlijke begeleiding</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Educatie Module</div>
+                      <div className="text-sm text-gray-400">Cursusbeheer en leermodules voor klanten</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Betalingen & Abonnementen</div>
+                      <div className="text-sm text-gray-400">Stripe integratie voor automatische betalingen</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Analytics & Rapportages</div>
+                      <div className="text-sm text-gray-400">Real-time dashboards en performance tracking</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-4">❌ Wat We Niet Bouwen</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">Native Mobile Apps</div>
+                      <div className="text-sm text-gray-400">Geen iOS/Android apps - wel responsive web app</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">Marketing Website</div>
+                      <div className="text-sm text-gray-400">Geen publieke marketing site - alleen platform</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">Content Creatie</div>
+                      <div className="text-sm text-gray-400">Geen voedingsplannen/trainingen maken - alleen systeem</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">SEO & Marketing</div>
+                      <div className="text-sm text-gray-400">Geen zoekmachine optimalisatie of marketing</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">White-label Versie</div>
+                      <div className="text-sm text-gray-400">Geen multi-tenant systeem voor meerdere merken</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">API voor Externe Integraties</div>
+                      <div className="text-sm text-gray-400">Geen publieke API voor derden</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-red-400 text-lg">✗</div>
+                    <div>
+                      <div className="font-medium text-white">Onderhoud & Support</div>
+                      <div className="text-sm text-gray-400">Geen doorlopende onderhoud na oplevering</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
+              <h3 className="text-lg font-semibold text-white mb-4">🎯 Project Scope Samenvatting</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">12 Weken</div>
+                  <div className="text-white font-medium">Ontwikkelingstijd</div>
+                  <div className="text-sm text-gray-400">Van start tot oplevering</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">€25.000</div>
+                  <div className="text-white font-medium">Ontwikkeling</div>
+                  <div className="text-sm text-gray-400">Eenmalige investering</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-[#E33412] mb-2">Web Platform</div>
+                  <div className="text-white font-medium">Type Applicatie</div>
+                  <div className="text-sm text-gray-400">Responsive web app</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DataCard>
+
         {/* Development Costs */}
         <DataCard title="💼 Ontwikkeling Kosten" value="€25.000" className="mb-8">
           <div className="space-y-6">
