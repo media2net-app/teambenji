@@ -137,31 +137,31 @@ export default function OffertePage() {
         {/* Header */}
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
-            TeamBenji Platform - Jouw Visie Realiseren
+            TeamBenji Platform - Ontwikkeling Offerte
           </h1>
           <p className="text-gray-400 text-lg">
-            Een complete offerte op maat voor jouw coaching platform
+            Complete kosten breakdown voor het fitness & coaching platform
           </p>
         </div>
 
-        {/* Benjamin's Wensen */}
-        <DataCard title="👋 Benjamin's Wensen" value="Personalized Solution" className="mb-8">
+        {/* Project Visie */}
+        <DataCard title="👋 Project Visie" value="All-in-One Platform" className="mb-8">
           <div className="space-y-6">
             <div className="bg-[#1A1D29] rounded-lg p-6 border border-[#2A2D3A]">
-              <h3 className="text-xl font-semibold text-white mb-4">🎯 Jouw Visie</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">🎯 Platform Doel</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Je wilt een <strong>all-in-one platform</strong> bouwen dat coaches helpt om hun klanten beter te begeleiden. 
-                Een systeem waar coaches hun voedingsplannen, trainingen en educatie kunnen beheren, terwijl klanten 
-                een persoonlijke ervaring krijgen met AI-ondersteuning.
+                Een <strong>all-in-one fitness & coaching platform</strong> dat gebruikers helpt met hun gezondheidsdoelen. 
+                Het systeem combineert voedingsplannen, trainingen, educatie en AI-ondersteuning in één gebruiksvriendelijke 
+                omgeving.
               </p>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Het platform moet <strong>professioneel en gebruiksvriendelijk</strong> zijn, met real-time data, 
-                persoonlijke aanbevelingen en een complete coaching ervaring. Je wilt dat coaches meer tijd hebben 
-                voor hun klanten door geautomatiseerde processen.
+                Het platform moet <strong>professioneel en schaalbaar</strong> zijn, met real-time data tracking, 
+                persoonlijke aanbevelingen en een complete coaching ervaring. Gebruikers krijgen toegang tot 
+                geautomatiseerde processen en AI-powered inzichten.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                Met <strong>€25.000 budget en 12 weken tijd</strong> gaan we dit realiseren met moderne technologie 
-                en een focus op kwaliteit en gebruiksvriendelijkheid.
+                Met <strong>€25.000 budget en 12 weken tijd</strong> realiseren we een moderne web applicatie 
+                met focus op kwaliteit, gebruiksvriendelijkheid en schaalbaarheid.
               </p>
             </div>
           </div>
