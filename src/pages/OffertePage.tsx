@@ -199,7 +199,7 @@ export default function OffertePage() {
                     <div className="text-green-400 text-lg">✓</div>
                     <div>
                       <div className="font-medium text-white">Voeding & Training Modules</div>
-                      <div className="text-sm text-gray-400">Complete voedingsplannen en trainingsprogramma's</div>
+                      <div className="text-sm text-gray-400">Complete voedingsplannen en trainingsprogramma's + dummy content</div>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -213,7 +213,7 @@ export default function OffertePage() {
                     <div className="text-green-400 text-lg">✓</div>
                     <div>
                       <div className="font-medium text-white">Educatie Module</div>
-                      <div className="text-sm text-gray-400">Cursusbeheer en leermodules voor klanten</div>
+                      <div className="text-sm text-gray-400">Cursusbeheer en leermodules voor klanten + dummy content</div>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -228,6 +228,13 @@ export default function OffertePage() {
                     <div>
                       <div className="font-medium text-white">Analytics & Rapportages</div>
                       <div className="text-sm text-gray-400">Real-time dashboards en performance tracking</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="text-green-400 text-lg">✓</div>
+                    <div>
+                      <div className="font-medium text-white">Dummy Content & Voorbeelden</div>
+                      <div className="text-sm text-gray-400">Voorbeeld voedingsplannen, trainingschema's, cursussen en AI responses</div>
                     </div>
                   </div>
                 </div>
@@ -253,8 +260,8 @@ export default function OffertePage() {
                   <div className="flex items-start space-x-3">
                     <div className="text-red-400 text-lg">✗</div>
                     <div>
-                      <div className="font-medium text-white">Content Creatie</div>
-                      <div className="text-sm text-gray-400">Geen voedingsplannen/trainingen maken - alleen systeem</div>
+                      <div className="font-medium text-white">Custom Content Creatie</div>
+                      <div className="text-sm text-gray-400">Geen specifieke content voor jouw business - wel dummy content</div>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
