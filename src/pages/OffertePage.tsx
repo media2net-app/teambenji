@@ -894,12 +894,12 @@ export default function OffertePage() {
                 <div className="flex items-start space-x-3">
                   <div className="text-2xl">🎯</div>
                   <div>
-                    <div className="font-semibold text-white">Snelle Beslissing Aanbevolen</div>
-                    <div className="text-gray-300 text-sm">
-                      Gezien de huidige beschikbaarheid en de groeiende pipeline, 
-                      raden we aan om binnen 2-4 weken een beslissing te nemen. 
-                      Dit garandeert een directe start en optimale planning.
-                    </div>
+                                         <div className="font-semibold text-white">Snelle Beslissing Aanbevolen</div>
+                     <div className="text-gray-300 text-sm">
+                       Gezien de huidige beschikbaarheid en de groeiende pipeline, 
+                       raden we aan om binnen 1 week een beslissing te nemen. 
+                       Dit garandeert een directe start en optimale planning.
+                     </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
