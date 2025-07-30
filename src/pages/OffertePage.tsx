@@ -92,7 +92,7 @@ export default function OffertePage() {
     {
       phase: 'Growth Phase',
       users: '100-1000 gebruikers',
-      totalCost: '€495-795/maand',
+      totalCost: '€295/maand',
       services: [
         { name: 'Vercel', cost: '€20' },
         { name: 'Supabase', cost: '€25' },
@@ -100,14 +100,13 @@ export default function OffertePage() {
         { name: 'OpenAI', cost: '€150' },
         { name: 'SendGrid', cost: '€15' },
         { name: 'Sentry', cost: '€26' },
-        { name: 'Stripe', cost: '€200-500' },
         { name: 'Media2Net Support', cost: '€49' }
       ]
     },
     {
       phase: 'Scale Phase',
       users: '1000+ gebruikers',
-      totalCost: '€1450-5450+/maand',
+      totalCost: '€450/maand',
       services: [
         { name: 'Vercel', cost: '€20' },
         { name: 'Supabase', cost: '€25' },
@@ -115,7 +114,6 @@ export default function OffertePage() {
         { name: 'OpenAI', cost: '€300' },
         { name: 'SendGrid', cost: '€15' },
         { name: 'Sentry', cost: '€26' },
-        { name: 'Stripe', cost: '€1000-5000+' },
         { name: 'Media2Net Support', cost: '€49' }
       ]
     }
@@ -566,6 +564,20 @@ export default function OffertePage() {
                 );
               })()}
             </div>
+
+            {/* Payment Provider Note */}
+            <div className="bg-[#1A1D29] rounded-lg p-4 border border-[#2A2D3A]">
+              <div className="flex items-center space-x-3">
+                <div className="text-2xl">💳</div>
+                <div>
+                  <div className="font-semibold text-white">Betalingsprovider Kosten</div>
+                  <div className="text-sm text-gray-300">
+                    Stripe of Mollie transactiekosten zijn <strong>niet inbegrepen</strong> in de maandelijkse kosten. 
+                    Zie de sectie "Betalingsproviders" hieronder voor gedetailleerde kostenvergelijking.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </DataCard>
 
@@ -904,7 +916,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Summary */}
-        <DataCard title="📊 Kosten Samenvatting" value="€25.000 + €141/maand" className="mb-8">
+        <DataCard title="📊 Kosten Samenvatting" value="€25.000 + €190/maand" className="mb-8">
           <div className="bg-[#1A1D29] rounded-lg p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
@@ -913,7 +925,7 @@ export default function OffertePage() {
                 <div className="text-gray-400 text-sm">Eenmalige investering</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#E33412] mb-2">€141</div>
+                <div className="text-3xl font-bold text-[#E33412] mb-2">€190</div>
                 <div className="text-white font-semibold mb-1">Maandelijkse kosten</div>
                 <div className="text-gray-400 text-sm">Launch phase (0-100 gebruikers)</div>
               </div>
