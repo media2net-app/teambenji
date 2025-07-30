@@ -77,6 +77,7 @@ export default function ProgramManagement() {
   const [filteredPrograms, setFilteredPrograms] = useState<Program[]>([]);
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [showProgramModal, setShowProgramModal] = useState(false);
+  const [modalMode, setModalMode] = useState<'view' | 'edit' | 'create'>('view');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterType, setFilterType] = useState('all');
@@ -111,7 +112,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-20',
         status: 'published',
         tags: ['krachttraining', 'compound', 'progressie', 'beginners'],
-        thumbnail: '/thumbnails/strength-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         targetAudience: ['Beginners', 'Intermediate'],
         prerequisites: ['Basis fitness niveau', 'Toegang tot gym'],
         goals: ['Spieropbouw', 'Kracht toename', 'Algemene fitness'],
@@ -135,7 +136,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-18',
         status: 'published',
         tags: ['HIIT', 'vetverbranding', 'cardio', 'intensief'],
-        thumbnail: '/thumbnails/hiit-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         targetAudience: ['Intermediate', 'Advanced'],
         prerequisites: ['Goede conditie', 'Gezonde gewrichten'],
         goals: ['Vetverbranding', 'Conditie verbetering', 'Uithoudingsvermogen'],
@@ -159,7 +160,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-19',
         status: 'published',
         tags: ['yoga', 'flexibiliteit', 'balans', 'ontspanning'],
-        thumbnail: '/thumbnails/yoga-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop',
         targetAudience: ['Beginners', 'Alle niveaus'],
         prerequisites: ['Geen'],
         goals: ['Flexibiliteit', 'Balans', 'Stress reductie', 'Mentale rust'],
@@ -183,7 +184,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-15',
         status: 'draft',
         tags: ['marathon', 'hardlopen', 'endurance', 'duurtraining'],
-        thumbnail: '/thumbnails/marathon-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         targetAudience: ['Intermediate', 'Advanced'],
         prerequisites: ['Basis hardloop ervaring', '10km kunnen lopen'],
         goals: ['Marathon voltooien', 'Endurance opbouwen', 'Hardloop techniek'],
@@ -207,7 +208,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-20',
         status: 'published',
         tags: ['bodyweight', 'thuis training', 'functioneel', 'calisthenics'],
-        thumbnail: '/thumbnails/bodyweight-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         targetAudience: ['Beginners', 'Intermediate'],
         prerequisites: ['Geen'],
         goals: ['Functionele kracht', 'Lichaamscontrole', 'Thuis fitness'],
@@ -231,7 +232,7 @@ export default function ProgramManagement() {
         updatedAt: '2024-01-20',
         status: 'archived',
         tags: ['powerlifting', 'squat', 'bench', 'deadlift', 'techniek'],
-        thumbnail: '/thumbnails/powerlifting-program.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
         targetAudience: ['Advanced'],
         prerequisites: ['Ervaring met compound lifts', 'Toegang tot powerlifting setup'],
         goals: ['Powerlifting techniek', 'Maximale kracht', 'Competitie voorbereiding'],
@@ -365,8 +366,67 @@ export default function ProgramManagement() {
   };
 
   const handleProgramAction = (action: string, programId: string) => {
-    console.log(`${action} program ${programId}`);
-    // Implement action logic
+    const programItem = programs.find(p => p.id === programId);
+    if (programItem) {
+      setSelectedProgram(programItem);
+      setModalMode(action === 'edit' ? 'edit' : 'view');
+      setShowProgramModal(true);
+    }
+  };
+
+  const handleCreateProgram = () => {
+    setSelectedProgram(null);
+    setModalMode('create');
+    setShowProgramModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowProgramModal(false);
+    setSelectedProgram(null);
+  };
+
+  const handleSaveProgram = (programData: Partial<Program>) => {
+    if (modalMode === 'create') {
+      const newProgram: Program = {
+        id: Date.now().toString(),
+        name: programData.name || 'Nieuw Programma',
+        description: programData.description || '',
+        type: programData.type || 'strength',
+        difficulty: programData.difficulty || 'beginner',
+        duration: programData.duration || 4,
+        workouts: [],
+        author: 'Admin',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: 'draft',
+        tags: programData.tags || [],
+        targetAudience: programData.targetAudience || [],
+        prerequisites: programData.prerequisites || [],
+        goals: programData.goals || [],
+        equipment: programData.equipment || [],
+        totalWorkouts: 0,
+        totalDuration: 0,
+        rating: 0,
+        participants: 0,
+        completionRate: 0,
+        ...programData
+      };
+      setPrograms(prev => [newProgram, ...prev]);
+    } else if (selectedProgram) {
+      setPrograms(prev => prev.map(p => 
+        p.id === selectedProgram.id 
+          ? { ...p, ...programData, updatedAt: new Date().toISOString() }
+          : p
+      ));
+    }
+    handleCloseModal();
+  };
+
+  const handleDeleteProgram = (programId: string) => {
+    if (confirm('Weet je zeker dat je dit programma wilt verwijderen?')) {
+      setPrograms(prev => prev.filter(p => p.id !== programId));
+      handleCloseModal();
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -481,7 +541,10 @@ export default function ProgramManagement() {
             <div className="text-gray-400 text-sm">
               {filteredPrograms.length} van {programs.length} programma's
             </div>
-            <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2">
+            <button 
+              onClick={handleCreateProgram}
+              className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2"
+            >
               <span>➕</span>
               Nieuw Programma
             </button>
@@ -633,6 +696,232 @@ export default function ProgramManagement() {
             </button>
           </div>
         </DataCard>
+      )}
+
+      {/* Program Modal */}
+      {showProgramModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1A1D29] border border-[#2A2D3A] rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-white text-2xl font-bold">
+                {modalMode === 'create' ? 'Nieuw Programma' : 
+                 modalMode === 'edit' ? 'Programma Bewerken' : 'Programma Bekijken'}
+              </h2>
+              <button
+                onClick={handleCloseModal}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                ×
+              </button>
+            </div>
+
+            {modalMode === 'view' && selectedProgram ? (
+              <div className="space-y-6">
+                {/* Program Header */}
+                <div className="flex items-start gap-4">
+                  <div className="w-32 h-24 bg-[#2A2D3A] rounded-lg overflow-hidden flex-shrink-0">
+                    {selectedProgram.thumbnail ? (
+                      <img src={selectedProgram.thumbnail} alt={selectedProgram.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-2xl">
+                        {selectedProgram.type === 'strength' && '🏋️'}
+                        {selectedProgram.type === 'cardio' && '🏃'}
+                        {selectedProgram.type === 'flexibility' && '🧘'}
+                        {selectedProgram.type === 'hiit' && '⚡'}
+                        {selectedProgram.type === 'weight-loss' && '🔥'}
+                        {selectedProgram.type === 'muscle-gain' && '💪'}
+                        {selectedProgram.type === 'endurance' && '🏃‍♂️'}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white text-xl font-bold mb-2">{selectedProgram.name}</h3>
+                    <p className="text-gray-400 mb-3">{selectedProgram.description}</p>
+                    <div className="flex gap-2">
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedProgram.status)}`}>
+                        {getStatusLabel(selectedProgram.status)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(selectedProgram.type)}`}>
+                        {getTypeLabel(selectedProgram.type)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(selectedProgram.difficulty)}`}>
+                        {getDifficultyLabel(selectedProgram.difficulty)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Program Details */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Programma Details</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Auteur:</span>
+                        <span className="text-white">{selectedProgram.author}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Duur:</span>
+                        <span className="text-white">{selectedProgram.duration} weken</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Workouts:</span>
+                        <span className="text-white">{selectedProgram.totalWorkouts}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Totale uren:</span>
+                        <span className="text-white">{selectedProgram.totalDuration}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Statistieken</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Deelnemers:</span>
+                        <span className="text-white">{formatNumber(selectedProgram.participants)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Rating:</span>
+                        <span className="text-white">⭐ {selectedProgram.rating}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Voltooiing:</span>
+                        <span className="text-white">{selectedProgram.completionRate}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Goals */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Doelen</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProgram.goals.map((goal, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-[#E33412]/10 text-[#E33412] text-xs rounded">
+                        {goal}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Equipment */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Benodigde Apparatuur</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProgram.equipment.map((item, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-[#2A2D3A] text-gray-300 text-xs rounded">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3 pt-4 border-t border-[#2A2D3A]">
+                  <button
+                    onClick={() => {
+                      setModalMode('edit');
+                    }}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Bewerken
+                  </button>
+                  <button
+                    onClick={() => handleDeleteProgram(selectedProgram.id)}
+                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+                  >
+                    Verwijderen
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Sluiten
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Naam</label>
+                    <input
+                      type="text"
+                      defaultValue={selectedProgram?.name || ''}
+                      className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                      placeholder="Programma naam..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Type</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="strength">Kracht</option>
+                      <option value="cardio">Cardio</option>
+                      <option value="flexibility">Flexibiliteit</option>
+                      <option value="hiit">HIIT</option>
+                      <option value="weight-loss">Gewichtsverlies</option>
+                      <option value="muscle-gain">Spieropbouw</option>
+                      <option value="endurance">Uithoudingsvermogen</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-400 text-sm mb-2">Beschrijving</label>
+                  <textarea
+                    defaultValue={selectedProgram?.description || ''}
+                    rows={3}
+                    className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                    placeholder="Programma beschrijving..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Niveau</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Gevorderd</option>
+                      <option value="advanced">Expert</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Duur (weken)</label>
+                    <input
+                      type="number"
+                      defaultValue={selectedProgram?.duration || 4}
+                      className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Status</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="draft">Concept</option>
+                      <option value="published">Gepubliceerd</option>
+                      <option value="archived">Gearchiveerd</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={() => handleSaveProgram({})}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Opslaan
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Annuleren
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

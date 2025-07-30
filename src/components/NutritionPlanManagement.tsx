@@ -439,8 +439,76 @@ export default function NutritionPlanManagement() {
   };
 
   const handlePlanAction = (action: string, planId: string) => {
-    console.log(`${action} nutrition plan ${planId}`);
-    // Implement action logic
+    const planItem = nutritionPlans.find(p => p.id === planId);
+    if (planItem) {
+      setSelectedPlan(planItem);
+      setModalMode(action === 'edit' ? 'edit' : 'view');
+      setShowPlanModal(true);
+    }
+  };
+
+  const handleCreatePlan = () => {
+    setSelectedPlan(null);
+    setModalMode('create');
+    setShowPlanModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowPlanModal(false);
+    setSelectedPlan(null);
+  };
+
+  const handleSavePlan = (planData: Partial<NutritionPlan>) => {
+    if (modalMode === 'create') {
+      const newPlan: NutritionPlan = {
+        id: Date.now().toString(),
+        name: planData.name || 'Nieuw Voedingsplan',
+        description: planData.description || '',
+        type: planData.type || 'weight-loss',
+        difficulty: planData.difficulty || 'beginner',
+        duration: planData.duration || 4,
+        targetCalories: planData.targetCalories || 2000,
+        targetMacros: planData.targetMacros || {
+          protein: 150,
+          carbs: 200,
+          fats: 70,
+          fiber: 30
+        },
+        meals: [],
+        author: 'Admin',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: 'draft',
+        tags: planData.tags || [],
+        targetAudience: planData.targetAudience || [],
+        prerequisites: planData.prerequisites || [],
+        goals: planData.goals || [],
+        restrictions: planData.restrictions || [],
+        totalMeals: 0,
+        avgPrepTime: 0,
+        avgCalories: 0,
+        rating: 0,
+        participants: 0,
+        completionRate: 0,
+        costLevel: 'moderate',
+        ...planData
+      };
+      setNutritionPlans(prev => [newPlan, ...prev]);
+    } else if (selectedPlan) {
+      setNutritionPlans(prev => prev.map(p => 
+        p.id === selectedPlan.id 
+          ? { ...p, ...planData, updatedAt: new Date().toISOString() }
+          : p
+      ));
+    }
+    handleCloseModal();
+  };
+
+  const handleDeletePlan = (planId: string) => {
+    if (confirm('Weet je zeker dat je dit voedingsplan wilt verwijderen?')) {
+      setNutritionPlans(prev => prev.filter(p => p.id !== planId));
+      handleCloseModal();
+    }
   };
 
   const formatDate = (dateString: string) => {
@@ -560,7 +628,10 @@ export default function NutritionPlanManagement() {
             <div className="text-gray-400 text-sm">
               {filteredPlans.length} van {nutritionPlans.length} voedingsplannen
             </div>
-            <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2">
+            <button 
+              onClick={handleCreatePlan}
+              className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2"
+            >
               <span>➕</span>
               Nieuw Voedingsplan
             </button>
@@ -741,6 +812,240 @@ export default function NutritionPlanManagement() {
             </button>
           </div>
         </DataCard>
+      )}
+
+      {/* Nutrition Plan Modal */}
+      {showPlanModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1A1D29] border border-[#2A2D3A] rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-white text-2xl font-bold">
+                {modalMode === 'create' ? 'Nieuw Voedingsplan' : 
+                 modalMode === 'edit' ? 'Voedingsplan Bewerken' : 'Voedingsplan Bekijken'}
+              </h2>
+              <button
+                onClick={handleCloseModal}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                ×
+              </button>
+            </div>
+
+            {modalMode === 'view' && selectedPlan ? (
+              <div className="space-y-6">
+                {/* Plan Header */}
+                <div className="flex items-start gap-4">
+                  <div className="w-32 h-24 bg-[#2A2D3A] rounded-lg overflow-hidden flex-shrink-0">
+                    {selectedPlan.thumbnail ? (
+                      <img src={selectedPlan.thumbnail} alt={selectedPlan.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 text-2xl">
+                        🥗
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-white text-xl font-bold mb-2">{selectedPlan.name}</h3>
+                    <p className="text-gray-400 mb-3">{selectedPlan.description}</p>
+                    <div className="flex gap-2">
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(selectedPlan.status)}`}>
+                        {getStatusLabel(selectedPlan.status)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(selectedPlan.type)}`}>
+                        {getTypeLabel(selectedPlan.type)}
+                      </div>
+                      <div className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(selectedPlan.difficulty)}`}>
+                        {getDifficultyLabel(selectedPlan.difficulty)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Plan Details */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Plan Details</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Auteur:</span>
+                        <span className="text-white">{selectedPlan.author}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Duur:</span>
+                        <span className="text-white">{selectedPlan.duration} weken</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Maaltijden:</span>
+                        <span className="text-white">{selectedPlan.totalMeals}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Gem. prep tijd:</span>
+                        <span className="text-white">{selectedPlan.avgPrepTime} min</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-3">Statistieken</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Deelnemers:</span>
+                        <span className="text-white">{formatNumber(selectedPlan.participants)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Rating:</span>
+                        <span className="text-white">⭐ {selectedPlan.rating}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Voltooiing:</span>
+                        <span className="text-white">{selectedPlan.completionRate}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Macro Breakdown */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Macro Breakdown</h4>
+                  <div className="bg-[#2A2D3A] p-4 rounded-lg">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                      <div className="text-center">
+                        <div className="text-red-400 font-medium">{selectedPlan.targetMacros.protein}g</div>
+                        <div className="text-gray-400">Eiwit</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-blue-400 font-medium">{selectedPlan.targetMacros.carbs}g</div>
+                        <div className="text-gray-400">Koolhydraten</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-yellow-400 font-medium">{selectedPlan.targetMacros.fats}g</div>
+                        <div className="text-gray-400">Vetten</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-green-400 font-medium">{selectedPlan.targetMacros.fiber}g</div>
+                        <div className="text-gray-400">Vezels</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Goals */}
+                <div>
+                  <h4 className="text-white font-semibold mb-3">Doelen</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedPlan.goals.map((goal, idx) => (
+                      <span key={idx} className="px-2 py-1 bg-[#E33412]/10 text-[#E33412] text-xs rounded">
+                        {goal}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3 pt-4 border-t border-[#2A2D3A]">
+                  <button
+                    onClick={() => {
+                      setModalMode('edit');
+                    }}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Bewerken
+                  </button>
+                  <button
+                    onClick={() => handleDeletePlan(selectedPlan.id)}
+                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+                  >
+                    Verwijderen
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Sluiten
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Naam</label>
+                    <input
+                      type="text"
+                      defaultValue={selectedPlan?.name || ''}
+                      className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                      placeholder="Voedingsplan naam..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Type</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="weight-loss">Gewichtsverlies</option>
+                      <option value="muscle-gain">Spieropbouw</option>
+                      <option value="maintenance">Onderhoud</option>
+                      <option value="performance">Performance</option>
+                      <option value="vegetarian">Vegetarisch</option>
+                      <option value="vegan">Vegan</option>
+                      <option value="keto">Keto</option>
+                      <option value="mediterranean">Mediterraans</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-gray-400 text-sm mb-2">Beschrijving</label>
+                  <textarea
+                    defaultValue={selectedPlan?.description || ''}
+                    rows={3}
+                    className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                    placeholder="Voedingsplan beschrijving..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Niveau</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Gevorderd</option>
+                      <option value="advanced">Expert</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Duur (weken)</label>
+                    <input
+                      type="number"
+                      defaultValue={selectedPlan?.duration || 4}
+                      className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-400 text-sm mb-2">Status</label>
+                    <select className="w-full px-3 py-2 bg-[#2A2D3A] border border-[#3A3D4A] rounded text-white focus:outline-none focus:ring-2 focus:ring-[#E33412]">
+                      <option value="draft">Concept</option>
+                      <option value="published">Gepubliceerd</option>
+                      <option value="archived">Gearchiveerd</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    onClick={() => handleSavePlan({})}
+                    className="bg-[#E33412] text-white px-4 py-2 rounded hover:bg-[#b9260e] transition-colors"
+                  >
+                    Opslaan
+                  </button>
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-[#2A2D3A] text-white px-4 py-2 rounded hover:bg-[#3A3D4A] transition-colors"
+                  >
+                    Annuleren
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
