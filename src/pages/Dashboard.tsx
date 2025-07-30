@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import DataCard from '../components/DataCard';
 import ModernChart from '../components/ModernChart';
@@ -28,14 +28,34 @@ import ChatPage from './ChatPage';
 import LeermodulePage from './LeermodulePage';
 import AIRecommendations from '../components/AIRecommendations';
 import FloatingChatWidget from '../components/FloatingChatWidget';
-import DemoLock from '../components/DemoLock';
 
 export default function Dashboard() {
   const [activeItem, setActiveItem] = useState('dashboard');
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   const handleSidebarClick = (item: string) => {
     setActiveItem(item);
   };
+
+  const handleLogout = () => {
+    // Redirect naar login pagina
+    window.location.href = '/';
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const renderContent = () => {
     switch (activeItem) {
@@ -339,11 +359,38 @@ export default function Dashboard() {
                 <PlusIcon className="w-4 h-4" />
                 <span className="relative z-10">Nieuwe Training</span>
               </button>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">U</span>
-                </div>
-                <span className="text-white font-medium">Gebruiker</span>
+              <div className="relative" ref={userMenuRef}>
+                <button 
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center gap-2 hover:bg-[#2A2D3A] p-2 rounded-lg transition-colors"
+                >
+                  <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">U</span>
+                  </div>
+                  <span className="text-white font-medium">Gebruiker</span>
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {showUserMenu && (
+                  <div className="absolute right-0 mt-2 w-48 bg-[#1A1D29] border border-[#2A2D3A] rounded-lg shadow-lg z-50">
+                    <div className="py-1">
+                      <button
+                        onClick={() => setActiveItem('instellingen')}
+                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#2A2D3A] transition-colors"
+                      >
+                        ⚙️ Instellingen
+                      </button>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#2A2D3A] transition-colors"
+                      >
+                        🚪 Uitloggen
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -354,7 +401,6 @@ export default function Dashboard() {
           {renderContent()}
         </main>
       </div>
-      <DemoLock />
       <FloatingChatWidget />
     </div>
   );

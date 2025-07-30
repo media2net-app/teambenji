@@ -1,17 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import DataCard from '../components/DataCard';
 import UserManagement from '../components/UserManagement';
 import CoachManagement from '../components/CoachManagement';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
-import DemoLock from '../components/DemoLock';
 
 export default function AdminDashboard() {
   const [activeItem, setActiveItem] = useState('overview');
+  const [showAdminMenu, setShowAdminMenu] = useState(false);
+  const adminMenuRef = useRef<HTMLDivElement>(null);
 
   const handleSidebarClick = (item: string) => {
     setActiveItem(item);
   };
+
+  const handleLogout = () => {
+    // Redirect naar login pagina
+    window.location.href = '/';
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (adminMenuRef.current && !adminMenuRef.current.contains(event.target as Node)) {
+        setShowAdminMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const renderOverview = () => (
     <div className="space-y-6">
@@ -382,11 +402,38 @@ export default function AdminDashboard() {
               </div>
               
               {/* Admin Profile */}
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">A</span>
-                </div>
-                <span className="text-white font-medium">Admin</span>
+              <div className="relative" ref={adminMenuRef}>
+                <button 
+                  onClick={() => setShowAdminMenu(!showAdminMenu)}
+                  className="flex items-center gap-2 hover:bg-[#2A2D3A] p-2 rounded-lg transition-colors"
+                >
+                  <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">A</span>
+                  </div>
+                  <span className="text-white font-medium">Admin</span>
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {showAdminMenu && (
+                  <div className="absolute right-0 mt-2 w-48 bg-[#1A1D29] border border-[#2A2D3A] rounded-lg shadow-lg z-50">
+                    <div className="py-1">
+                      <button
+                        onClick={() => setActiveItem('settings')}
+                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#2A2D3A] transition-colors"
+                      >
+                        ⚙️ Systeem Instellingen
+                      </button>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#2A2D3A] transition-colors"
+                      >
+                        🚪 Uitloggen
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -397,7 +444,6 @@ export default function AdminDashboard() {
           {renderContent()}
         </main>
       </div>
-      <DemoLock />
     </div>
   );
 } 

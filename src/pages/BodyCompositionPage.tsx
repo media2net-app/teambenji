@@ -6,7 +6,6 @@ import GoalsManager from '../components/GoalsManager';
 import GoalSuggestions from '../components/GoalSuggestions';
 import { bodyCompositionService } from '../services/bodyCompositionService';
 import type { BodyCompositionData } from '../services/bodyCompositionService';
-import DemoLock from '../components/DemoLock';
 
 export default function BodyCompositionPage() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -632,7 +631,6 @@ export default function BodyCompositionPage() {
       {activeTab === 'progress' && renderProgress()}
       {activeTab === 'goals' && renderGoals()}
       {activeTab === 'photos' && renderPhotos()}
-      <DemoLock />
     </div>
   );
 } 

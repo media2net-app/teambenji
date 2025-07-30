@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import DataCard from '../components/DataCard';
 import { chatService, type Chat, type Message, type ChatNotification } from '../services/chatService';
-import DemoLock from '../components/DemoLock';
 
 export default function ChatPage() {
   const [activeChat, setActiveChat] = useState<string | null>(null);
@@ -374,7 +373,6 @@ export default function ChatPage() {
           )}
         </div>
       </div>
-      <DemoLock />
     </div>
   );
 } 
