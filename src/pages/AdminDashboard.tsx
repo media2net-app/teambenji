@@ -4,6 +4,7 @@ import DataCard from '../components/DataCard';
 import UserManagement from '../components/UserManagement';
 import CoachManagement from '../components/CoachManagement';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
+import ContentManagement from '../components/ContentManagement';
 
 export default function AdminDashboard() {
   const [activeItem, setActiveItem] = useState('overview');
@@ -314,7 +315,7 @@ export default function AdminDashboard() {
       case 'analytics':
         return <AnalyticsDashboard />;
       case 'content':
-        return <div className="text-white">Content Management - Coming Soon</div>;
+        return <ContentManagement />;
       case 'programs':
         return <div className="text-white">Programma Beheer - Coming Soon</div>;
       case 'nutrition-plans':
