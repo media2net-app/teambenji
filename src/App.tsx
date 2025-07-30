@@ -94,6 +94,11 @@ function App() {
               Admin Dashboard
             </a>
           </div>
+          <div className="mt-2 text-center">
+            <a href="/offerte" className="text-xs text-gray-400 hover:text-[#E33412] transition-colors duration-200">
+              Bekijk Offerte
+            </a>
+          </div>
         </div>
       </div>
       <FloatingChatWidget />
