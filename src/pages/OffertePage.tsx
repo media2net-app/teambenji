@@ -297,10 +297,10 @@ export default function OffertePage() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="text-red-400 text-lg">✗</div>
+                    <div className="text-orange-400 text-lg">⚠</div>
                     <div>
-                      <div className="font-medium text-white">Onderhoud & Support</div>
-                      <div className="text-sm text-gray-400">Geen doorlopende onderhoud na oplevering</div>
+                      <div className="font-medium text-white">Meerwerk & Nieuwe Functies</div>
+                      <div className="text-sm text-gray-400">Nieuwe prijsopgave op aanvraag na oplevering</div>
                     </div>
                   </div>
                 </div>
