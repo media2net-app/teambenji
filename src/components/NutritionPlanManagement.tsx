@@ -112,13 +112,73 @@ export default function NutritionPlanManagement() {
           fats: 80,
           fiber: 35
         },
-        meals: [],
+        meals: [
+          {
+            id: '1',
+            name: 'Proteïne Omelet met Avocado',
+            type: 'breakfast',
+            calories: 450,
+            macros: {
+              protein: 35,
+              carbs: 15,
+              fats: 30,
+              fiber: 8
+            },
+            ingredients: [
+              { name: 'Eieren', amount: 3, unit: 'stuks', calories: 210 },
+              { name: 'Avocado', amount: 1, unit: 'stuk', calories: 160 },
+              { name: 'Spinazie', amount: 50, unit: 'gram', calories: 12 },
+              { name: 'Kaas', amount: 30, unit: 'gram', calories: 68 }
+            ],
+            instructions: [
+              'Klop de eieren los in een kom',
+              'Verhit olijfolie in een pan',
+              'Voeg spinazie toe en laat slinken',
+              'Giet eieren erover en laat stollen',
+              'Voeg avocado en kaas toe'
+            ],
+            prepTime: 10,
+            cookTime: 8,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop&crop=center',
+            tags: ['hoog eiwit', 'ontbijt', 'gezond']
+          },
+          {
+            id: '2',
+            name: 'Kipfilet met Quinoa',
+            type: 'lunch',
+            calories: 520,
+            macros: {
+              protein: 45,
+              carbs: 40,
+              fats: 20,
+              fiber: 6
+            },
+            ingredients: [
+              { name: 'Kipfilet', amount: 150, unit: 'gram', calories: 250 },
+              { name: 'Quinoa', amount: 80, unit: 'gram', calories: 120 },
+              { name: 'Broccoli', amount: 100, unit: 'gram', calories: 34 },
+              { name: 'Olijfolie', amount: 15, unit: 'ml', calories: 116 }
+            ],
+            instructions: [
+              'Kook quinoa volgens verpakking',
+              'Bak kipfilet in olijfolie',
+              'Stoom broccoli',
+              'Serveer alles samen'
+            ],
+            prepTime: 15,
+            cookTime: 20,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop&crop=center',
+            tags: ['lunch', 'hoog eiwit', 'gezond']
+          }
+        ],
         author: 'Sarah Wilson',
         createdAt: '2024-01-05',
         updatedAt: '2024-01-20',
         status: 'published',
         tags: ['spieropbouw', 'hoog eiwit', 'krachtsport', 'bulking'],
-        thumbnail: '/thumbnails/muscle-gain-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Krachtsporters', 'Intermediate', 'Advanced'],
         prerequisites: ['Basis kennis voeding', 'Toegang tot kwaliteitsvoeding'],
         goals: ['Spieropbouw', 'Kracht toename', 'Optimaal herstel'],
@@ -145,13 +205,72 @@ export default function NutritionPlanManagement() {
           fats: 60,
           fiber: 30
         },
-        meals: [],
+        meals: [
+          {
+            id: '3',
+            name: 'Griekse Yoghurt Bowl',
+            type: 'breakfast',
+            calories: 320,
+            macros: {
+              protein: 25,
+              carbs: 30,
+              fats: 12,
+              fiber: 6
+            },
+            ingredients: [
+              { name: 'Griekse Yoghurt', amount: 200, unit: 'gram', calories: 120 },
+              { name: 'Bessen', amount: 50, unit: 'gram', calories: 25 },
+              { name: 'Havermout', amount: 30, unit: 'gram', calories: 110 },
+              { name: 'Honing', amount: 10, unit: 'gram', calories: 30 },
+              { name: 'Noten', amount: 15, unit: 'gram', calories: 35 }
+            ],
+            instructions: [
+              'Meng yoghurt met honing',
+              'Voeg havermout toe',
+              'Garneer met bessen en noten'
+            ],
+            prepTime: 5,
+            cookTime: 0,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=400&fit=crop&crop=center',
+            tags: ['ontbijt', 'laag calorie', 'gezond']
+          },
+          {
+            id: '4',
+            name: 'Gegrilde Zalm Salade',
+            type: 'lunch',
+            calories: 380,
+            macros: {
+              protein: 35,
+              carbs: 15,
+              fats: 22,
+              fiber: 8
+            },
+            ingredients: [
+              { name: 'Zalm', amount: 120, unit: 'gram', calories: 240 },
+              { name: 'Sla', amount: 50, unit: 'gram', calories: 8 },
+              { name: 'Tomaat', amount: 1, unit: 'stuk', calories: 22 },
+              { name: 'Komkommer', amount: 50, unit: 'gram', calories: 8 },
+              { name: 'Olijfolie', amount: 10, unit: 'ml', calories: 90 }
+            ],
+            instructions: [
+              'Grill zalm 4-5 minuten per kant',
+              'Meng sla, tomaat en komkommer',
+              'Dress met olijfolie en citroen'
+            ],
+            prepTime: 10,
+            cookTime: 10,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop&crop=center',
+            tags: ['lunch', 'hoog eiwit', 'omega-3']
+          }
+        ],
         author: 'Lisa de Vries',
         createdAt: '2024-01-10',
         updatedAt: '2024-01-18',
         status: 'published',
         tags: ['vetverbranding', 'calorie deficit', 'gewichtsverlies', 'cutting'],
-        thumbnail: '/thumbnails/weight-loss-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Beginners', 'Intermediate'],
         prerequisites: ['Geen'],
         goals: ['Gewichtsverlies', 'Vetverbranding', 'Spiermassa behoud'],
@@ -178,13 +297,79 @@ export default function NutritionPlanManagement() {
           fats: 70,
           fiber: 40
         },
-        meals: [],
+        meals: [
+          {
+            id: '5',
+            name: 'Tofu Scramble',
+            type: 'breakfast',
+            calories: 380,
+            macros: {
+              protein: 20,
+              carbs: 25,
+              fats: 18,
+              fiber: 8
+            },
+            ingredients: [
+              { name: 'Tofu', amount: 150, unit: 'gram', calories: 120 },
+              { name: 'Champignons', amount: 50, unit: 'gram', calories: 12 },
+              { name: 'Spinazie', amount: 30, unit: 'gram', calories: 7 },
+              { name: 'Uien', amount: 30, unit: 'gram', calories: 12 },
+              { name: 'Olijfolie', amount: 15, unit: 'ml', calories: 135 },
+              { name: 'Kurkuma', amount: 5, unit: 'gram', calories: 18 }
+            ],
+            instructions: [
+              'Kruimel tofu in een kom',
+              'Verhit olijfolie in een pan',
+              'Bak uien en champignons',
+              'Voeg tofu en kurkuma toe',
+              'Voeg spinazie toe en laat slinken'
+            ],
+            prepTime: 10,
+            cookTime: 12,
+            servings: 1,
+            imageUrl: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=400&fit=crop&crop=center',
+            tags: ['vegetarisch', 'ontbijt', 'hoog eiwit']
+          },
+          {
+            id: '6',
+            name: 'Lentil Curry',
+            type: 'dinner',
+            calories: 420,
+            macros: {
+              protein: 18,
+              carbs: 65,
+              fats: 12,
+              fiber: 15
+            },
+            ingredients: [
+              { name: 'Rode Linzen', amount: 100, unit: 'gram', calories: 116 },
+              { name: 'Kokosmelk', amount: 200, unit: 'ml', calories: 180 },
+              { name: 'Curry Kruiden', amount: 10, unit: 'gram', calories: 25 },
+              { name: 'Uien', amount: 50, unit: 'gram', calories: 20 },
+              { name: 'Tomaat', amount: 100, unit: 'gram', calories: 18 },
+              { name: 'Bruine Rijst', amount: 80, unit: 'gram', calories: 280 }
+            ],
+            instructions: [
+              'Kook linzen volgens verpakking',
+              'Bak uien in olie',
+              'Voeg curry kruiden toe',
+              'Voeg kokosmelk en tomaten toe',
+              'Laat 20 minuten sudderen',
+              'Serveer met bruine rijst'
+            ],
+            prepTime: 15,
+            cookTime: 30,
+            servings: 2,
+            imageUrl: 'https://images.unsplash.com/photo-1563379091339-03246963d4a9?w=600&h=400&fit=crop&crop=center',
+            tags: ['vegetarisch', 'diner', 'hoog vezel']
+          }
+        ],
         author: 'Tom van der Berg',
         createdAt: '2024-01-12',
         updatedAt: '2024-01-19',
         status: 'published',
         tags: ['vegetarisch', 'performance', 'atleten', 'plant-based'],
-        thumbnail: '/thumbnails/vegetarian-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Vegetariërs', 'Atleten', 'Intermediate'],
         prerequisites: ['Vegetarische levensstijl', 'Basis kookvaardigheden'],
         goals: ['Performance optimalisatie', 'Duurzame voeding', 'Balans'],
@@ -217,7 +402,7 @@ export default function NutritionPlanManagement() {
         updatedAt: '2024-01-15',
         status: 'draft',
         tags: ['keto', 'vetverbranding', 'low-carb', 'ketose'],
-        thumbnail: '/thumbnails/keto-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Advanced', 'Keto ervaring'],
         prerequisites: ['Keto kennis', 'Dokter consultatie'],
         goals: ['Snelle vetverbranding', 'Ketose', 'Mentale helderheid'],
@@ -250,7 +435,7 @@ export default function NutritionPlanManagement() {
         updatedAt: '2024-01-20',
         status: 'published',
         tags: ['mediterraans', 'gezondheid', 'duurzaam', 'hart-gezond'],
-        thumbnail: '/thumbnails/mediterranean-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Beginners', 'Gezondheidsbewust', 'Alle leeftijden'],
         prerequisites: ['Geen'],
         goals: ['Langdurige gezondheid', 'Hart gezondheid', 'Balans'],
@@ -283,7 +468,7 @@ export default function NutritionPlanManagement() {
         updatedAt: '2024-01-20',
         status: 'archived',
         tags: ['vegan', 'plantaardig', 'kracht', 'duurzaam'],
-        thumbnail: '/thumbnails/vegan-nutrition.jpg',
+        thumbnail: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop&crop=center',
         targetAudience: ['Vegans', 'Advanced', 'Milieubewust'],
         prerequisites: ['Vegan levensstijl', 'Geavanceerde kookvaardigheden'],
         goals: ['Plantaardige kracht', 'Duurzaamheid', 'Performance'],
