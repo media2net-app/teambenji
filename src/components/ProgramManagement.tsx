@@ -1,21 +1,7 @@
 import { useState, useEffect } from 'react';
 import DataCard from './DataCard';
 
-interface Exercise {
-  id: string;
-  name: string;
-  type: 'strength' | 'cardio' | 'flexibility' | 'bodyweight';
-  muscleGroups: string[];
-  equipment: string[];
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
-  instructions: string;
-  videoUrl?: string;
-  imageUrl?: string;
-  sets?: number;
-  reps?: number;
-  duration?: number;
-  restTime?: number;
-}
+
 
 interface Workout {
   id: string;

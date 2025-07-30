@@ -75,6 +75,7 @@ export default function NutritionPlanManagement() {
   const [filteredPlans, setFilteredPlans] = useState<NutritionPlan[]>([]);
   const [selectedPlan, setSelectedPlan] = useState<NutritionPlan | null>(null);
   const [showPlanModal, setShowPlanModal] = useState(false);
+  const [modalMode, setModalMode] = useState<'view' | 'edit' | 'create'>('view');
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterType, setFilterType] = useState('all');
