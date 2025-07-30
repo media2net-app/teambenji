@@ -6,6 +6,7 @@ import CoachManagement from '../components/CoachManagement';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
 import ContentManagement from '../components/ContentManagement';
 import ProgramManagement from '../components/ProgramManagement';
+import NutritionPlanManagement from '../components/NutritionPlanManagement';
 
 export default function AdminDashboard() {
   const [activeItem, setActiveItem] = useState('overview');
@@ -320,7 +321,7 @@ export default function AdminDashboard() {
       case 'programs':
         return <ProgramManagement />;
       case 'nutrition-plans':
-        return <div className="text-white">Voedingsplan Beheer - Coming Soon</div>;
+        return <NutritionPlanManagement />;
       case 'education':
         return <div className="text-white">Educatie Content - Coming Soon</div>;
       case 'settings':
