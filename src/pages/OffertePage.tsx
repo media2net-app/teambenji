@@ -516,7 +516,7 @@ export default function OffertePage() {
         </DataCard>
 
         {/* Operational Costs */}
-        <DataCard title="🚀 Operationele Kosten per Fase" value="€190-5450+" className="mb-8">
+        <DataCard title="🚀 Operationele Kosten per Fase" value="" className="mb-8">
           <div className="space-y-6">
             {/* Phase Selector */}
             <div className="flex space-x-2">
