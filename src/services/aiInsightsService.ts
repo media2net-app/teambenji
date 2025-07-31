@@ -97,16 +97,16 @@ class AIInsightsService {
         id: `training_frequency_${Date.now()}`,
         category: 'training',
         priority: 'high',
-        title: 'Verhoog je trainingsfrequentie',
-        message: `Je traint momenteel ${profile.weeklyTrainingSessions}x per week. Voor optimale resultaten wordt 3-4x per week aanbevolen.`,
+        title: 'Increase your training frequency',
+        message: `You currently train ${profile.weeklyTrainingSessions}x per week. For optimal results, 3-4x per week is recommended.`,
         actionItems: [
-          'Plan 1-2 extra trainingsessies deze week',
-          'Start met kortere sessies (30-45 min) als tijd een probleem is',
-          'Overweeg home workouts voor extra flexibiliteit'
+          'Plan 1-2 extra training sessions this week',
+          'Start with shorter sessions (30-45 min) if time is an issue',
+          'Consider home workouts for extra flexibility'
         ],
         dataPoints: [
-          { label: 'Huidige frequentie', value: `${profile.weeklyTrainingSessions}x/week` },
-          { label: 'Aanbevolen', value: '3-4x/week' }
+          { label: 'Current frequency', value: `${profile.weeklyTrainingSessions}x/week` },
+          { label: 'Recommended', value: '3-4x/week' }
         ],
         confidence: 85,
         generatedAt: new Date().toISOString(),
@@ -121,12 +121,12 @@ class AIInsightsService {
         id: `training_consistency_${Date.now()}`,
         category: 'training',
         priority: 'medium',
-        title: 'Verbeter je training consistentie',
-        message: `Je training consistentie is ${profile.trainingConsistency}%. Regelmatigheid is cruciaal voor vooruitgang.`,
+        title: 'Improve your training consistency',
+        message: `Your training consistency is ${profile.trainingConsistency}%. Regularity is crucial for progress.`,
         actionItems: [
-          'Plan je trainingen van tevoren in je agenda',
-          'Stel realistische doelen en bouw langzaam op',
-          'Zoek een trainingspartner voor extra motivatie'
+          'Plan your workouts in advance in your calendar',
+          'Set realistic goals and build up slowly',
+          'Find a training partner for extra motivation'
         ],
         confidence: 78,
         generatedAt: new Date().toISOString(),
@@ -141,12 +141,12 @@ class AIInsightsService {
         id: `session_duration_${Date.now()}`,
         category: 'training',
         priority: 'medium',
-        title: 'Optimaliseer je trainingslengte',
-        message: `Je gemiddelde sessie duurt ${profile.averageSessionDuration} minuten. Kortere, intensievere workouts kunnen effectiever zijn.`,
+        title: 'Optimize your training length',
+        message: `Your average session lasts ${profile.averageSessionDuration} minutes. Shorter, more intense workouts can be more effective.`,
         actionItems: [
-          'Focus op compound oefeningen voor meer efficiëntie',
-          'Verminder rustpauzes tussen sets',
-          'Probeer HIIT workouts van 45-60 minuten'
+          'Focus on compound exercises for more efficiency',
+          'Reduce rest periods between sets',
+          'Try HIIT workouts of 45-60 minutes'
         ],
         confidence: 72,
         generatedAt: new Date().toISOString(),
@@ -168,16 +168,16 @@ class AIInsightsService {
         id: `protein_intake_${Date.now()}`,
         category: 'nutrition',
         priority: 'high',
-        title: 'Verhoog je eiwitinname',
-        message: `Je eiwitinname is ${proteinPercentage}% van je totale calorieën. Voor spierbehoud en -opbouw wordt 25-30% aanbevolen.`,
+        title: 'Increase your protein intake',
+        message: `Your protein intake is ${proteinPercentage}% of your total calories. For muscle maintenance and building, 25-30% is recommended.`,
         actionItems: [
-          'Voeg een eiwitbron toe aan elke maaltijd',
-          'Overweeg een eiwitshake na je training',
-          'Kies voor magere vleessoorten, vis, eieren en peulvruchten'
+          'Add a protein source to every meal',
+          'Consider a protein shake after your workout',
+          'Choose lean meats, fish, eggs and legumes'
         ],
         dataPoints: [
-          { label: 'Huidige eiwit', value: `${proteinPercentage}%` },
-          { label: 'Aanbevolen', value: '25-30%' }
+          { label: 'Current protein', value: `${proteinPercentage}%` },
+          { label: 'Recommended', value: '25-30%' }
         ],
         confidence: 88,
         generatedAt: new Date().toISOString(),
@@ -192,12 +192,12 @@ class AIInsightsService {
         id: `hydration_${Date.now()}`,
         category: 'nutrition',
         priority: 'medium',
-        title: 'Verbeter je hydratatie',
-        message: `Je hydratieniveau is ${profile.hydrationLevel}%. Goede hydratatie is essentieel voor prestaties en herstel.`,
+        title: 'Improve your hydration',
+        message: `Your hydration level is ${profile.hydrationLevel}%. Good hydration is essential for performance and recovery.`,
         actionItems: [
-          'Drink 2-3 liter water per dag',
-          'Start elke dag met een glas water',
-          'Drink extra water rondom je trainingen'
+          'Drink 2-3 liters of water per day',
+          'Start each day with a glass of water',
+          'Drink extra water around your workouts'
         ],
         confidence: 82,
         generatedAt: new Date().toISOString(),
@@ -212,12 +212,12 @@ class AIInsightsService {
         id: `calorie_intake_${Date.now()}`,
         category: 'nutrition',
         priority: 'critical',
-        title: 'Te lage calorie-inname',
-        message: `Je gemiddelde dagelijkse inname van ${profile.averageDailyCalories} kcal is mogelijk te laag voor je doelen.`,
+        title: 'Too low calorie intake',
+        message: `Your average daily intake of ${profile.averageDailyCalories} kcal may be too low for your goals.`,
         actionItems: [
-          'Consulteer een voedingsdeskundige',
-          'Voeg gezonde, calorie-rijke snacks toe',
-          'Monitor je energieniveau en prestaties'
+          'Consult a nutritionist',
+          'Add healthy, calorie-rich snacks',
+          'Monitor your energy levels and performance'
         ],
         confidence: 90,
         generatedAt: new Date().toISOString(),
@@ -238,16 +238,16 @@ class AIInsightsService {
         id: `sleep_duration_${Date.now()}`,
         category: 'recovery',
         priority: 'high',
-        title: 'Verhoog je slaaptijd',
-        message: `Je slaapt gemiddeld ${profile.averageSleepHours} uur per nacht. Voor optimaal herstel wordt 7-9 uur aanbevolen.`,
+        title: 'Increase your sleep time',
+        message: `You sleep an average of ${profile.averageSleepHours} hours per night. For optimal recovery, 7-9 hours is recommended.`,
         actionItems: [
-          'Ga 30 minuten eerder naar bed',
-          'Creëer een consistente slaaprutine',
-          'Vermijd schermen 1 uur voor bedtijd'
+          'Go to bed 30 minutes earlier',
+          'Create a consistent sleep routine',
+          'Avoid screens 1 hour before bedtime'
         ],
         dataPoints: [
-          { label: 'Huidige slaap', value: `${profile.averageSleepHours}u` },
-          { label: 'Aanbevolen', value: '7-9u' }
+          { label: 'Current sleep', value: `${profile.averageSleepHours}h` },
+          { label: 'Recommended', value: '7-9h' }
         ],
         confidence: 92,
         generatedAt: new Date().toISOString(),
@@ -262,12 +262,12 @@ class AIInsightsService {
         id: `sleep_quality_${Date.now()}`,
         category: 'recovery',
         priority: 'medium',
-        title: 'Verbeter je slaapkwaliteit',
-        message: `Je slaapkwaliteit score is ${profile.sleepQuality}%. Betere slaapkwaliteit verbetert herstel en prestaties.`,
+        title: 'Improve your sleep quality',
+        message: `Your sleep quality score is ${profile.sleepQuality}%. Better sleep quality improves recovery and performance.`,
         actionItems: [
-          'Houd je slaapkamer koel (16-19°C)',
-          'Investeer in een goede matras en kussen',
-          'Probeer meditatie of ontspanningstechnieken'
+          'Keep your bedroom cool (16-19°C)',
+          'Invest in a good mattress and pillow',
+          'Try meditation or relaxation techniques'
         ],
         confidence: 75,
         generatedAt: new Date().toISOString(),
@@ -282,12 +282,12 @@ class AIInsightsService {
         id: `stress_management_${Date.now()}`,
         category: 'recovery',
         priority: 'high',
-        title: 'Beheer je stressniveau',
-        message: `Je stressniveau is ${profile.stressLevel}%. Chronische stress kan je fitnessresultaten negatief beïnvloeden.`,
+        title: 'Manage your stress level',
+        message: `Your stress level is ${profile.stressLevel}%. Chronic stress can negatively affect your fitness results.`,
         actionItems: [
-          'Probeer dagelijks 10 minuten meditatie',
-          'Plan bewust ontspanningsmomenten in',
-          'Overweeg yoga of ademhalingsoefeningen'
+          'Try 10 minutes of meditation daily',
+          'Plan conscious relaxation moments',
+          'Consider yoga or breathing exercises'
         ],
         confidence: 80,
         generatedAt: new Date().toISOString(),
@@ -310,12 +310,12 @@ class AIInsightsService {
         id: `progress_trend_${Date.now()}`,
         category: 'body_composition',
         priority: 'high',
-        title: 'Je voortgang stagneert',
-        message: 'Je lichaamssamenstelling toont een dalende trend. Het is tijd om je aanpak aan te passen.',
+        title: 'Your progress is stagnating',
+        message: 'Your body composition shows a declining trend. It\'s time to adjust your approach.',
         actionItems: [
-          'Evalueer je huidige training- en voedingsplan',
-          'Overweeg een deload week voor herstel',
-          'Varieer je trainingsroutine om plateaus te doorbreken'
+          'Evaluate your current training and nutrition plan',
+          'Consider a deload week for recovery',
+          'Vary your training routine to break plateaus'
         ],
         confidence: 85,
         generatedAt: new Date().toISOString(),
@@ -332,12 +332,12 @@ class AIInsightsService {
         id: `goal_achievement_${Date.now()}`,
         category: 'body_composition',
         priority: 'low',
-        title: 'Geweldige vooruitgang!',
-        message: `Je bent gemiddeld ${Math.round(avgProgress)}% van je doelen bereikt. Blijf doorgaan!`,
+        title: 'Great progress!',
+        message: `You have achieved an average of ${Math.round(avgProgress)}% of your goals. Keep going!`,
         actionItems: [
-          'Overweeg nieuwe, uitdagendere doelen te stellen',
-          'Deel je succes met anderen voor extra motivatie',
-          'Beloon jezelf voor je harde werk'
+          'Consider setting new, more challenging goals',
+          'Share your success with others for extra motivation',
+          'Reward yourself for your hard work'
         ],
         confidence: 95,
         generatedAt: new Date().toISOString(),
@@ -358,12 +358,12 @@ class AIInsightsService {
         id: `beginner_guidance_${Date.now()}`,
         category: 'general',
         priority: 'medium',
-        title: 'Welkom bij je fitnessreis!',
-        message: 'Als beginner is het belangrijk om langzaam op te bouwen en je lichaam te laten wennen.',
+        title: 'Welcome to your fitness journey!',
+        message: 'As a beginner, it\'s important to build up slowly and let your body adapt.',
         actionItems: [
-          'Start met 2-3 trainingen per week',
-          'Focus op het leren van de juiste technieken',
-          'Luister naar je lichaam en neem voldoende rust'
+          'Start with 2-3 workouts per week',
+          'Focus on learning the correct techniques',
+          'Listen to your body and take sufficient rest'
         ],
         confidence: 88,
         generatedAt: new Date().toISOString(),
@@ -379,12 +379,12 @@ class AIInsightsService {
         id: `motivation_high_${Date.now()}`,
         category: 'general',
         priority: 'low',
-        title: 'Je bent een voorbeeld van consistentie!',
-        message: `Met ${Math.round(overallConsistency)}% consistentie ben je op de goede weg naar je doelen.`,
+        title: 'You are an example of consistency!',
+        message: `With ${Math.round(overallConsistency)}% consistency, you are on the right track to your goals.`,
         actionItems: [
-          'Blijf je huidige routine volhouden',
-          'Inspireer anderen met je discipline',
-          'Overweeg je doelen uit te breiden'
+          'Keep maintaining your current routine',
+          'Inspire others with your discipline',
+          'Consider expanding your goals'
         ],
         confidence: 90,
         generatedAt: new Date().toISOString(),

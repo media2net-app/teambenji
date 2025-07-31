@@ -86,11 +86,11 @@ export default function AIRecommendations({
   const getCategoryLabel = (category: AIInsight['category']) => {
     switch (category) {
       case 'training': return 'Training';
-      case 'nutrition': return 'Voeding';
-      case 'recovery': return 'Herstel';
-      case 'body_composition': return 'Lichaamssamenstelling';
-      case 'general': return 'Algemeen';
-      default: return 'Onbekend';
+      case 'nutrition': return 'Nutrition';
+      case 'recovery': return 'Recovery';
+      case 'body_composition': return 'Body Composition';
+      case 'general': return 'General';
+      default: return 'Unknown';
     }
   };
 
@@ -107,7 +107,7 @@ export default function AIRecommendations({
       <div className="flex items-center justify-center py-8">
         <div className="flex items-center gap-3">
           <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#E33412]"></div>
-          <span className="text-gray-400">AI genereert aanbevelingen...</span>
+          <span className="text-gray-400">AI generating recommendations...</span>
         </div>
       </div>
     );
@@ -236,7 +236,7 @@ export default function AIRecommendations({
                         className="text-[#E33412] hover:underline text-sm flex items-center gap-1"
                       >
                         <span>{expandedInsight === insight.id ? '▼' : '▶'}</span>
-                        Actiepunten ({insight.actionItems.length})
+                        Action Points ({insight.actionItems.length})
                       </button>
                       
                       {expandedInsight === insight.id && (
@@ -274,32 +274,32 @@ export default function AIRecommendations({
         <div className="mt-6 p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A]">
           <h4 className="text-white font-medium text-sm mb-2 flex items-center gap-2">
             <span>📊</span>
-            Aanbevelingen Overzicht
+            Recommendations Overview
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'critical').length}
               </div>
-              <div className="text-red-400 text-xs">Kritiek</div>
+              <div className="text-red-400 text-xs">Critical</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'high').length}
               </div>
-              <div className="text-orange-400 text-xs">Hoog</div>
+              <div className="text-orange-400 text-xs">High</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'medium').length}
               </div>
-              <div className="text-yellow-400 text-xs">Gemiddeld</div>
+              <div className="text-yellow-400 text-xs">Medium</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'low').length}
               </div>
-              <div className="text-green-400 text-xs">Laag</div>
+              <div className="text-green-400 text-xs">Low</div>
             </div>
           </div>
         </div>
