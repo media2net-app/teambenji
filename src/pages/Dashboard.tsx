@@ -342,96 +342,130 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col lg:ml-0">
         {/* Top Bar */}
-        <header className="bg-[#1A1D29] border-b border-[#2A2D3A] px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setShowSidebar(!showSidebar)}
-                className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-[#2A2D3A] rounded-lg transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-              
-              <div>
-                <h1 className="text-white text-lg sm:text-2xl font-bold">
-                  {activeItem === 'dashboard' ? t['dashboard'] : 
-                   activeItem === 'trainingen' ? (language === 'nl' ? 'Mijn Trainingen' : 'My Workouts') :
-                   activeItem === 'voeding' ? (language === 'nl' ? 'Voeding' : 'Nutrition') :
-                   activeItem === 'herstel' ? (language === 'nl' ? 'Herstel' : 'Recovery') :
-                   activeItem === 'body-composition' ? (language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition') :
-                   activeItem === 'prestaties' ? (language === 'nl' ? 'Prestaties' : 'Performance') :
-                   activeItem === 'planning' ? (language === 'nl' ? 'Planning' : 'Planning') :
-                   activeItem === 'leermodules' ? (language === 'nl' ? 'Leermodules' : 'Learning Modules') :
-                   activeItem === 'ai-insights' ? 'AI Insights' :
-                   activeItem === 'chat' ? 'Chat' :
-                   activeItem === 'instellingen' ? t['instellingen-menu'] :
-                   activeItem === 'help' ? (language === 'nl' ? 'Help & Support' : 'Help & Support') : t['dashboard']}
-                </h1>
-                <p className="text-gray-400 text-xs sm:text-sm hidden sm:block">
-                  {activeItem === 'dashboard' ? t['welkom-terug-overzicht'] : 
-                   activeItem === 'trainingen' ? (language === 'nl' ? 'Plan, volg en analyseer je workouts' : 'Plan, track and analyze your workouts') :
-                   activeItem === 'voeding' ? (language === 'nl' ? 'Track je macro\'s en bereik je doelen' : 'Track your macros and reach your goals') :
-                   activeItem === 'herstel' ? (language === 'nl' ? 'Monitor je slaap en recovery' : 'Monitor your sleep and recovery') :
-                   activeItem === 'body-composition' ? (language === 'nl' ? 'Track je lichaamssamenstelling en progressie' : 'Track your body composition and progress') :
-                   activeItem === 'prestaties' ? (language === 'nl' ? 'Volg je vooruitgang en behaalde doelen' : 'Track your progress and achieved goals') :
-                   activeItem === 'planning' ? (language === 'nl' ? 'Beheer je trainingsschema en afspraken' : 'Manage your training schedule and appointments') :
-                   activeItem === 'ai-insights' ? (language === 'nl' ? 'Gepersonaliseerde aanbevelingen op basis van je data' : 'Personalized recommendations based on your data') :
-                   activeItem === 'chat' ? (language === 'nl' ? 'Communiceer met je coach en community' : 'Communicate with your coach and community') :
-                   activeItem === 'instellingen' ? (language === 'nl' ? 'Beheer je profiel en voorkeuren' : 'Manage your profile and preferences') :
-                   activeItem === 'help' ? (language === 'nl' ? 'Vind antwoorden op je vragen' : 'Find answers to your questions') : t['welkom-terug-overzicht']}
-                </p>
+        <header className="bg-[#1A1D29] border-b border-[#2A2D3A]">
+          {/* Mobile Subheader */}
+          <div className="lg:hidden px-4 py-2 bg-[#161925] border-b border-[#2A2D3A]">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={() => setShowSidebar(!showSidebar)}
+                  className="p-2 text-gray-400 hover:text-white hover:bg-[#2A2D3A] rounded-lg transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#E33412] rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">TB</span>
+                  </div>
+                  <span className="text-white text-sm font-medium">Team Benji</span>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center gap-2 sm:gap-4">
               <LanguageSwitcher 
                 currentLanguage={language} 
                 onLanguageChange={setLanguage} 
               />
-              <button className="btn-modern bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 font-medium shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 flex items-center gap-2 text-sm sm:text-base">
-                <PlusIcon className="w-4 h-4" />
-                <span className="relative z-10 hidden sm:inline">
-                  {language === 'nl' ? 'Nieuwe Training' : 'New Workout'}
-                </span>
-                <span className="relative z-10 sm:hidden">
-                  {language === 'nl' ? 'Training' : 'Workout'}
-                </span>
-              </button>
-              <div className="relative" ref={userMenuRef}>
+            </div>
+          </div>
+
+          {/* Main Header */}
+          <div className="px-4 sm:px-6 py-3 sm:py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {/* Desktop Menu Button */}
                 <button 
-                  onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="flex items-center gap-2 hover:bg-[#2A2D3A] p-2 rounded-lg transition-colors"
+                  onClick={() => setShowSidebar(!showSidebar)}
+                  className="hidden lg:block p-2 text-gray-400 hover:text-white hover:bg-[#2A2D3A] rounded-lg transition-colors"
                 >
-                  <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">U</span>
-                  </div>
-                  <span className="text-white font-medium hidden sm:inline">{t['gebruiker']}</span>
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 </button>
                 
-                {showUserMenu && (
-                  <div className="absolute right-0 mt-2 w-48 bg-[#1A1D29] border border-[#2A2D3A] rounded-lg shadow-lg z-50">
-                    <div className="py-1">
-                      <button
-                        onClick={() => setActiveItem('instellingen')}
-                        className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#2A2D3A] transition-colors"
-                      >
-                        ⚙️ {t['instellingen-menu']}
-                      </button>
-                      <button
-                        onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#2A2D3A] transition-colors"
-                      >
-                        🚪 {t['uitloggen-menu']}
-                      </button>
+                <div>
+                  <h1 className="text-white text-lg sm:text-2xl font-bold">
+                    {activeItem === 'dashboard' ? t['dashboard'] : 
+                     activeItem === 'trainingen' ? (language === 'nl' ? 'Mijn Trainingen' : 'My Workouts') :
+                     activeItem === 'voeding' ? (language === 'nl' ? 'Voeding' : 'Nutrition') :
+                     activeItem === 'herstel' ? (language === 'nl' ? 'Herstel' : 'Recovery') :
+                     activeItem === 'body-composition' ? (language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition') :
+                     activeItem === 'prestaties' ? (language === 'nl' ? 'Prestaties' : 'Performance') :
+                     activeItem === 'planning' ? (language === 'nl' ? 'Planning' : 'Planning') :
+                     activeItem === 'leermodules' ? (language === 'nl' ? 'Leermodules' : 'Learning Modules') :
+                     activeItem === 'ai-insights' ? 'AI Insights' :
+                     activeItem === 'chat' ? 'Chat' :
+                     activeItem === 'instellingen' ? t['instellingen-menu'] :
+                     activeItem === 'help' ? (language === 'nl' ? 'Help & Support' : 'Help & Support') : t['dashboard']}
+                  </h1>
+                  <p className="text-gray-400 text-xs sm:text-sm hidden sm:block">
+                    {activeItem === 'dashboard' ? t['welkom-terug-overzicht'] : 
+                     activeItem === 'trainingen' ? (language === 'nl' ? 'Plan, volg en analyseer je workouts' : 'Plan, track and analyze your workouts') :
+                     activeItem === 'voeding' ? (language === 'nl' ? 'Track je macro\'s en bereik je doelen' : 'Track your macros and reach your goals') :
+                     activeItem === 'herstel' ? (language === 'nl' ? 'Monitor je slaap en recovery' : 'Monitor your sleep and recovery') :
+                     activeItem === 'body-composition' ? (language === 'nl' ? 'Track je lichaamssamenstelling en progressie' : 'Track your body composition and progress') :
+                     activeItem === 'prestaties' ? (language === 'nl' ? 'Volg je vooruitgang en behaalde doelen' : 'Track your progress and achieved goals') :
+                     activeItem === 'planning' ? (language === 'nl' ? 'Beheer je trainingsschema en afspraken' : 'Manage your training schedule and appointments') :
+                     activeItem === 'ai-insights' ? (language === 'nl' ? 'Gepersonaliseerde aanbevelingen op basis van je data' : 'Personalized recommendations based on your data') :
+                     activeItem === 'chat' ? (language === 'nl' ? 'Communiceer met je coach en community' : 'Communicate with your coach and community') :
+                     activeItem === 'instellingen' ? (language === 'nl' ? 'Beheer je profiel en voorkeuren' : 'Manage your profile and preferences') :
+                     activeItem === 'help' ? (language === 'nl' ? 'Vind antwoorden op je vragen' : 'Find answers to your questions') : t['welkom-terug-overzicht']}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2 sm:gap-4">
+                {/* Desktop Language Switcher */}
+                <div className="hidden sm:block">
+                  <LanguageSwitcher 
+                    currentLanguage={language} 
+                    onLanguageChange={setLanguage} 
+                  />
+                </div>
+                
+                <button className="btn-modern bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 font-medium shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 flex items-center gap-2 text-sm sm:text-base">
+                  <PlusIcon className="w-4 h-4" />
+                  <span className="relative z-10 hidden sm:inline">
+                    {language === 'nl' ? 'Nieuwe Training' : 'New Workout'}
+                  </span>
+                  <span className="relative z-10 sm:hidden">
+                    {language === 'nl' ? 'Training' : 'Workout'}
+                  </span>
+                </button>
+                
+                <div className="relative" ref={userMenuRef}>
+                  <button 
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="flex items-center gap-2 hover:bg-[#2A2D3A] p-2 rounded-lg transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">U</span>
                     </div>
-                  </div>
-                )}
+                    <span className="text-white font-medium hidden sm:inline">{t['gebruiker']}</span>
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {showUserMenu && (
+                    <div className="absolute right-0 mt-2 w-48 bg-[#1A1D29] border border-[#2A2D3A] rounded-lg shadow-lg z-50">
+                      <div className="py-1">
+                        <button
+                          onClick={() => setActiveItem('instellingen')}
+                          className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#2A2D3A] transition-colors"
+                        >
+                          ⚙️ {t['instellingen-menu']}
+                        </button>
+                        <button
+                          onClick={handleLogout}
+                          className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#2A2D3A] transition-colors"
+                        >
+                          🚪 {t['uitloggen-menu']}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
