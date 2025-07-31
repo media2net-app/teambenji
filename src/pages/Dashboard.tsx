@@ -34,6 +34,7 @@ import FloatingChatWidget from '../components/FloatingChatWidget';
 export default function Dashboard() {
   const [activeItem, setActiveItem] = useState('dashboard');
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [language, setLanguage] = useState<'nl' | 'en'>('nl');
   const userMenuRef = useRef<HTMLDivElement>(null);
 
@@ -41,6 +42,7 @@ export default function Dashboard() {
 
   const handleSidebarClick = (item: string) => {
     setActiveItem(item);
+    setShowSidebar(false); // Close sidebar on mobile after selection
   };
 
   const handleLogout = () => {
@@ -92,9 +94,9 @@ export default function Dashboard() {
   };
 
   const renderDashboard = () => (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         <DataCard
           title={t['trainingen-deze-week']}
           value="4"
@@ -134,7 +136,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Training Overview */}
         <DataCard
           title={t['volgende-training']}
@@ -203,7 +205,7 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Weekly Progress Chart */}
         <DataCard
           title={t['wekelijke-voortgang']}
@@ -274,7 +276,7 @@ export default function Dashboard() {
       </div>
 
       {/* Additional Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Goal Distribution */}
         <DataCard
           title="Doelen Verdeling"
@@ -322,52 +324,80 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#0F1117] flex">
+      {/* Mobile Sidebar Overlay */}
+      {showSidebar && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
+      
       {/* Sidebar */}
-      <Sidebar activeItem={activeItem} onItemClick={handleSidebarClick} />
+      <div className={`fixed lg:relative z-50 transition-transform duration-300 ${
+        showSidebar ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+      }`}>
+        <Sidebar activeItem={activeItem} onItemClick={handleSidebarClick} />
+      </div>
       
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col lg:ml-0">
         {/* Top Bar */}
-        <header className="bg-[#1A1D29] border-b border-[#2A2D3A] px-6 py-4">
+        <header className="bg-[#1A1D29] border-b border-[#2A2D3A] px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-white text-2xl font-bold">
-                {activeItem === 'dashboard' ? t['dashboard'] : 
-                 activeItem === 'trainingen' ? (language === 'nl' ? 'Mijn Trainingen' : 'My Workouts') :
-                 activeItem === 'voeding' ? (language === 'nl' ? 'Voeding' : 'Nutrition') :
-                 activeItem === 'herstel' ? (language === 'nl' ? 'Herstel' : 'Recovery') :
-                 activeItem === 'body-composition' ? (language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition') :
-                 activeItem === 'prestaties' ? (language === 'nl' ? 'Prestaties' : 'Performance') :
-                 activeItem === 'planning' ? (language === 'nl' ? 'Planning' : 'Planning') :
-                 activeItem === 'leermodules' ? (language === 'nl' ? 'Leermodules' : 'Learning Modules') :
-                 activeItem === 'ai-insights' ? 'AI Insights' :
-                 activeItem === 'chat' ? 'Chat' :
-                 activeItem === 'instellingen' ? t['instellingen-menu'] :
-                 activeItem === 'help' ? (language === 'nl' ? 'Help & Support' : 'Help & Support') : t['dashboard']}
-              </h1>
-              <p className="text-gray-400 text-sm">
-                {activeItem === 'dashboard' ? t['welkom-terug-overzicht'] : 
-                 activeItem === 'trainingen' ? (language === 'nl' ? 'Plan, volg en analyseer je workouts' : 'Plan, track and analyze your workouts') :
-                 activeItem === 'voeding' ? (language === 'nl' ? 'Track je macro\'s en bereik je doelen' : 'Track your macros and reach your goals') :
-                 activeItem === 'herstel' ? (language === 'nl' ? 'Monitor je slaap en recovery' : 'Monitor your sleep and recovery') :
-                 activeItem === 'body-composition' ? (language === 'nl' ? 'Track je lichaamssamenstelling en progressie' : 'Track your body composition and progress') :
-                 activeItem === 'prestaties' ? (language === 'nl' ? 'Volg je vooruitgang en behaalde doelen' : 'Track your progress and achieved goals') :
-                 activeItem === 'planning' ? (language === 'nl' ? 'Beheer je trainingsschema en afspraken' : 'Manage your training schedule and appointments') :
-                 activeItem === 'ai-insights' ? (language === 'nl' ? 'Gepersonaliseerde aanbevelingen op basis van je data' : 'Personalized recommendations based on your data') :
-                 activeItem === 'chat' ? (language === 'nl' ? 'Communiceer met je coach en community' : 'Communicate with your coach and community') :
-                 activeItem === 'instellingen' ? (language === 'nl' ? 'Beheer je profiel en voorkeuren' : 'Manage your profile and preferences') :
-                 activeItem === 'help' ? (language === 'nl' ? 'Vind antwoorden op je vragen' : 'Find answers to your questions') : t['welkom-terug-overzicht']}
-              </p>
+            <div className="flex items-center gap-3">
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setShowSidebar(!showSidebar)}
+                className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-[#2A2D3A] rounded-lg transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+              
+              <div>
+                <h1 className="text-white text-lg sm:text-2xl font-bold">
+                  {activeItem === 'dashboard' ? t['dashboard'] : 
+                   activeItem === 'trainingen' ? (language === 'nl' ? 'Mijn Trainingen' : 'My Workouts') :
+                   activeItem === 'voeding' ? (language === 'nl' ? 'Voeding' : 'Nutrition') :
+                   activeItem === 'herstel' ? (language === 'nl' ? 'Herstel' : 'Recovery') :
+                   activeItem === 'body-composition' ? (language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition') :
+                   activeItem === 'prestaties' ? (language === 'nl' ? 'Prestaties' : 'Performance') :
+                   activeItem === 'planning' ? (language === 'nl' ? 'Planning' : 'Planning') :
+                   activeItem === 'leermodules' ? (language === 'nl' ? 'Leermodules' : 'Learning Modules') :
+                   activeItem === 'ai-insights' ? 'AI Insights' :
+                   activeItem === 'chat' ? 'Chat' :
+                   activeItem === 'instellingen' ? t['instellingen-menu'] :
+                   activeItem === 'help' ? (language === 'nl' ? 'Help & Support' : 'Help & Support') : t['dashboard']}
+                </h1>
+                <p className="text-gray-400 text-xs sm:text-sm hidden sm:block">
+                  {activeItem === 'dashboard' ? t['welkom-terug-overzicht'] : 
+                   activeItem === 'trainingen' ? (language === 'nl' ? 'Plan, volg en analyseer je workouts' : 'Plan, track and analyze your workouts') :
+                   activeItem === 'voeding' ? (language === 'nl' ? 'Track je macro\'s en bereik je doelen' : 'Track your macros and reach your goals') :
+                   activeItem === 'herstel' ? (language === 'nl' ? 'Monitor je slaap en recovery' : 'Monitor your sleep and recovery') :
+                   activeItem === 'body-composition' ? (language === 'nl' ? 'Track je lichaamssamenstelling en progressie' : 'Track your body composition and progress') :
+                   activeItem === 'prestaties' ? (language === 'nl' ? 'Volg je vooruitgang en behaalde doelen' : 'Track your progress and achieved goals') :
+                   activeItem === 'planning' ? (language === 'nl' ? 'Beheer je trainingsschema en afspraken' : 'Manage your training schedule and appointments') :
+                   activeItem === 'ai-insights' ? (language === 'nl' ? 'Gepersonaliseerde aanbevelingen op basis van je data' : 'Personalized recommendations based on your data') :
+                   activeItem === 'chat' ? (language === 'nl' ? 'Communiceer met je coach en community' : 'Communicate with your coach and community') :
+                   activeItem === 'instellingen' ? (language === 'nl' ? 'Beheer je profiel en voorkeuren' : 'Manage your profile and preferences') :
+                   activeItem === 'help' ? (language === 'nl' ? 'Vind antwoorden op je vragen' : 'Find answers to your questions') : t['welkom-terug-overzicht']}
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-4">
+            
+            <div className="flex items-center gap-2 sm:gap-4">
               <LanguageSwitcher 
                 currentLanguage={language} 
                 onLanguageChange={setLanguage} 
               />
-              <button className="btn-modern bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white px-6 py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 font-medium shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 flex items-center gap-2">
+              <button className="btn-modern bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 font-medium shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 flex items-center gap-2 text-sm sm:text-base">
                 <PlusIcon className="w-4 h-4" />
-                <span className="relative z-10">
+                <span className="relative z-10 hidden sm:inline">
                   {language === 'nl' ? 'Nieuwe Training' : 'New Workout'}
+                </span>
+                <span className="relative z-10 sm:hidden">
+                  {language === 'nl' ? 'Training' : 'Workout'}
                 </span>
               </button>
               <div className="relative" ref={userMenuRef}>
@@ -378,7 +408,7 @@ export default function Dashboard() {
                   <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
                     <span className="text-white text-sm font-bold">U</span>
                   </div>
-                  <span className="text-white font-medium">{t['gebruiker']}</span>
+                  <span className="text-white font-medium hidden sm:inline">{t['gebruiker']}</span>
                   <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>

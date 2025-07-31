@@ -43,7 +43,7 @@ export default function Sidebar({ activeItem, onItemClick }: SidebarProps) {
   ];
 
   return (
-    <div className={`bg-gradient-to-b from-[#1A1D29] to-[#161925] h-screen flex flex-col transition-all duration-500 border-r border-[#2A2D3A]/50 backdrop-blur-sm ${isCollapsed ? 'w-16' : 'w-64'} animate-slide-in-left`}>
+    <div className={`bg-gradient-to-b from-[#1A1D29] to-[#161925] h-screen flex flex-col transition-all duration-500 border-r border-[#2A2D3A]/50 backdrop-blur-sm ${isCollapsed ? 'w-16' : 'w-64 lg:w-64'} animate-slide-in-left`}>
       {/* Header */}
       <div className="p-4 border-b border-[#2A2D3A]/50">
         <div className="flex items-center gap-3 group">
