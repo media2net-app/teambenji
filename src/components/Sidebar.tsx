@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import logo from '../logo.png';
+import { useLanguage } from '../contexts/LanguageContext';
 import { 
   DashboardIcon, 
   WorkoutIcon, 
@@ -23,23 +24,24 @@ interface SidebarProps {
 
 export default function Sidebar({ activeItem, onItemClick }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { language } = useLanguage();
 
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: DashboardIcon },
-    { id: 'trainingen', label: 'My Workouts', icon: WorkoutIcon },
-    { id: 'voeding', label: 'Nutrition', icon: NutritionIcon },
-    { id: 'herstel', label: 'Recovery', icon: SleepIcon },
-    { id: 'body-composition', label: 'Body Composition', icon: BodyCompositionIcon },
-    { id: 'prestaties', label: 'Performance', icon: PerformanceIcon },
-    { id: 'planning', label: 'Planning', icon: CalendarIcon },
-    { id: 'leermodules', label: 'Learning Modules', icon: () => <span className="text-xl">📚</span> },
-    { id: 'ai-insights', label: 'AI Insights', icon: BrainIcon },
-    { id: 'chat', label: 'Chat', icon: () => <span className="text-xl">💬</span> },
+    { id: 'dashboard', label: language === 'nl' ? 'Dashboard' : 'Dashboard', icon: DashboardIcon },
+    { id: 'trainingen', label: language === 'nl' ? 'Mijn Trainingen' : 'My Workouts', icon: WorkoutIcon },
+    { id: 'voeding', label: language === 'nl' ? 'Voeding' : 'Nutrition', icon: NutritionIcon },
+    { id: 'herstel', label: language === 'nl' ? 'Herstel' : 'Recovery', icon: SleepIcon },
+    { id: 'body-composition', label: language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition', icon: BodyCompositionIcon },
+    { id: 'prestaties', label: language === 'nl' ? 'Prestaties' : 'Performance', icon: PerformanceIcon },
+    { id: 'planning', label: language === 'nl' ? 'Planning' : 'Planning', icon: CalendarIcon },
+    { id: 'leermodules', label: language === 'nl' ? 'Leermodules' : 'Learning Modules', icon: () => <span className="text-xl">📚</span> },
+    { id: 'ai-insights', label: language === 'nl' ? 'AI Inzichten' : 'AI Insights', icon: BrainIcon },
+    { id: 'chat', label: language === 'nl' ? 'Chat' : 'Chat', icon: () => <span className="text-xl">💬</span> },
   ];
 
   const bottomItems = [
-    { id: 'instellingen', label: 'Settings', icon: SettingsIcon },
-    { id: 'help', label: 'Help & Support', icon: HelpIcon },
+    { id: 'instellingen', label: language === 'nl' ? 'Instellingen' : 'Settings', icon: SettingsIcon },
+    { id: 'help', label: language === 'nl' ? 'Help & Ondersteuning' : 'Help & Support', icon: HelpIcon },
   ];
 
   return (
@@ -65,7 +67,7 @@ export default function Sidebar({ activeItem, onItemClick }: SidebarProps) {
           <div className="relative group">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder={language === 'nl' ? 'Zoeken...' : 'Search...'}
               className="w-full bg-[#2A2D3A]/50 text-white placeholder-gray-400 rounded-lg px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-[#E33412] transition-all duration-300 focus:bg-[#2A2D3A] backdrop-blur-sm border border-transparent focus:border-[#E33412]/30"
             />
             <SearchIcon className="absolute left-3 top-2.5 w-4 h-4 text-gray-400 group-focus-within:text-[#E33412] transition-colors duration-300" />
