@@ -81,7 +81,7 @@ export default function HerstelPage() {
   const renderOverview = () => (
     <div className="space-y-6">
       {/* Recovery Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         <DataCard
           title="Slaapscore"
           value={latestSleep?.quality || 0}
@@ -441,13 +441,13 @@ export default function HerstelPage() {
   );
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Herstel</h1>
-          <p className="text-gray-400">Monitor je slaap, recovery en wearable devices</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Herstel</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Monitor je slaap, recovery en wearable devices</p>
         </div>
-        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium">
+        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Handmatige invoer
         </button>
       </div>
@@ -456,7 +456,7 @@ export default function HerstelPage() {
       <div className="flex space-x-1 bg-[#2A2D3A] p-1 rounded-lg">
         <button
           onClick={() => setActiveTab('overview')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+          className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
             activeTab === 'overview'
               ? 'bg-[#E33412] text-white'
               : 'text-gray-400 hover:text-white'
@@ -466,7 +466,7 @@ export default function HerstelPage() {
         </button>
         <button
           onClick={() => setActiveTab('devices')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+          className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
             activeTab === 'devices'
               ? 'bg-[#E33412] text-white'
               : 'text-gray-400 hover:text-white'
@@ -476,7 +476,7 @@ export default function HerstelPage() {
         </button>
         <button
           onClick={() => setActiveTab('insights')}
-          className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+          className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
             activeTab === 'insights'
               ? 'bg-[#E33412] text-white'
               : 'text-gray-400 hover:text-white'

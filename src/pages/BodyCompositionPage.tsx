@@ -586,23 +586,23 @@ export default function BodyCompositionPage() {
   );
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Lichaamssamenstelling</h1>
-          <p className="text-gray-400">Track je lichaamssamenstelling en progressie</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Lichaamssamenstelling</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Track je lichaamssamenstelling en progressie</p>
         </div>
         <button 
           onClick={() => setShowMetricsLogger(true)}
-          className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium"
+          className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto"
         >
           + Nieuwe Meting
         </button>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-1 bg-[#2A2D3A] p-1 rounded-lg">
+      <div className="flex flex-wrap sm:flex-nowrap space-x-1 bg-[#2A2D3A] p-1 rounded-lg">
         {[
           { id: 'overview', label: 'Overzicht', icon: '📊' },
           { id: 'measurements', label: 'Metingen', icon: '📏' },
@@ -613,14 +613,14 @@ export default function BodyCompositionPage() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
+            className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors ${
               activeTab === tab.id
                 ? 'bg-[#E33412] text-white'
                 : 'text-gray-400 hover:text-white hover:bg-[#3A3D4A]'
             }`}
           >
             <span>{tab.icon}</span>
-            {tab.label}
+            <span className="hidden sm:inline">{tab.label}</span>
           </button>
         ))}
       </div>

@@ -112,29 +112,29 @@ export default function ChatPage() {
   const activeChatData = chats.find(chat => chat.id === activeChat);
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Chat</h1>
-          <p className="text-gray-400">Communiceer met je coach en community</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Chat</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Communiceer met je coach en community</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative bg-[#2A2D3A] text-white px-4 py-2 rounded-lg hover:bg-[#3A3D4A] transition-colors font-medium flex items-center gap-2"
+            className="relative bg-[#2A2D3A] text-white px-4 py-2 rounded-lg hover:bg-[#3A3D4A] transition-colors font-medium flex items-center gap-2 text-sm sm:text-base w-full sm:w-auto"
           >
             <span>🔔</span>
-            Notificaties
+            <span className="hidden sm:inline">Notificaties</span>
             {getUnreadCount() > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#E33412] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {getUnreadCount()}
               </span>
             )}
           </button>
-          <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2">
+          <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium flex items-center gap-2 text-sm sm:text-base w-full sm:w-auto">
             <span>➕</span>
-            Nieuwe Chat
+            <span className="hidden sm:inline">Nieuwe Chat</span>
           </button>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function ChatPage() {
       )}
 
       {/* Chat Interface */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Chat List */}
         <div className="lg:col-span-1">
           <DataCard title="Chats" value="" icon="💬">

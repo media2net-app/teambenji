@@ -26,19 +26,19 @@ export default function PlanningPage() {
   ];
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Planning</h1>
-          <p className="text-gray-400">Beheer je trainingsschema en afspraken</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Planning</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Beheer je trainingsschema en afspraken</p>
         </div>
-        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium">
+        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           + Afspraak maken
         </button>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         <DataCard
           title="Vandaag"
           value="4"
@@ -73,7 +73,7 @@ export default function PlanningPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Today's Schedule */}
         <div className="lg:col-span-2">
           <DataCard title="Vandaag's Planning" value="" icon="⏰">

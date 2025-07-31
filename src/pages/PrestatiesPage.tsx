@@ -25,19 +25,19 @@ export default function PrestatiesPage() {
   ];
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Prestaties</h1>
-          <p className="text-gray-400">Volg je vooruitgang en behaalde doelen</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Prestaties</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Volg je vooruitgang en behaalde doelen</p>
         </div>
-        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium">
+        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Nieuwe PR loggen
         </button>
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         <DataCard
           title="Totaal PR's"
           value="23"
@@ -72,7 +72,7 @@ export default function PrestatiesPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Personal Records */}
         <div className="lg:col-span-2">
           <DataCard title="Persoonlijke Records" value="" icon="🏆">

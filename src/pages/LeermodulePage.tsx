@@ -625,13 +625,13 @@ export default function LeermodulePage() {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Leermodules</h1>
-          <p className="text-gray-400">Ontwikkel je kennis met onze expertmodules</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Leermodules</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Ontwikkel je kennis met onze expertmodules</p>
         </div>
-        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium">
+        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Zoek modules
         </button>
       </div>
@@ -639,10 +639,10 @@ export default function LeermodulePage() {
       {!showModuleDetail ? (
         <>
           {/* Tab Navigation */}
-          <div className="flex space-x-1 bg-[#2A2D3A] p-1 rounded-lg">
+          <div className="flex flex-wrap sm:flex-nowrap space-x-1 bg-[#2A2D3A] p-1 rounded-lg">
             <button
               onClick={() => setActiveTab('modules')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                 activeTab === 'modules'
                   ? 'bg-[#E33412] text-white'
                   : 'text-gray-400 hover:text-white'
@@ -652,7 +652,7 @@ export default function LeermodulePage() {
             </button>
             <button
               onClick={() => setActiveTab('paths')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                 activeTab === 'paths'
                   ? 'bg-[#E33412] text-white'
                   : 'text-gray-400 hover:text-white'
@@ -662,7 +662,7 @@ export default function LeermodulePage() {
             </button>
             <button
               onClick={() => setActiveTab('progress')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                 activeTab === 'progress'
                   ? 'bg-[#E33412] text-white'
                   : 'text-gray-400 hover:text-white'
@@ -672,7 +672,7 @@ export default function LeermodulePage() {
             </button>
             <button
               onClick={() => setActiveTab('certificates')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                 activeTab === 'certificates'
                   ? 'bg-[#E33412] text-white'
                   : 'text-gray-400 hover:text-white'
