@@ -164,8 +164,8 @@ export default function TrainingenPage() {
 
         {/* AI Training Recommendations */}
         <DataCard title="AI Training Recommendations" value="" icon="🤖">
-          <AIRecommendations 
-            category="training"
+                      <AIRecommendations 
+              category="training"
             maxItems={4} 
             showControls={false} 
             compact={true}

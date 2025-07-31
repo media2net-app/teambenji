@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { aiInsightsService, type AIInsight } from '../services/aiInsightsService';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface AIRecommendationsProps {
   category?: 'training' | 'nutrition' | 'recovery' | 'body_composition' | 'general';
@@ -14,8 +15,9 @@ export default function AIRecommendations({
   priority, 
   maxItems = 5, 
   showControls = true,
-  compact = false 
+  compact = false
 }: AIRecommendationsProps) {
+  const { language } = useLanguage();
   const [insights, setInsights] = useState<AIInsight[]>([]);
   const [loading, setLoading] = useState(false);
   const [expandedInsight, setExpandedInsight] = useState<string | null>(null);
@@ -33,7 +35,7 @@ export default function AIRecommendations({
       aiInsightsService.clearExpiredInsights();
       
       // Generate fresh insights
-      const freshInsights = aiInsightsService.generateInsights();
+      const freshInsights = aiInsightsService.generateInsights(language);
       
       // Apply filters
       let filteredInsights = freshInsights;
@@ -85,12 +87,12 @@ export default function AIRecommendations({
 
   const getCategoryLabel = (category: AIInsight['category']) => {
     switch (category) {
-      case 'training': return 'Training';
-      case 'nutrition': return 'Nutrition';
-      case 'recovery': return 'Recovery';
-      case 'body_composition': return 'Body Composition';
-      case 'general': return 'General';
-      default: return 'Unknown';
+      case 'training': return language === 'nl' ? 'Training' : 'Training';
+      case 'nutrition': return language === 'nl' ? 'Voeding' : 'Nutrition';
+      case 'recovery': return language === 'nl' ? 'Herstel' : 'Recovery';
+      case 'body_composition': return language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition';
+      case 'general': return language === 'nl' ? 'Algemeen' : 'General';
+      default: return language === 'nl' ? 'Onbekend' : 'Unknown';
     }
   };
 
@@ -107,7 +109,7 @@ export default function AIRecommendations({
       <div className="flex items-center justify-center py-8">
         <div className="flex items-center gap-3">
           <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#E33412]"></div>
-          <span className="text-gray-400">AI generating recommendations...</span>
+          <span className="text-gray-400">{language === 'nl' ? 'AI genereert aanbevelingen...' : 'AI generating recommendations...'}</span>
         </div>
       </div>
     );
@@ -119,13 +121,13 @@ export default function AIRecommendations({
         <div className="text-gray-400 mb-4">
           <span className="text-4xl">🤖</span>
         </div>
-        <p className="text-gray-400 mb-4">No AI recommendations available</p>
-                  <p className="text-gray-500 text-sm mb-4">Add more data for personalized advice</p>
+                <p className="text-gray-400 mb-4">{language === 'nl' ? 'Geen AI aanbevelingen beschikbaar' : 'No AI recommendations available'}</p>
+        <p className="text-gray-500 text-sm mb-4">{language === 'nl' ? 'Voeg meer data toe voor gepersonaliseerde adviezen' : 'Add more data for personalized advice'}</p>
         <button 
           onClick={refreshInsights}
           className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors text-sm"
         >
-          Refresh Recommendations
+          {language === 'nl' ? 'Vernieuw Aanbevelingen' : 'Refresh Recommendations'}
         </button>
       </div>
     );
@@ -145,12 +147,12 @@ export default function AIRecommendations({
               }}
               className="bg-[#2A2D3A] text-white px-3 py-2 rounded-lg border border-[#3A3D4A] focus:border-[#E33412] focus:outline-none text-sm"
             >
-              <option value="all">All categories</option>
-              <option value="training">Training</option>
-              <option value="nutrition">Nutrition</option>
-              <option value="recovery">Recovery</option>
-              <option value="body_composition">Body Composition</option>
-              <option value="general">General</option>
+              <option value="all">{language === 'nl' ? 'Alle categorieën' : 'All categories'}</option>
+              <option value="training">{language === 'nl' ? 'Training' : 'Training'}</option>
+              <option value="nutrition">{language === 'nl' ? 'Voeding' : 'Nutrition'}</option>
+              <option value="recovery">{language === 'nl' ? 'Herstel' : 'Recovery'}</option>
+              <option value="body_composition">{language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition'}</option>
+              <option value="general">{language === 'nl' ? 'Algemeen' : 'General'}</option>
             </select>
             
             <select
@@ -161,11 +163,11 @@ export default function AIRecommendations({
               }}
               className="bg-[#2A2D3A] text-white px-3 py-2 rounded-lg border border-[#3A3D4A] focus:border-[#E33412] focus:outline-none text-sm"
             >
-              <option value="all">All priorities</option>
-              <option value="critical">Critical</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+              <option value="all">{language === 'nl' ? 'Alle prioriteiten' : 'All priorities'}</option>
+              <option value="critical">{language === 'nl' ? 'Kritiek' : 'Critical'}</option>
+              <option value="high">{language === 'nl' ? 'Hoog' : 'High'}</option>
+              <option value="medium">{language === 'nl' ? 'Gemiddeld' : 'Medium'}</option>
+              <option value="low">{language === 'nl' ? 'Laag' : 'Low'}</option>
             </select>
           </div>
           
@@ -174,7 +176,7 @@ export default function AIRecommendations({
             className="bg-[#3A3D4A] text-white px-4 py-2 rounded-lg hover:bg-[#4A4D5A] transition-colors text-sm flex items-center gap-2"
           >
             <span>🔄</span>
-            Refresh
+            {language === 'nl' ? 'Vernieuw' : 'Refresh'}
           </button>
         </div>
       )}
@@ -236,7 +238,7 @@ export default function AIRecommendations({
                         className="text-[#E33412] hover:underline text-sm flex items-center gap-1"
                       >
                         <span>{expandedInsight === insight.id ? '▼' : '▶'}</span>
-                        Action Points ({insight.actionItems.length})
+                        {language === 'nl' ? 'Actiepunten' : 'Action Points'} ({insight.actionItems.length})
                       </button>
                       
                       {expandedInsight === insight.id && (
@@ -274,32 +276,32 @@ export default function AIRecommendations({
         <div className="mt-6 p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A]">
           <h4 className="text-white font-medium text-sm mb-2 flex items-center gap-2">
             <span>📊</span>
-            Recommendations Overview
+            {language === 'nl' ? 'Aanbevelingen Overzicht' : 'Recommendations Overview'}
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'critical').length}
               </div>
-              <div className="text-red-400 text-xs">Critical</div>
+              <div className="text-red-400 text-xs">{language === 'nl' ? 'Kritiek' : 'Critical'}</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'high').length}
               </div>
-              <div className="text-orange-400 text-xs">High</div>
+              <div className="text-orange-400 text-xs">{language === 'nl' ? 'Hoog' : 'High'}</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'medium').length}
               </div>
-              <div className="text-yellow-400 text-xs">Medium</div>
+              <div className="text-yellow-400 text-xs">{language === 'nl' ? 'Gemiddeld' : 'Medium'}</div>
             </div>
             <div>
               <div className="text-white text-lg font-bold">
                 {insights.filter(i => i.priority === 'low').length}
               </div>
-              <div className="text-green-400 text-xs">Low</div>
+              <div className="text-green-400 text-xs">{language === 'nl' ? 'Laag' : 'Low'}</div>
             </div>
           </div>
         </div>

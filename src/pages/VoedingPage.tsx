@@ -248,8 +248,8 @@ export default function VoedingPage() {
 
         {/* AI Nutrition Recommendations */}
         <DataCard title="AI Nutrition Recommendations" value="" icon="🤖">
-          <AIRecommendations 
-            category="nutrition"
+                      <AIRecommendations 
+              category="nutrition"
             maxItems={4} 
             showControls={false} 
             compact={true}

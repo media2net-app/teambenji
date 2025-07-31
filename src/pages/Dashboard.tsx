@@ -4,6 +4,7 @@ import DataCard from '../components/DataCard';
 import ModernChart from '../components/ModernChart';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { dashboardTranslations } from '../translations/dashboard';
+import { useLanguage } from '../contexts/LanguageContext';
 import { 
   WorkoutIcon, 
   ScaleIcon, 
@@ -35,7 +36,7 @@ export default function Dashboard() {
   const [activeItem, setActiveItem] = useState('dashboard');
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [language, setLanguage] = useState<'nl' | 'en'>('nl');
+  const { language, setLanguage } = useLanguage();
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   const t = dashboardTranslations[language];

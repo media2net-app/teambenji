@@ -13,6 +13,7 @@ export interface AIInsight {
   expiresAt?: string;
   icon: string;
   color: string;
+  language?: 'nl' | 'en';
 }
 
 export interface UserDataProfile {
@@ -55,24 +56,24 @@ class AIInsightsService {
   private readonly USER_PROFILE_KEY = 'teambenji_user_profile';
 
   // Generate insights based on user data
-  generateInsights(): AIInsight[] {
+  generateInsights(language: 'nl' | 'en' = 'en'): AIInsight[] {
     const userProfile = this.getUserProfile();
     const insights: AIInsight[] = [];
 
     // Training insights
-    insights.push(...this.generateTrainingInsights(userProfile));
+    insights.push(...this.generateTrainingInsights(userProfile, language));
     
     // Nutrition insights
-    insights.push(...this.generateNutritionInsights(userProfile));
+    insights.push(...this.generateNutritionInsights(userProfile, language));
     
     // Recovery insights
-    insights.push(...this.generateRecoveryInsights(userProfile));
+    insights.push(...this.generateRecoveryInsights(userProfile, language));
     
     // Body composition insights
-    insights.push(...this.generateBodyCompositionInsights(userProfile));
+    insights.push(...this.generateBodyCompositionInsights(userProfile, language));
     
     // General lifestyle insights
-    insights.push(...this.generateGeneralInsights(userProfile));
+    insights.push(...this.generateGeneralInsights(userProfile, language));
 
     // Sort by priority and confidence
     const sortedInsights = insights.sort((a, b) => {
@@ -88,7 +89,7 @@ class AIInsightsService {
     return sortedInsights.slice(0, 10); // Return top 10 insights
   }
 
-  private generateTrainingInsights(profile: UserDataProfile): AIInsight[] {
+  private generateTrainingInsights(profile: UserDataProfile, language: 'nl' | 'en'): AIInsight[] {
     const insights: AIInsight[] = [];
 
     // Training frequency analysis
@@ -97,21 +98,31 @@ class AIInsightsService {
         id: `training_frequency_${Date.now()}`,
         category: 'training',
         priority: 'high',
-        title: 'Increase your training frequency',
-        message: `You currently train ${profile.weeklyTrainingSessions}x per week. For optimal results, 3-4x per week is recommended.`,
-        actionItems: [
+        title: language === 'nl' ? 'Verhoog je trainingsfrequentie' : 'Increase your training frequency',
+        message: language === 'nl' 
+          ? `Je traint momenteel ${profile.weeklyTrainingSessions}x per week. Voor optimale resultaten wordt 3-4x per week aanbevolen.`
+          : `You currently train ${profile.weeklyTrainingSessions}x per week. For optimal results, 3-4x per week is recommended.`,
+        actionItems: language === 'nl' ? [
+          'Plan 1-2 extra trainingsessies deze week',
+          'Start met kortere sessies (30-45 min) als tijd een probleem is',
+          'Overweeg home workouts voor extra flexibiliteit'
+        ] : [
           'Plan 1-2 extra training sessions this week',
           'Start with shorter sessions (30-45 min) if time is an issue',
           'Consider home workouts for extra flexibility'
         ],
-        dataPoints: [
+        dataPoints: language === 'nl' ? [
+          { label: 'Huidige frequentie', value: `${profile.weeklyTrainingSessions}x/week` },
+          { label: 'Aanbevolen', value: '3-4x/week' }
+        ] : [
           { label: 'Current frequency', value: `${profile.weeklyTrainingSessions}x/week` },
           { label: 'Recommended', value: '3-4x/week' }
         ],
         confidence: 85,
         generatedAt: new Date().toISOString(),
         icon: '💪',
-        color: 'orange'
+        color: 'orange',
+        language
       });
     }
 
@@ -158,7 +169,7 @@ class AIInsightsService {
     return insights;
   }
 
-  private generateNutritionInsights(profile: UserDataProfile): AIInsight[] {
+  private generateNutritionInsights(profile: UserDataProfile, language: 'nl' | 'en'): AIInsight[] {
     const insights: AIInsight[] = [];
 
     // Protein intake analysis
@@ -168,21 +179,31 @@ class AIInsightsService {
         id: `protein_intake_${Date.now()}`,
         category: 'nutrition',
         priority: 'high',
-        title: 'Increase your protein intake',
-        message: `Your protein intake is ${proteinPercentage}% of your total calories. For muscle maintenance and building, 25-30% is recommended.`,
-        actionItems: [
+        title: language === 'nl' ? 'Verhoog je eiwitinname' : 'Increase your protein intake',
+        message: language === 'nl' 
+          ? `Je eiwitinname is ${proteinPercentage}% van je totale calorieën. Voor spierbehoud en -opbouw wordt 25-30% aanbevolen.`
+          : `Your protein intake is ${proteinPercentage}% of your total calories. For muscle maintenance and building, 25-30% is recommended.`,
+        actionItems: language === 'nl' ? [
+          'Voeg een eiwitbron toe aan elke maaltijd',
+          'Overweeg een eiwitshake na je training',
+          'Kies voor magere vleessoorten, vis, eieren en peulvruchten'
+        ] : [
           'Add a protein source to every meal',
           'Consider a protein shake after your workout',
           'Choose lean meats, fish, eggs and legumes'
         ],
-        dataPoints: [
+        dataPoints: language === 'nl' ? [
+          { label: 'Huidige eiwit', value: `${proteinPercentage}%` },
+          { label: 'Aanbevolen', value: '25-30%' }
+        ] : [
           { label: 'Current protein', value: `${proteinPercentage}%` },
           { label: 'Recommended', value: '25-30%' }
         ],
         confidence: 88,
         generatedAt: new Date().toISOString(),
         icon: '🥩',
-        color: 'red'
+        color: 'red',
+        language
       });
     }
 
@@ -192,9 +213,15 @@ class AIInsightsService {
         id: `hydration_${Date.now()}`,
         category: 'nutrition',
         priority: 'medium',
-        title: 'Improve your hydration',
-        message: `Your hydration level is ${profile.hydrationLevel}%. Good hydration is essential for performance and recovery.`,
-        actionItems: [
+        title: language === 'nl' ? 'Verbeter je hydratatie' : 'Improve your hydration',
+        message: language === 'nl' 
+          ? `Je hydratieniveau is ${profile.hydrationLevel}%. Goede hydratatie is essentieel voor prestaties en herstel.`
+          : `Your hydration level is ${profile.hydrationLevel}%. Good hydration is essential for performance and recovery.`,
+        actionItems: language === 'nl' ? [
+          'Drink 2-3 liter water per dag',
+          'Start elke dag met een glas water',
+          'Drink extra water rondom je trainingen'
+        ] : [
           'Drink 2-3 liters of water per day',
           'Start each day with a glass of water',
           'Drink extra water around your workouts'
@@ -212,9 +239,15 @@ class AIInsightsService {
         id: `calorie_intake_${Date.now()}`,
         category: 'nutrition',
         priority: 'critical',
-        title: 'Too low calorie intake',
-        message: `Your average daily intake of ${profile.averageDailyCalories} kcal may be too low for your goals.`,
-        actionItems: [
+        title: language === 'nl' ? 'Te lage calorie-inname' : 'Too low calorie intake',
+        message: language === 'nl' 
+          ? `Je gemiddelde dagelijkse inname van ${profile.averageDailyCalories} kcal is mogelijk te laag voor je doelen.`
+          : `Your average daily intake of ${profile.averageDailyCalories} kcal may be too low for your goals.`,
+        actionItems: language === 'nl' ? [
+          'Consulteer een voedingsdeskundige',
+          'Voeg gezonde, calorie-rijke snacks toe',
+          'Monitor je energieniveau en prestaties'
+        ] : [
           'Consult a nutritionist',
           'Add healthy, calorie-rich snacks',
           'Monitor your energy levels and performance'
@@ -229,7 +262,7 @@ class AIInsightsService {
     return insights;
   }
 
-  private generateRecoveryInsights(profile: UserDataProfile): AIInsight[] {
+  private generateRecoveryInsights(profile: UserDataProfile, language: 'nl' | 'en'): AIInsight[] {
     const insights: AIInsight[] = [];
 
     // Sleep analysis
@@ -238,14 +271,23 @@ class AIInsightsService {
         id: `sleep_duration_${Date.now()}`,
         category: 'recovery',
         priority: 'high',
-        title: 'Increase your sleep time',
-        message: `You sleep an average of ${profile.averageSleepHours} hours per night. For optimal recovery, 7-9 hours is recommended.`,
-        actionItems: [
+        title: language === 'nl' ? 'Verhoog je slaaptijd' : 'Increase your sleep time',
+        message: language === 'nl' 
+          ? `Je slaapt gemiddeld ${profile.averageSleepHours} uur per nacht. Voor optimaal herstel wordt 7-9 uur aanbevolen.`
+          : `You sleep an average of ${profile.averageSleepHours} hours per night. For optimal recovery, 7-9 hours is recommended.`,
+        actionItems: language === 'nl' ? [
+          'Ga 30 minuten eerder naar bed',
+          'Creëer een consistente slaaprutine',
+          'Vermijd schermen 1 uur voor bedtijd'
+        ] : [
           'Go to bed 30 minutes earlier',
           'Create a consistent sleep routine',
           'Avoid screens 1 hour before bedtime'
         ],
-        dataPoints: [
+        dataPoints: language === 'nl' ? [
+          { label: 'Huidige slaap', value: `${profile.averageSleepHours}u` },
+          { label: 'Aanbevolen', value: '7-9u' }
+        ] : [
           { label: 'Current sleep', value: `${profile.averageSleepHours}h` },
           { label: 'Recommended', value: '7-9h' }
         ],
@@ -299,7 +341,7 @@ class AIInsightsService {
     return insights;
   }
 
-  private generateBodyCompositionInsights(profile: UserDataProfile): AIInsight[] {
+  private generateBodyCompositionInsights(profile: UserDataProfile, language: 'nl' | 'en'): AIInsight[] {
     const insights: AIInsight[] = [];
 
     if (!profile.latestMeasurements) return insights;
@@ -310,9 +352,15 @@ class AIInsightsService {
         id: `progress_trend_${Date.now()}`,
         category: 'body_composition',
         priority: 'high',
-        title: 'Your progress is stagnating',
-        message: 'Your body composition shows a declining trend. It\'s time to adjust your approach.',
-        actionItems: [
+        title: language === 'nl' ? 'Je voortgang stagneert' : 'Your progress is stagnating',
+        message: language === 'nl' 
+          ? 'Je lichaamssamenstelling toont een dalende trend. Het is tijd om je aanpak aan te passen.'
+          : 'Your body composition shows a declining trend. It\'s time to adjust your approach.',
+        actionItems: language === 'nl' ? [
+          'Evalueer je huidige training- en voedingsplan',
+          'Overweeg een deload week voor herstel',
+          'Varieer je trainingsroutine om plateaus te doorbreken'
+        ] : [
           'Evaluate your current training and nutrition plan',
           'Consider a deload week for recovery',
           'Vary your training routine to break plateaus'
@@ -320,7 +368,8 @@ class AIInsightsService {
         confidence: 85,
         generatedAt: new Date().toISOString(),
         icon: '📉',
-        color: 'red'
+        color: 'red',
+        language
       });
     }
 
@@ -332,9 +381,15 @@ class AIInsightsService {
         id: `goal_achievement_${Date.now()}`,
         category: 'body_composition',
         priority: 'low',
-        title: 'Great progress!',
-        message: `You have achieved an average of ${Math.round(avgProgress)}% of your goals. Keep going!`,
-        actionItems: [
+        title: language === 'nl' ? 'Geweldige vooruitgang!' : 'Great progress!',
+        message: language === 'nl' 
+          ? `Je bent gemiddeld ${Math.round(avgProgress)}% van je doelen bereikt. Blijf doorgaan!`
+          : `You have achieved an average of ${Math.round(avgProgress)}% of your goals. Keep going!`,
+        actionItems: language === 'nl' ? [
+          'Overweeg nieuwe, uitdagendere doelen te stellen',
+          'Deel je succes met anderen voor extra motivatie',
+          'Beloon jezelf voor je harde werk'
+        ] : [
           'Consider setting new, more challenging goals',
           'Share your success with others for extra motivation',
           'Reward yourself for your hard work'
@@ -342,14 +397,15 @@ class AIInsightsService {
         confidence: 95,
         generatedAt: new Date().toISOString(),
         icon: '🎉',
-        color: 'green'
+        color: 'green',
+        language
       });
     }
 
     return insights;
   }
 
-  private generateGeneralInsights(profile: UserDataProfile): AIInsight[] {
+  private generateGeneralInsights(profile: UserDataProfile, language: 'nl' | 'en'): AIInsight[] {
     const insights: AIInsight[] = [];
 
     // Beginner guidance
@@ -358,9 +414,15 @@ class AIInsightsService {
         id: `beginner_guidance_${Date.now()}`,
         category: 'general',
         priority: 'medium',
-        title: 'Welcome to your fitness journey!',
-        message: 'As a beginner, it\'s important to build up slowly and let your body adapt.',
-        actionItems: [
+        title: language === 'nl' ? 'Welkom bij je fitnessreis!' : 'Welcome to your fitness journey!',
+        message: language === 'nl' 
+          ? 'Als beginner is het belangrijk om langzaam op te bouwen en je lichaam te laten wennen.'
+          : 'As a beginner, it\'s important to build up slowly and let your body adapt.',
+        actionItems: language === 'nl' ? [
+          'Start met 2-3 trainingen per week',
+          'Focus op het leren van de juiste technieken',
+          'Luister naar je lichaam en neem voldoende rust'
+        ] : [
           'Start with 2-3 workouts per week',
           'Focus on learning the correct techniques',
           'Listen to your body and take sufficient rest'
@@ -368,7 +430,8 @@ class AIInsightsService {
         confidence: 88,
         generatedAt: new Date().toISOString(),
         icon: '🌱',
-        color: 'green'
+        color: 'green',
+        language
       });
     }
 
@@ -379,9 +442,15 @@ class AIInsightsService {
         id: `motivation_high_${Date.now()}`,
         category: 'general',
         priority: 'low',
-        title: 'You are an example of consistency!',
-        message: `With ${Math.round(overallConsistency)}% consistency, you are on the right track to your goals.`,
-        actionItems: [
+        title: language === 'nl' ? 'Je bent een voorbeeld van consistentie!' : 'You are an example of consistency!',
+        message: language === 'nl' 
+          ? `Met ${Math.round(overallConsistency)}% consistentie ben je op de goede weg naar je doelen.`
+          : `With ${Math.round(overallConsistency)}% consistency, you are on the right track to your goals.`,
+        actionItems: language === 'nl' ? [
+          'Blijf je huidige routine volhouden',
+          'Inspireer anderen met je discipline',
+          'Overweeg je doelen uit te breiden'
+        ] : [
           'Keep maintaining your current routine',
           'Inspire others with your discipline',
           'Consider expanding your goals'
@@ -389,7 +458,8 @@ class AIInsightsService {
         confidence: 90,
         generatedAt: new Date().toISOString(),
         icon: '🏆',
-        color: 'gold'
+        color: 'gold',
+        language
       });
     }
 
