@@ -137,44 +137,44 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Training Overview */}
         <DataCard
-          title="Volgende Training"
-          value="Benen & Core"
+          title={t['volgende-training']}
+          value={t['benen-core']}
           icon={<WorkoutIcon className="w-6 h-6" />}
-          subtitle="Vandaag 18:00"
+          subtitle={t['vandaag-1800']}
           className="lg:col-span-1 stagger-item"
         >
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">Duur</span>
+              <span className="text-gray-400">{t['duur']}</span>
               <span className="text-white">60 min</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">Trainer</span>
+              <span className="text-gray-400">{t['trainer']}</span>
               <span className="text-white">Mark Johnson</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-400">Locatie</span>
+              <span className="text-gray-400">{t['locatie']}</span>
               <span className="text-white">Studio A</span>
             </div>
             <button className="btn-modern w-full bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 text-sm font-medium mt-4 shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 animate-glow">
-              <span className="relative z-10">Training starten</span>
+              <span className="relative z-10">{t['training-starten']}</span>
             </button>
           </div>
         </DataCard>
 
         {/* Progress Chart */}
         <DataCard
-          title="Voortgang deze maand"
+          title={t['voortgang-deze-maand']}
           value="87%"
           icon={<TrendIcon className="w-6 h-6 text-white" />}
-          subtitle="van je doelen bereikt"
+          subtitle={t['van-doelen-bereikt']}
           className="lg:col-span-2 stagger-item"
         >
           <div className="space-y-4">
             {[
-              { label: "Trainingen", value: 16, max: 18, percentage: 89, color: "bg-gradient-to-r from-[#E33412] to-[#ff4d24]" },
-              { label: "Voeding", value: 24, max: 28, percentage: 86, color: "bg-gradient-to-r from-green-400 to-green-500" },
-              { label: "Herstel", value: 26, max: 30, percentage: 87, color: "bg-gradient-to-r from-blue-400 to-blue-500" }
+              { label: t['trainingen'], value: 16, max: 18, percentage: 89, color: "bg-gradient-to-r from-[#E33412] to-[#ff4d24]" },
+              { label: t['voeding'], value: 24, max: 28, percentage: 86, color: "bg-gradient-to-r from-green-400 to-green-500" },
+              { label: t['herstel'], value: 26, max: 30, percentage: 87, color: "bg-gradient-to-r from-blue-400 to-blue-500" }
             ].map((item, index) => (
               <div key={index} className="space-y-2 stagger-item">
                 <div className="flex justify-between text-sm">
@@ -206,20 +206,20 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Weekly Progress Chart */}
         <DataCard
-          title="Wekelijkse Voortgang"
+          title={t['wekelijke-voortgang']}
           value=""
           icon={<ChartIcon className="w-6 h-6 text-white" />}
           className="stagger-item"
         >
           <ModernChart
             data={[
-              { label: 'Ma', value: 85 },
-              { label: 'Di', value: 92 },
-              { label: 'Wo', value: 78 },
-              { label: 'Do', value: 95 },
-              { label: 'Vr', value: 88 },
-              { label: 'Za', value: 90 },
-              { label: 'Zo', value: 82 }
+              { label: t['ma'], value: 85 },
+              { label: t['di'], value: 92 },
+              { label: t['wo'], value: 78 },
+              { label: t['do'], value: 95 },
+              { label: t['vr'], value: 88 },
+              { label: t['za'], value: 90 },
+              { label: t['zo'], value: 82 }
             ]}
             type="bar"
             height={180}
@@ -332,31 +332,31 @@ export default function Dashboard() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-white text-2xl font-bold">
-                {activeItem === 'dashboard' ? 'Dashboard' : 
-                 activeItem === 'trainingen' ? 'Mijn Trainingen' :
-                 activeItem === 'voeding' ? 'Voeding' :
-                 activeItem === 'herstel' ? 'Herstel' :
-                 activeItem === 'body-composition' ? 'Lichaamssamenstelling' :
-                 activeItem === 'prestaties' ? 'Prestaties' :
-                 activeItem === 'planning' ? 'Planning' :
-                 activeItem === 'leermodules' ? 'Leermodules' :
+                {activeItem === 'dashboard' ? t['dashboard'] : 
+                 activeItem === 'trainingen' ? (language === 'nl' ? 'Mijn Trainingen' : 'My Workouts') :
+                 activeItem === 'voeding' ? (language === 'nl' ? 'Voeding' : 'Nutrition') :
+                 activeItem === 'herstel' ? (language === 'nl' ? 'Herstel' : 'Recovery') :
+                 activeItem === 'body-composition' ? (language === 'nl' ? 'Lichaamssamenstelling' : 'Body Composition') :
+                 activeItem === 'prestaties' ? (language === 'nl' ? 'Prestaties' : 'Performance') :
+                 activeItem === 'planning' ? (language === 'nl' ? 'Planning' : 'Planning') :
+                 activeItem === 'leermodules' ? (language === 'nl' ? 'Leermodules' : 'Learning Modules') :
                  activeItem === 'ai-insights' ? 'AI Insights' :
                  activeItem === 'chat' ? 'Chat' :
-                 activeItem === 'instellingen' ? 'Instellingen' :
-                 activeItem === 'help' ? 'Help & Support' : 'Dashboard'}
+                 activeItem === 'instellingen' ? t['instellingen-menu'] :
+                 activeItem === 'help' ? (language === 'nl' ? 'Help & Support' : 'Help & Support') : t['dashboard']}
               </h1>
               <p className="text-gray-400 text-sm">
-                {activeItem === 'dashboard' ? 'Welkom terug! Hier is je overzicht.' : 
-                 activeItem === 'trainingen' ? 'Plan, volg en analyseer je workouts' :
-                 activeItem === 'voeding' ? 'Track je macro\'s en bereik je doelen' :
-                 activeItem === 'herstel' ? 'Monitor je slaap en recovery' :
-                 activeItem === 'body-composition' ? 'Track je lichaamssamenstelling en progressie' :
-                 activeItem === 'prestaties' ? 'Volg je vooruitgang en behaalde doelen' :
-                 activeItem === 'planning' ? 'Beheer je trainingsschema en afspraken' :
-                 activeItem === 'ai-insights' ? 'Gepersonaliseerde aanbevelingen op basis van je data' :
-                 activeItem === 'chat' ? 'Communiceer met je coach en community' :
-                 activeItem === 'instellingen' ? 'Beheer je profiel en voorkeuren' :
-                 activeItem === 'help' ? 'Vind antwoorden op je vragen' : 'Welkom terug!'}
+                {activeItem === 'dashboard' ? t['welkom-terug-overzicht'] : 
+                 activeItem === 'trainingen' ? (language === 'nl' ? 'Plan, volg en analyseer je workouts' : 'Plan, track and analyze your workouts') :
+                 activeItem === 'voeding' ? (language === 'nl' ? 'Track je macro\'s en bereik je doelen' : 'Track your macros and reach your goals') :
+                 activeItem === 'herstel' ? (language === 'nl' ? 'Monitor je slaap en recovery' : 'Monitor your sleep and recovery') :
+                 activeItem === 'body-composition' ? (language === 'nl' ? 'Track je lichaamssamenstelling en progressie' : 'Track your body composition and progress') :
+                 activeItem === 'prestaties' ? (language === 'nl' ? 'Volg je vooruitgang en behaalde doelen' : 'Track your progress and achieved goals') :
+                 activeItem === 'planning' ? (language === 'nl' ? 'Beheer je trainingsschema en afspraken' : 'Manage your training schedule and appointments') :
+                 activeItem === 'ai-insights' ? (language === 'nl' ? 'Gepersonaliseerde aanbevelingen op basis van je data' : 'Personalized recommendations based on your data') :
+                 activeItem === 'chat' ? (language === 'nl' ? 'Communiceer met je coach en community' : 'Communicate with your coach and community') :
+                 activeItem === 'instellingen' ? (language === 'nl' ? 'Beheer je profiel en voorkeuren' : 'Manage your profile and preferences') :
+                 activeItem === 'help' ? (language === 'nl' ? 'Vind antwoorden op je vragen' : 'Find answers to your questions') : t['welkom-terug-overzicht']}
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -378,7 +378,7 @@ export default function Dashboard() {
                   <div className="w-8 h-8 bg-[#E33412] rounded-full flex items-center justify-center">
                     <span className="text-white text-sm font-bold">U</span>
                   </div>
-                  <span className="text-white font-medium">Gebruiker</span>
+                  <span className="text-white font-medium">{t['gebruiker']}</span>
                   <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -391,13 +391,13 @@ export default function Dashboard() {
                         onClick={() => setActiveItem('instellingen')}
                         className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-[#2A2D3A] transition-colors"
                       >
-                        ⚙️ Instellingen
+                        ⚙️ {t['instellingen-menu']}
                       </button>
                       <button
                         onClick={handleLogout}
                         className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#2A2D3A] transition-colors"
                       >
-                        🚪 Uitloggen
+                        🚪 {t['uitloggen-menu']}
                       </button>
                     </div>
                   </div>
