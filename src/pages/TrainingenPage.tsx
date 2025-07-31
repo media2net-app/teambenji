@@ -24,20 +24,20 @@ export default function TrainingenPage() {
   ];
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-2xl font-bold">Mijn Trainingen</h1>
-          <p className="text-gray-400">Plan, volg en analyseer je workouts</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Mijn Trainingen</h1>
+          <p className="text-gray-400 text-sm sm:text-base">Plan, volg en analyseer je workouts</p>
         </div>
-        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium">
+        <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           + Nieuwe Training
         </button>
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
         <DataCard
           title="Deze week"
           value="4"
@@ -73,28 +73,28 @@ export default function TrainingenPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Upcoming Workouts */}
         <div className="lg:col-span-2">
           <DataCard title="Komende Trainingen" value="" icon="📅">
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {upcomingWorkouts.map((workout) => (
-                <div key={workout.id} className="p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A] hover:border-[#E33412] transition-all cursor-pointer">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-white font-semibold">{workout.name}</h3>
-                    <span className="text-[#E33412] text-sm font-medium">{workout.date}</span>
+                <div key={workout.id} className="p-3 sm:p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A] hover:border-[#E33412] transition-all cursor-pointer">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                    <h3 className="text-white font-semibold text-sm sm:text-base">{workout.name}</h3>
+                    <span className="text-[#E33412] text-xs sm:text-sm font-medium">{workout.date}</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
                     <div className="text-gray-400">Tijd: <span className="text-white">{workout.time}</span></div>
                     <div className="text-gray-400">Duur: <span className="text-white">{workout.duration}</span></div>
                     <div className="text-gray-400">Trainer: <span className="text-white">{workout.trainer}</span></div>
                     <div className="text-gray-400">Locatie: <span className="text-white">{workout.location}</span></div>
                   </div>
-                  <div className="flex gap-2 mt-3">
-                    <button className="bg-[#E33412] text-white px-3 py-1 rounded text-sm hover:bg-[#b9260e] transition-colors">
+                  <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                    <button className="bg-[#E33412] text-white px-3 py-1 rounded text-xs sm:text-sm hover:bg-[#b9260e] transition-colors">
                       Start Training
                     </button>
-                    <button className="bg-[#3A3D4A] text-white px-3 py-1 rounded text-sm hover:bg-[#4A4D5A] transition-colors">
+                    <button className="bg-[#3A3D4A] text-white px-3 py-1 rounded text-xs sm:text-sm hover:bg-[#4A4D5A] transition-colors">
                       Details
                     </button>
                   </div>
@@ -107,11 +107,11 @@ export default function TrainingenPage() {
         {/* Current Exercises */}
         <div className="lg:col-span-1">
           <DataCard title="Huidige Oefeningen" value="" icon="🏋️">
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {exercises.map((exercise, index) => (
-                <div key={index} className="p-3 bg-[#2A2D3A] rounded-lg">
+                <div key={index} className="p-2 sm:p-3 bg-[#2A2D3A] rounded-lg">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-white font-medium text-sm">{exercise.name}</h4>
+                    <h4 className="text-white font-medium text-xs sm:text-sm">{exercise.name}</h4>
                     <span className="text-[#E33412] text-xs">{exercise.sets}</span>
                   </div>
                   <div className="text-xs space-y-1">
@@ -132,34 +132,34 @@ export default function TrainingenPage() {
       </div>
 
       {/* Bottom Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Workout History */}
         <DataCard title="Training Historie" value="" icon="📊">
-          <div className="space-y-3">
-            {workoutHistory.map((workout) => (
-              <div key={workout.id} className="flex items-center justify-between p-4 bg-[#2A2D3A] rounded-lg hover:bg-[#3A3D4A] transition-colors cursor-pointer">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#E33412] rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold">💪</span>
+                      <div className="space-y-2 sm:space-y-3">
+              {workoutHistory.map((workout) => (
+                <div key={workout.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-[#2A2D3A] rounded-lg hover:bg-[#3A3D4A] transition-colors cursor-pointer gap-3">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#E33412] rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm sm:text-base">💪</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium text-sm sm:text-base">{workout.name}</h3>
+                      <p className="text-gray-400 text-xs sm:text-sm">{workout.date}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-medium">{workout.name}</h3>
-                    <p className="text-gray-400 text-sm">{workout.date}</p>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4 text-center">
+                    <div>
+                      <div className="text-white font-semibold text-sm sm:text-base">{workout.duration}</div>
+                      <div className="text-gray-400 text-xs">Duur</div>
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold text-sm sm:text-base">{workout.calories}</div>
+                      <div className="text-gray-400 text-xs">Calories</div>
+                    </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div>
-                    <div className="text-white font-semibold">{workout.duration}</div>
-                    <div className="text-gray-400 text-xs">Duur</div>
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold">{workout.calories}</div>
-                    <div className="text-gray-400 text-xs">Calories</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </DataCard>
 
         {/* AI Training Recommendations */}
