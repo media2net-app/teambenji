@@ -69,8 +69,8 @@ export default function VoedingPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Voeding</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Track je macro's en bereik je doelen</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Nutrition</h1>
+                      <p className="text-gray-400 text-sm sm:text-base">Track your macros and reach your goals</p>
         </div>
         <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           + Maaltijd toevoegen
@@ -247,7 +247,7 @@ export default function VoedingPage() {
         </DataCard>
 
         {/* AI Nutrition Recommendations */}
-        <DataCard title="AI Voeding Aanbevelingen" value="" icon="🤖">
+        <DataCard title="AI Nutrition Recommendations" value="" icon="🤖">
           <AIRecommendations 
             category="nutrition"
             maxItems={4} 

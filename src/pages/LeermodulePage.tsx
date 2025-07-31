@@ -628,8 +628,8 @@ export default function LeermodulePage() {
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Leermodules</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Ontwikkel je kennis met onze expertmodules</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Learning Modules</h1>
+                      <p className="text-gray-400 text-sm sm:text-base">Develop your knowledge with our expert modules</p>
         </div>
         <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Zoek modules

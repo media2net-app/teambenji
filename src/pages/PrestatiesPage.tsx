@@ -28,8 +28,8 @@ export default function PrestatiesPage() {
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Prestaties</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Volg je vooruitgang en behaalde doelen</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Performance</h1>
+                      <p className="text-gray-400 text-sm sm:text-base">Track your progress and achieved goals</p>
         </div>
         <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Nieuwe PR loggen
@@ -60,10 +60,10 @@ export default function PrestatiesPage() {
           change="+12%"
           changeType="positive"
           icon="📈"
-          subtitle="trainingen voltooid"
+                      subtitle="workouts completed"
         />
         <DataCard
-          title="Totaal volume"
+                      title="Total volume"
           value="2,340kg"
           change="+18%"
           changeType="positive"

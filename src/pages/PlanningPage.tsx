@@ -76,7 +76,7 @@ export default function PlanningPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Today's Schedule */}
         <div className="lg:col-span-2">
-          <DataCard title="Vandaag's Planning" value="" icon="⏰">
+          <DataCard title="Today's Planning" value="" icon="⏰">
             <div className="space-y-4">
               {todaySchedule.map((item, index) => (
                 <div key={index} className="p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A] hover:border-[#E33412] transition-all">
@@ -93,8 +93,8 @@ export default function PlanningPage() {
                       item.type === 'meeting' ? 'bg-blue-500 text-white' :
                       'bg-green-500 text-white'
                     }`}>
-                      {item.type === 'workout' ? 'Training' : 
-                       item.type === 'meeting' ? 'Afspraak' : 'Herstel'}
+                      {item.type === 'workout' ? 'Workout' : 
+                       item.type === 'meeting' ? 'Appointment' : 'Recovery'}
                     </div>
                   </div>
                   <div className="flex gap-2">
@@ -102,10 +102,10 @@ export default function PlanningPage() {
                       Start
                     </button>
                     <button className="bg-[#3A3D4A] text-white px-3 py-1 rounded text-sm hover:bg-[#4A4D5A] transition-colors">
-                      Bewerken
+                      Edit
                     </button>
                     <button className="bg-[#3A3D4A] text-white px-3 py-1 rounded text-sm hover:bg-[#4A4D5A] transition-colors">
-                      Annuleren
+                      Cancel
                     </button>
                   </div>
                 </div>
@@ -116,14 +116,14 @@ export default function PlanningPage() {
 
         {/* Week Overview */}
         <div className="space-y-6">
-          <DataCard title="Week Overzicht" value="" icon="📊">
+          <DataCard title="Week Overview" value="" icon="📊">
             <div className="space-y-3">
               {weekSchedule.map((day, index) => (
                 <div key={index} className="p-3 bg-[#2A2D3A] rounded-lg">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-white font-medium">{day.day}</span>
                     <span className="text-gray-400 text-sm">
-                      {day.workouts + day.meetings + day.recovery} activiteiten
+                      {day.workouts + day.meetings + day.recovery} activities
                     </span>
                   </div>
                   <div className="grid grid-cols-3 gap-2 text-xs">
@@ -145,7 +145,7 @@ export default function PlanningPage() {
             </div>
           </DataCard>
 
-          <DataCard title="Komende Afspraken" value="" icon="🎯">
+          <DataCard title="Upcoming Appointments" value="" icon="🎯">
             <div className="space-y-3">
               {upcomingEvents.map((event, index) => (
                 <div key={index} className="p-3 bg-[#2A2D3A] rounded-lg">
@@ -160,7 +160,7 @@ export default function PlanningPage() {
                     </div>
                   </div>
                   <button className="w-full bg-[#3A3D4A] text-white py-1 rounded text-xs hover:bg-[#4A4D5A] transition-colors">
-                    Details bekijken
+                    View Details
                   </button>
                 </div>
               ))}
@@ -170,10 +170,10 @@ export default function PlanningPage() {
       </div>
 
       {/* Calendar View */}
-      <DataCard title="Kalender Overzicht" value="" icon="📅">
+      <DataCard title="Calendar Overview" value="" icon="📅">
         <div className="grid grid-cols-7 gap-2">
           {/* Calendar Header */}
-          {['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'].map((day) => (
+          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
             <div key={day} className="text-center text-gray-400 font-medium p-2">
               {day}
             </div>

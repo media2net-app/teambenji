@@ -350,7 +350,7 @@ export default function BodyCompositionPage() {
       </DataCard>
 
       {/* Body Composition Breakdown */}
-      <DataCard title="Lichaamssamenstelling Breakdown" value="" icon="🫁">
+              <DataCard title="Body Composition Breakdown" value="" icon="🫁">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <h4 className="text-white font-medium">Huidige Verdeling</h4>
@@ -590,8 +590,8 @@ export default function BodyCompositionPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Lichaamssamenstelling</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Track je lichaamssamenstelling en progressie</p>
+                  <h1 className="text-white text-xl sm:text-2xl font-bold">Body Composition</h1>
+        <p className="text-gray-400 text-sm sm:text-base">Track your body composition and progress</p>
         </div>
         <button 
           onClick={() => setShowMetricsLogger(true)}

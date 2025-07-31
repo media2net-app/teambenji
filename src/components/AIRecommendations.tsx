@@ -119,13 +119,13 @@ export default function AIRecommendations({
         <div className="text-gray-400 mb-4">
           <span className="text-4xl">🤖</span>
         </div>
-        <p className="text-gray-400 mb-4">Geen AI aanbevelingen beschikbaar</p>
-        <p className="text-gray-500 text-sm mb-4">Voeg meer data toe voor gepersonaliseerde adviezen</p>
+        <p className="text-gray-400 mb-4">No AI recommendations available</p>
+                  <p className="text-gray-500 text-sm mb-4">Add more data for personalized advice</p>
         <button 
           onClick={refreshInsights}
           className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors text-sm"
         >
-          Vernieuw Aanbevelingen
+          Refresh Recommendations
         </button>
       </div>
     );
@@ -145,12 +145,12 @@ export default function AIRecommendations({
               }}
               className="bg-[#2A2D3A] text-white px-3 py-2 rounded-lg border border-[#3A3D4A] focus:border-[#E33412] focus:outline-none text-sm"
             >
-              <option value="all">Alle categorieën</option>
+              <option value="all">All categories</option>
               <option value="training">Training</option>
-              <option value="nutrition">Voeding</option>
-              <option value="recovery">Herstel</option>
-              <option value="body_composition">Lichaamssamenstelling</option>
-              <option value="general">Algemeen</option>
+              <option value="nutrition">Nutrition</option>
+              <option value="recovery">Recovery</option>
+              <option value="body_composition">Body Composition</option>
+              <option value="general">General</option>
             </select>
             
             <select
@@ -161,11 +161,11 @@ export default function AIRecommendations({
               }}
               className="bg-[#2A2D3A] text-white px-3 py-2 rounded-lg border border-[#3A3D4A] focus:border-[#E33412] focus:outline-none text-sm"
             >
-              <option value="all">Alle prioriteiten</option>
-              <option value="critical">Kritiek</option>
-              <option value="high">Hoog</option>
-              <option value="medium">Gemiddeld</option>
-              <option value="low">Laag</option>
+              <option value="all">All priorities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
             </select>
           </div>
           
@@ -174,7 +174,7 @@ export default function AIRecommendations({
             className="bg-[#3A3D4A] text-white px-4 py-2 rounded-lg hover:bg-[#4A4D5A] transition-colors text-sm flex items-center gap-2"
           >
             <span>🔄</span>
-            Vernieuw
+            Refresh
           </button>
         </div>
       )}
@@ -202,7 +202,7 @@ export default function AIRecommendations({
                       {getCategoryLabel(insight.category)}
                     </span>
                     <span className="text-xs text-gray-400">
-                      {insight.confidence}% zekerheid
+                      {insight.confidence}% confidence
                     </span>
                   </div>
                   

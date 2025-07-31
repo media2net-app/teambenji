@@ -26,19 +26,19 @@ export default function Sidebar({ activeItem, onItemClick }: SidebarProps) {
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: DashboardIcon },
-    { id: 'trainingen', label: 'Mijn Trainingen', icon: WorkoutIcon },
-    { id: 'voeding', label: 'Voeding', icon: NutritionIcon },
-    { id: 'herstel', label: 'Herstel', icon: SleepIcon },
-    { id: 'body-composition', label: 'Lichaamssamenstelling', icon: BodyCompositionIcon },
-    { id: 'prestaties', label: 'Prestaties', icon: PerformanceIcon },
+    { id: 'trainingen', label: 'My Workouts', icon: WorkoutIcon },
+    { id: 'voeding', label: 'Nutrition', icon: NutritionIcon },
+    { id: 'herstel', label: 'Recovery', icon: SleepIcon },
+    { id: 'body-composition', label: 'Body Composition', icon: BodyCompositionIcon },
+    { id: 'prestaties', label: 'Performance', icon: PerformanceIcon },
     { id: 'planning', label: 'Planning', icon: CalendarIcon },
-    { id: 'leermodules', label: 'Leermodules', icon: () => <span className="text-xl">📚</span> },
+    { id: 'leermodules', label: 'Learning Modules', icon: () => <span className="text-xl">📚</span> },
     { id: 'ai-insights', label: 'AI Insights', icon: BrainIcon },
     { id: 'chat', label: 'Chat', icon: () => <span className="text-xl">💬</span> },
   ];
 
   const bottomItems = [
-    { id: 'instellingen', label: 'Instellingen', icon: SettingsIcon },
+    { id: 'instellingen', label: 'Settings', icon: SettingsIcon },
     { id: 'help', label: 'Help & Support', icon: HelpIcon },
   ];
 

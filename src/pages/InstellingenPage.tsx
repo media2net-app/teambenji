@@ -5,8 +5,8 @@ export default function InstellingenPage() {
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Instellingen</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Beheer je profiel en voorkeuren</p>
+          <h1 className="text-white text-xl sm:text-2xl font-bold">Settings</h1>
+                      <p className="text-gray-400 text-sm sm:text-base">Manage your profile and preferences</p>
         </div>
       </div>
 

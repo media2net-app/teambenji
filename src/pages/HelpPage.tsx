@@ -60,7 +60,7 @@ export default function HelpPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-white text-xl sm:text-2xl font-bold">Help & Support</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Vind antwoorden op je vragen</p>
+                      <p className="text-gray-400 text-sm sm:text-base">Find answers to your questions</p>
         </div>
         <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
           Contact opnemen

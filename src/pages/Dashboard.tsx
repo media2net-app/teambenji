@@ -231,17 +231,17 @@ export default function Dashboard() {
 
         {/* Recent Activity */}
         <DataCard
-          title="Recente Activiteit"
+          title={language === 'nl' ? 'Recente Activiteit' : 'Recent Activity'}
           value=""
           icon={<NotesIcon className="w-6 h-6 text-white" />}
           className="stagger-item"
         >
           <div className="space-y-3">
             {[
-              { activity: 'Push/Pull training voltooid', time: '2 uur geleden', type: 'success', icon: <WorkoutIcon className="w-4 h-4" /> },
-              { activity: 'Voeding gelogd: Lunch', time: '4 uur geleden', type: 'info', icon: <NutritionIcon className="w-4 h-4" /> },
-              { activity: 'Slaap geregistreerd: 8.2u', time: 'Gisteren', type: 'info', icon: <SleepIcon className="w-4 h-4" /> },
-              { activity: 'Gewicht bijgewerkt: 75.2kg', time: '2 dagen geleden', type: 'success', icon: <ScaleIcon className="w-4 h-4" /> },
+              { activity: language === 'nl' ? 'Push/Pull training voltooid' : 'Push/Pull workout completed', time: language === 'nl' ? '2 uur geleden' : '2 hours ago', type: 'success', icon: <WorkoutIcon className="w-4 h-4" /> },
+              { activity: language === 'nl' ? 'Voeding gelogd: Lunch' : 'Nutrition logged: Lunch', time: language === 'nl' ? '4 uur geleden' : '4 hours ago', type: 'info', icon: <NutritionIcon className="w-4 h-4" /> },
+              { activity: language === 'nl' ? 'Slaap geregistreerd: 8.2u' : 'Sleep registered: 8.2h', time: language === 'nl' ? 'Gisteren' : 'Yesterday', type: 'info', icon: <SleepIcon className="w-4 h-4" /> },
+              { activity: language === 'nl' ? 'Gewicht bijgewerkt: 75.2kg' : 'Weight updated: 75.2kg', time: language === 'nl' ? '2 dagen geleden' : '2 days ago', type: 'success', icon: <ScaleIcon className="w-4 h-4" /> },
             ].map((item, index) => (
               <div key={index} className="group flex items-center gap-3 p-3 rounded-lg hover:bg-[#2A2D3A] transition-all duration-300 transform hover:scale-[1.02] stagger-item border border-transparent hover:border-[#E33412]/20">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -262,7 +262,7 @@ export default function Dashboard() {
 
         {/* AI Insights */}
         <DataCard
-          title="AI Aanbevelingen"
+          title={language === 'nl' ? 'AI Aanbevelingen' : 'AI Recommendations'}
           value=""
           icon={<BrainIcon className="w-6 h-6 text-white" />}
           className="stagger-item"

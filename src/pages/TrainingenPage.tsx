@@ -28,11 +28,11 @@ export default function TrainingenPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-white text-xl sm:text-2xl font-bold">Mijn Trainingen</h1>
-          <p className="text-gray-400 text-sm sm:text-base">Plan, volg en analyseer je workouts</p>
+                  <h1 className="text-white text-xl sm:text-2xl font-bold">My Workouts</h1>
+        <p className="text-gray-400 text-sm sm:text-base">Plan, track and analyze your workouts</p>
         </div>
         <button className="bg-[#E33412] text-white px-4 py-2 rounded-lg hover:bg-[#b9260e] transition-colors font-medium text-sm sm:text-base w-full sm:w-auto">
-          + Nieuwe Training
+                      + New Workout
         </button>
       </div>
 
@@ -55,7 +55,7 @@ export default function TrainingenPage() {
           subtitle="deze week"
         />
         <DataCard
-          title="Calories verbrand"
+                      title="Calories burned"
           value="1,680"
           change="+12%"
           changeType="positive"
@@ -76,7 +76,7 @@ export default function TrainingenPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Upcoming Workouts */}
         <div className="lg:col-span-2">
-          <DataCard title="Komende Trainingen" value="" icon="📅">
+          <DataCard title="Upcoming Workouts" value="" icon="📅">
             <div className="space-y-3 sm:space-y-4">
               {upcomingWorkouts.map((workout) => (
                 <div key={workout.id} className="p-3 sm:p-4 bg-[#2A2D3A] rounded-lg border border-[#3A3D4A] hover:border-[#E33412] transition-all cursor-pointer">
@@ -85,14 +85,14 @@ export default function TrainingenPage() {
                     <span className="text-[#E33412] text-xs sm:text-sm font-medium">{workout.date}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
-                    <div className="text-gray-400">Tijd: <span className="text-white">{workout.time}</span></div>
-                    <div className="text-gray-400">Duur: <span className="text-white">{workout.duration}</span></div>
-                    <div className="text-gray-400">Trainer: <span className="text-white">{workout.trainer}</span></div>
-                    <div className="text-gray-400">Locatie: <span className="text-white">{workout.location}</span></div>
+                                    <div className="text-gray-400">Time: <span className="text-white">{workout.time}</span></div>
+                <div className="text-gray-400">Duration: <span className="text-white">{workout.duration}</span></div>
+                <div className="text-gray-400">Trainer: <span className="text-white">{workout.trainer}</span></div>
+                <div className="text-gray-400">Location: <span className="text-white">{workout.location}</span></div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2 mt-3">
                     <button className="bg-[#E33412] text-white px-3 py-1 rounded text-xs sm:text-sm hover:bg-[#b9260e] transition-colors">
-                      Start Training
+                      Start Workout
                     </button>
                     <button className="bg-[#3A3D4A] text-white px-3 py-1 rounded text-xs sm:text-sm hover:bg-[#4A4D5A] transition-colors">
                       Details
@@ -134,7 +134,7 @@ export default function TrainingenPage() {
       {/* Bottom Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Workout History */}
-        <DataCard title="Training Historie" value="" icon="📊">
+        <DataCard title="Workout History" value="" icon="📊">
                       <div className="space-y-2 sm:space-y-3">
               {workoutHistory.map((workout) => (
                 <div key={workout.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 bg-[#2A2D3A] rounded-lg hover:bg-[#3A3D4A] transition-colors cursor-pointer gap-3">
@@ -163,7 +163,7 @@ export default function TrainingenPage() {
         </DataCard>
 
         {/* AI Training Recommendations */}
-        <DataCard title="AI Training Aanbevelingen" value="" icon="🤖">
+        <DataCard title="AI Training Recommendations" value="" icon="🤖">
           <AIRecommendations 
             category="training"
             maxItems={4} 
