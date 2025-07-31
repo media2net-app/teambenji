@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import DataCard from '../components/DataCard';
 import ModernChart from '../components/ModernChart';
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import { dashboardTranslations } from '../translations/dashboard';
 import { 
   WorkoutIcon, 
   ScaleIcon, 
@@ -32,7 +34,10 @@ import FloatingChatWidget from '../components/FloatingChatWidget';
 export default function Dashboard() {
   const [activeItem, setActiveItem] = useState('dashboard');
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [language, setLanguage] = useState<'nl' | 'en'>('nl');
   const userMenuRef = useRef<HTMLDivElement>(null);
+
+  const t = dashboardTranslations[language];
 
   const handleSidebarClick = (item: string) => {
     setActiveItem(item);
@@ -91,39 +96,39 @@ export default function Dashboard() {
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <DataCard
-          title="Trainingen deze week"
+          title={t['trainingen-deze-week']}
           value="4"
           change="+1"
           changeType="positive"
           icon={<WorkoutIcon className="w-6 h-6 text-white" />}
-          subtitle="van 5 gepland"
+          subtitle={t['van-gepland']}
           className="stagger-item animate-fade-in"
         />
         <DataCard
-          title="Gewicht"
+          title={language === 'nl' ? 'Gewicht' : 'Weight'}
           value="75.2 kg"
           change="-0.3 kg"
           changeType="positive"
           icon={<ScaleIcon className="w-6 h-6 text-white" />}
-          subtitle="deze maand"
+          subtitle={language === 'nl' ? 'deze maand' : 'this month'}
           className="stagger-item animate-fade-in"
         />
         <DataCard
-          title="Slaapscore"
+          title={language === 'nl' ? 'Slaapscore' : 'Sleep score'}
           value="85"
           change="+5%"
           changeType="positive"
           icon={<SleepIcon className="w-6 h-6 text-white" />}
-          subtitle="gemiddeld deze week"
+          subtitle={language === 'nl' ? 'gemiddeld deze week' : 'average this week'}
           className="stagger-item animate-fade-in"
         />
         <DataCard
-          title="Calorie doelen"
+          title={language === 'nl' ? 'Calorie doelen' : 'Calorie goals'}
           value="2,340"
           change="94%"
           changeType="positive"
           icon={<FireIcon className="w-6 h-6 text-white" />}
-          subtitle="van 2,500 kcal"
+          subtitle={language === 'nl' ? 'van 2,500 kcal' : 'of 2,500 kcal'}
           className="stagger-item animate-fade-in"
         />
       </div>
@@ -355,9 +360,15 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="flex items-center gap-4">
+              <LanguageSwitcher 
+                currentLanguage={language} 
+                onLanguageChange={setLanguage} 
+              />
               <button className="btn-modern bg-gradient-to-r from-[#E33412] to-[#b9260e] text-white px-6 py-3 rounded-lg hover:from-[#b9260e] hover:to-[#E33412] transition-all duration-300 font-medium shadow-lg shadow-[#E33412]/20 hover:shadow-[#E33412]/40 flex items-center gap-2">
                 <PlusIcon className="w-4 h-4" />
-                <span className="relative z-10">Nieuwe Training</span>
+                <span className="relative z-10">
+                  {language === 'nl' ? 'Nieuwe Training' : 'New Workout'}
+                </span>
               </button>
               <div className="relative" ref={userMenuRef}>
                 <button 
